@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour
 {
+    public TeamIDEnum teamIDEnum;
+
     private bool isBeingCarried = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +20,13 @@ public class Flag : MonoBehaviour
             this.transform.parent = playerFlagPos;
             this.transform.localPosition = new Vector3(0, 0, 0);
         }
+    }
+
+    public void ReturnedToBase()
+    {
+        //TODO: cool effects
+        Destroy(this.gameObject);
+        //TODO: Spawn next 
     }
 
 }
