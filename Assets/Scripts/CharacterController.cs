@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController : MonoBehaviour
@@ -28,9 +30,13 @@ public class CharacterController : MonoBehaviour
     public float jumpTime;
     private bool canContinueJumping;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
         this.CharacterBrain.Initialize(this);
     }
 
@@ -39,22 +45,17 @@ public class CharacterController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         this.CharacterBrain.Think(this);
-        this.Move();
-    }
-
-    private void Move()
-    {
-        this.rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+        this.MoveRigidBody();
+        this.ContinueJumping();
     }
 
     public void SetDirection(Vector2 dir)
     {
-        //Debug.Log(dir);
         this.moveDirection = dir;
         this.moveDirection.Normalize();
     }
 
-    public void Jump()
+    public void ExecuteJump()
     {
         if (isGrounded)
         {
@@ -62,22 +63,50 @@ public class CharacterController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             jumpTimeCounter = jumpTime;
         }
+    }
 
+    public void StoppedJump()
+    {
+        canContinueJumping = false;
+    }
+
+    public void Move(CallbackContext context)
+    {
+        SetDirection(context.ReadValue<Vector2>());
+    }
+
+    public void MoveRigidBody()
+    {
+        this.rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+    }
+
+    private void ContinueJumping()
+    {
         if (canContinueJumping)
         {
             if (jumpTimeCounter > 0)
             {
-                rb.velocity = Vector2.up * jumpForce;
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 jumpTimeCounter -= Time.deltaTime;
-            } else
+            }
+            else
             {
                 canContinueJumping = false;
             }
         }
     }
 
-    public void StoppedJump()
+    public void Jump(CallbackContext context)
     {
-        canContinueJumping = false;
+        float didJump = context.ReadValue<float>();
+
+        if (didJump > 0)
+        {
+            ExecuteJump();
+        }
+        else
+        {
+            StoppedJump();
+        }
     }
 }
