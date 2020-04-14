@@ -5,13 +5,18 @@ using UnityEngine;
 public class Grabbable : MonoBehaviour
 {
     public GameObject PickupUIGameObject;
+    public bool _isBeingGrabbed
+    {
+        get { return this.transform.parent.parent == null; }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Grabber")
         {
-            //collision.gameObject.GetComponent<Grabber>().Grab(this.transform.parent.gameObject);
-            EnablePickUpUI();
+            if(!_isBeingGrabbed)
+                EnablePickUpUI();
+
             collision.gameObject.GetComponent<Grabber>().BecameGrababble(this.transform.parent.gameObject);
         }
     }

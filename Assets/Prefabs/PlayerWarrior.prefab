@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3670669546270193133}
   - component: {fileID: 3670669546270193132}
   - component: {fileID: -10280573032050441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerWarrior
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3670669546456621193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FeetPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3670669547769157820}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FlagPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
