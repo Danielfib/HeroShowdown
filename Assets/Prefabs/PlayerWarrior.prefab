@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f931593852aba48498b08c1bf85674b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Grabber: {fileID: 8618652328124411858}
   CharacterBrain: {fileID: 11400000, guid: 68f44015638fc4c41b3a997543e46946, type: 2}
   moveSpeed: 5
   jumpForce: 8
@@ -204,6 +205,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 93ec0f40-a6a9-43f5-a932-5ded858bcd47
     m_ActionName: PlayerMovement/Jump[/Keyboard/z,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3670669546270193132}
+        m_MethodName: GrabToss
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 759be324-bef8-4ce6-b7e4-7f09c0e11878
+    m_ActionName: PlayerMovement/Grab/Toss[/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement

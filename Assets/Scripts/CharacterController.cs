@@ -7,6 +7,8 @@ using static UnityEngine.InputSystem.InputAction;
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController : MonoBehaviour
 {
+    public Grabber Grabber;
+
     [SerializeField]
     private CharacterBrain CharacterBrain;
 
@@ -108,5 +110,11 @@ public class CharacterController : MonoBehaviour
         {
             StoppedJump();
         }
+    }
+
+    public void GrabToss(CallbackContext context)
+    {
+        if(context.performed)
+            Grabber.GrabTossAction();
     }
 }
