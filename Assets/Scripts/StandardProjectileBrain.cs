@@ -17,10 +17,12 @@ public class StandardProjectileBrain : ProjectileBrain
 
     public override void Think(ProjectileController projectileController)
     {
+        //Debug.Log(this.inputActions.PlayerMovement.Move.ReadValue<Vector2>());
+
         if (projectileController.rb.velocity.y == 0 && //has no vertical movement
             projectileController.rb.velocity.magnitude < MinVelocityToStop)
         {
-            projectileController.ReturnToGrabbableState();
+            //projectileController.ReturnToGrabbableState();
             projectileController.rb.velocity = Vector2.zero;
         }
     }

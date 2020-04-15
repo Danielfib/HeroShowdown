@@ -32,12 +32,16 @@ public class ProjectileController : MonoBehaviour
     {
         //TODO: clamp values to 8 diagonals, 
         //so controller does not have a vantage over keyboard
+        dir = MathUtils.ClampVectorTo8DiagonalVector(dir, 0.4f);
+        //Debug.Log(dir);
         StartCoroutine(TurnOffGravityForDuration(ProjectileBrain.GetGravityDisableDurationDuringToss()));
+        StartCoroutine(TurnOffCollisionForDuration(0.1f));
         rb.AddForce(dir * TossMagnetude);
     }
 
     public void ReturnToGrabbableState()
     {
+        //Debug.Log("Returned to grabbable");
         this.gameObject.layer = LayerMask.NameToLayer("Grabbables");
     }
 
@@ -61,8 +65,18 @@ public class ProjectileController : MonoBehaviour
         EnableGravity(gravityScale);
     }
 
+    private IEnumerator TurnOffCollisionForDuration(float duration)
+    {
+        this.GetComponent<CircleCollider2D>().isTrigger = true;
+
+        yield return new WaitForSeconds(duration);
+
+        this.GetComponent<CircleCollider2D>().isTrigger = false;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Debug.Log("Collision");
         EnableGravity(0.8f);
     }
 }

@@ -27,8 +27,10 @@ public class Grabber : MonoBehaviour
             return;
 
         go.GetComponent<Rigidbody2D>().simulated = false;
+        go.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         go.transform.parent = this.gameObject.transform;
         go.transform.localPosition = new Vector3(0, 0, 0);
+        
 
         CurrentlyGrabingObject = go;
     }
