@@ -6,6 +6,7 @@ using UnityEngine;
 public class StandardProjectileBrain : ProjectileBrain
 {
     public float MinVelocityToStop = 5f;
+    public float TossGravityDisableDuration = 0f;
     private InputActions inputActions;
 
     public override void Initialize(ProjectileController projectileController)
@@ -16,8 +17,6 @@ public class StandardProjectileBrain : ProjectileBrain
 
     public override void Think(ProjectileController projectileController)
     {
-        Debug.Log(projectileController.rb.velocity.magnitude);
-
         if (projectileController.rb.velocity.y == 0 && //has no vertical movement
             projectileController.rb.velocity.magnitude < MinVelocityToStop)
         {
@@ -31,5 +30,10 @@ public class StandardProjectileBrain : ProjectileBrain
         Vector2 dir = this.inputActions.PlayerMovement.Move.ReadValue<Vector2>();
 
         projectileController.StandardToss(dir);
+    }
+
+    public override float GetGravityDisableDurationDuringToss()
+    {
+        return this.TossGravityDisableDuration;
     }
 }
