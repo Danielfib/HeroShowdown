@@ -50,7 +50,7 @@ public class ProjectileController : MonoBehaviour
         this.rb.gravityScale = 0;
     }
 
-    private void EnableGravity(float gravityScale)
+    public void EnableGravity(float gravityScale)
     {
         this.rb.gravityScale = gravityScale;
     }
@@ -76,7 +76,6 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("Collision");
-        EnableGravity(0.8f);
+        ProjectileBrain.HandleCollision(this);
     }
 }

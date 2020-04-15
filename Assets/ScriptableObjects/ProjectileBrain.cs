@@ -11,4 +11,6 @@ public abstract class ProjectileBrain : ScriptableObject
     public abstract void Toss(ProjectileController projectileController);
 
     public abstract float GetGravityDisableDurationDuringToss();
+
+    public abstract void HandleCollision(ProjectileController projectileController);
 }

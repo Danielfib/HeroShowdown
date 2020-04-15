@@ -7,6 +7,7 @@ public class StandardProjectileBrain : ProjectileBrain
 {
     public float MinVelocityToStop = 5f;
     public float TossGravityDisableDuration = 1f;
+    public float GravityScale = 0.8f;
     private InputActions inputActions;
 
     public override void Initialize(ProjectileController projectileController)
@@ -17,12 +18,10 @@ public class StandardProjectileBrain : ProjectileBrain
 
     public override void Think(ProjectileController projectileController)
     {
-        //Debug.Log(this.inputActions.PlayerMovement.Move.ReadValue<Vector2>());
-
-        if (projectileController.rb.velocity.y == 0 && //has no vertical movement
-            projectileController.rb.velocity.magnitude < MinVelocityToStop)
+        if (projectileController.rb.velocity.y == 0 //has no vertical movement
+            && projectileController.rb.velocity.magnitude < MinVelocityToStop
+            && projectileController.transform.parent == null) //is not being held
         {
-            //projectileController.ReturnToGrabbableState();
             projectileController.rb.velocity = Vector2.zero;
         }
     }
@@ -37,5 +36,11 @@ public class StandardProjectileBrain : ProjectileBrain
     public override float GetGravityDisableDurationDuringToss()
     {
         return this.TossGravityDisableDuration;
+    }
+
+    public override void HandleCollision(ProjectileController projectileController)
+    {
+        projectileController.EnableGravity(GravityScale);
+        projectileController.ReturnToGrabbableState();
     }
 }
