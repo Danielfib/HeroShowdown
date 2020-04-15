@@ -51,9 +51,10 @@ public class CharacterController : MonoBehaviour
         this.ContinueJumping();
 
         //Flipping sprite
-        if(this.gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+        float currentVelX = this.gameObject.GetComponent<Rigidbody2D>().velocity.x;
+        if (currentVelX < 0)
             transform.eulerAngles = new Vector3(0, 180, 0);
-        else
+        else if (currentVelX > 0)
             transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
