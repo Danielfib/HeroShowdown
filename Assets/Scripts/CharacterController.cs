@@ -49,6 +49,12 @@ public class CharacterController : MonoBehaviour
         this.CharacterBrain.Think(this);
         this.MoveRigidBody();
         this.ContinueJumping();
+
+        //Flipping sprite
+        if(this.gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        else
+            transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     public void SetDirection(Vector2 dir)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class StandardProjectileBrain : ProjectileBrain
 {
     public float MinVelocityToStop = 5f;
-    public float TossGravityDisableDuration = 0f;
+    public float TossGravityDisableDuration = 1f;
     private InputActions inputActions;
 
     public override void Initialize(ProjectileController projectileController)
