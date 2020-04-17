@@ -14,4 +14,9 @@ public class WarriorBrain : CharacterBrain
     {
         
     }
+
+    public override void Die(CharacterController characterController)
+    {
+        characterController.DieDefault();
+    }
 }

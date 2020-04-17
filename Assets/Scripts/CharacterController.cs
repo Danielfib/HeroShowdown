@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,6 +33,8 @@ public class CharacterController : MonoBehaviour
     public float jumpTime;
     private bool canContinueJumping;
 
+    private bool IsInvulnerable = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,7 +53,43 @@ public class CharacterController : MonoBehaviour
         this.MoveRigidBody();
         this.ContinueJumping();
 
-        //Flipping sprite
+        FlipSpriteOnWalkDirection();
+    }
+
+    #region [Combat]
+    public void GrabToss(CallbackContext context)
+    {
+        if(context.performed)
+            Grabber.GrabTossAction();
+    }
+
+    public void DieDefault()
+    {
+        //this.Animator.SetTrigger("Die");
+        Destroy(this.gameObject);
+    }
+    
+    public void GotHit()
+    {
+        if (!IsInvulnerable)
+            CharacterBrain.Die(this);
+    }
+    #endregion
+
+    #region [Walk]
+    public void SetDirection(Vector2 dir)
+    {
+        this.moveDirection = dir;
+        this.moveDirection.Normalize();
+    }
+
+    public void Move(CallbackContext context)
+    {
+        SetDirection(context.ReadValue<Vector2>());
+    }
+
+    private void FlipSpriteOnWalkDirection()
+    {
         float currentVelX = this.gameObject.GetComponent<Rigidbody2D>().velocity.x;
         if (currentVelX < 0)
             transform.eulerAngles = new Vector3(0, 180, 0);
@@ -58,12 +97,13 @@ public class CharacterController : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    public void SetDirection(Vector2 dir)
+    public void MoveRigidBody()
     {
-        this.moveDirection = dir;
-        this.moveDirection.Normalize();
+        this.rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
     }
+    #endregion
 
+    #region [Jump]
     public void ExecuteJump()
     {
         if (isGrounded)
@@ -77,16 +117,6 @@ public class CharacterController : MonoBehaviour
     public void StoppedJump()
     {
         canContinueJumping = false;
-    }
-
-    public void Move(CallbackContext context)
-    {
-        SetDirection(context.ReadValue<Vector2>());
-    }
-
-    public void MoveRigidBody()
-    {
-        this.rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
     }
 
     private void ContinueJumping()
@@ -118,10 +148,5 @@ public class CharacterController : MonoBehaviour
             StoppedJump();
         }
     }
-
-    public void GrabToss(CallbackContext context)
-    {
-        if(context.performed)
-            Grabber.GrabTossAction();
-    }
+    #endregion
 }
