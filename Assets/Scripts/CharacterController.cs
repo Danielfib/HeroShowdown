@@ -34,6 +34,12 @@ public class CharacterController : MonoBehaviour
     private bool canContinueJumping;
 
     private bool IsInvulnerable = false;
+    public bool IsReflectiveToProjectiles = false;
+
+    public float DeflectMagnetude
+    {
+        get { return this.CharacterBrain.GetDeflectMagnetude(this); }
+    }
 
     private void Awake()
     {

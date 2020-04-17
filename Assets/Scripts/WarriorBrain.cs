@@ -19,4 +19,10 @@ public class WarriorBrain : CharacterBrain
     {
         characterController.DieDefault();
     }
+
+    public override float GetDeflectMagnetude(CharacterController characterController)
+    {
+        //TODO: Maybe deflect force may have something to do with deflect timing?
+        return 1.5f;
+    }
 }

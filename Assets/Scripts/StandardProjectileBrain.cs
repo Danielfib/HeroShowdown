@@ -30,7 +30,10 @@ public class StandardProjectileBrain : ProjectileBrain
     {
         Vector2 dir = this.inputActions.PlayerMovement.Move.ReadValue<Vector2>();
 
-        projectileController.StandardToss(dir);
+        if (dir == Vector2.zero)
+            projectileController.ReleaseProjectile();
+        else
+            projectileController.StandardToss(dir);
     }
 
     public override float GetGravityDisableDurationDuringToss()
@@ -40,7 +43,6 @@ public class StandardProjectileBrain : ProjectileBrain
 
     public override void HandleCollision(ProjectileController projectileController)
     {
-        projectileController.EnableGravity(GravityScale);
         projectileController.ReturnToGrabbableState();
     }
 }

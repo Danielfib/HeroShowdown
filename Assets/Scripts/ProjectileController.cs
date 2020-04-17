@@ -36,8 +36,14 @@ public class ProjectileController : MonoBehaviour
         rb.AddForce(dir * TossMagnetude);
     }
 
+    public void ReleaseProjectile()
+    {
+        ReturnToGrabbableState();   
+    }
+
     public void ReturnToGrabbableState()
     {
+        EnableGravity(0.9f);
         this.gameObject.layer = LayerMask.NameToLayer("Grabbables");
     }
 
@@ -72,6 +78,30 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        ProjectileBrain.HandleCollision(this);
+        bool gotDeflected = false;
+
+        if (collision.gameObject.tag == "Player"
+            && this.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
+        {
+            CharacterController charController = collision.gameObject.GetComponent<CharacterController>();
+            charController.GotHit();
+
+            if (charController.IsReflectiveToProjectiles)
+            {
+                Debug.Log("Deflected!!");
+                float deflectForce = TossMagnetude * charController.DeflectMagnetude;
+                
+                gotDeflected = true;
+                Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;
+                Vector2 dir = new Vector2(reflectDir.x, reflectDir.y).normalized;
+                this.rb.velocity = Vector2.zero;
+                this.rb.AddForce(dir * deflectForce);
+                
+            }
+        }
+
+        if(!gotDeflected) {
+            ProjectileBrain.HandleCollision(this);
+        }
     }
 }
