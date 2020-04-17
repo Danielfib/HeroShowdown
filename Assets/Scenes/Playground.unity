@@ -5578,7 +5578,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.2
   m_AngularDrag: 0
   m_GravityScale: 0.8
   m_Material: {fileID: 6200000, guid: e43bee6f0753c254ea45d0bda9b23e53, type: 2}
@@ -8218,7 +8218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2685752084132940251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.03, y: -7.29, z: 0}
+  m_LocalPosition: {x: 6.93, y: 1.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2685752083514203325}
@@ -8317,6 +8317,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpTime: 0.3
+  IsReflectiveToProjectiles: 0
 --- !u!50 &2685752084132940249
 Rigidbody2D:
   serializedVersion: 4
