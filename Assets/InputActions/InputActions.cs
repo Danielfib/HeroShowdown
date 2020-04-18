@@ -41,6 +41,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SpecialAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""aeb54e0b-5ccf-401e-bbeb-a067a9993ab3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -197,6 +205,28 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""Grab/Toss"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5c337d7-4254-4063-9fe3-7a8ce6b54300"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""684fa1b4-1d11-478a-8a8e-0157d80cf552"",
+                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -208,6 +238,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovement_GrabToss = m_PlayerMovement.FindAction("Grab/Toss", throwIfNotFound: true);
+        m_PlayerMovement_SpecialAction = m_PlayerMovement.FindAction("SpecialAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -260,6 +291,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMovement_Move;
     private readonly InputAction m_PlayerMovement_Jump;
     private readonly InputAction m_PlayerMovement_GrabToss;
+    private readonly InputAction m_PlayerMovement_SpecialAction;
     public struct PlayerMovementActions
     {
         private @InputActions m_Wrapper;
@@ -267,6 +299,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
         public InputAction @GrabToss => m_Wrapper.m_PlayerMovement_GrabToss;
+        public InputAction @SpecialAction => m_Wrapper.m_PlayerMovement_SpecialAction;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -285,6 +318,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @GrabToss.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnGrabToss;
                 @GrabToss.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnGrabToss;
                 @GrabToss.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnGrabToss;
+                @SpecialAction.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSpecialAction;
+                @SpecialAction.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSpecialAction;
+                @SpecialAction.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSpecialAction;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -298,6 +334,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @GrabToss.started += instance.OnGrabToss;
                 @GrabToss.performed += instance.OnGrabToss;
                 @GrabToss.canceled += instance.OnGrabToss;
+                @SpecialAction.started += instance.OnSpecialAction;
+                @SpecialAction.performed += instance.OnSpecialAction;
+                @SpecialAction.canceled += instance.OnSpecialAction;
             }
         }
     }
@@ -307,5 +346,6 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGrabToss(InputAction.CallbackContext context);
+        void OnSpecialAction(InputAction.CallbackContext context);
     }
 }

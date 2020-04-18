@@ -155,4 +155,18 @@ public class CharacterController : MonoBehaviour
         }
     }
     #endregion
+
+    #region [SpecialActions]
+    public void SpecialAction(CallbackContext context)
+    {
+        if(context.performed)
+            this.CharacterBrain.SpecialAction(this);
+    }
+
+    public void Dodge(Vector2 dir, float dodgeSpeed)
+    {
+        Debug.Log("Yet not implemented dodge");
+        //https://answers.unity.com/questions/892955/dashing-mechanic-using-rigidbodyaddforce.html
+    }
+    #endregion
 }

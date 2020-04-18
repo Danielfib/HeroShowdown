@@ -149,6 +149,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpTime: 0.3
+  IsReflectiveToProjectiles: 0
 --- !u!114 &-10280573032050441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +221,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 759be324-bef8-4ce6-b7e4-7f09c0e11878
     m_ActionName: PlayerMovement/Grab/Toss[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3670669546270193132}
+        m_MethodName: SpecialAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aeb54e0b-5ccf-401e-bbeb-a067a9993ab3
+    m_ActionName: PlayerMovement/SpecialAction[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
