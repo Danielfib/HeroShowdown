@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e781d6fefa67794089130adac7004bb, type: 3}
   m_Name: WarriorBrain
   m_EditorClassIdentifier: 
+  DodgeSpeed: 15
+  DodgeCooldown: 2
+  DodgeDuration: 0.3

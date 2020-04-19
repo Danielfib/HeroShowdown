@@ -33,6 +33,8 @@ public class CharacterController : MonoBehaviour
     public float jumpTime;
     private bool canContinueJumping;
 
+    public SAState SAState;
+
     private bool IsInvulnerable = false;
     public bool IsReflectiveToProjectiles = false;
 
@@ -56,8 +58,6 @@ public class CharacterController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         this.CharacterBrain.Think(this);
-        this.MoveRigidBody();
-        this.ContinueJumping();
 
         FlipSpriteOnWalkDirection();
     }
@@ -125,7 +125,7 @@ public class CharacterController : MonoBehaviour
         canContinueJumping = false;
     }
 
-    private void ContinueJumping()
+    public void ContinueJumping()
     {
         if (canContinueJumping)
         {
@@ -159,14 +159,26 @@ public class CharacterController : MonoBehaviour
     #region [SpecialActions]
     public void SpecialAction(CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed
+           && this.SAState == SAState.READY)
             this.CharacterBrain.SpecialAction(this);
     }
-
-    public void Dodge(Vector2 dir, float dodgeSpeed)
+    
+    public void DoDodge(Vector2 dir, float dodgeSpeed)
     {
-        Debug.Log("Yet not implemented dodge");
-        //https://answers.unity.com/questions/892955/dashing-mechanic-using-rigidbodyaddforce.html
+        this.rb.velocity = dir * dodgeSpeed;
+    }
+
+    public void SetSAState(SAState state)
+    {
+        this.SAState = state;
     }
     #endregion
+}
+
+public enum SAState
+{
+    READY,
+    USING,
+    COOLDOWN
 }
