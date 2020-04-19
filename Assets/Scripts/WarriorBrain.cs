@@ -32,6 +32,7 @@ public class WarriorBrain : CharacterBrain
                 {
                     DodgeTimer = DodgeCooldown;
                     characterController.SetSAState(SAState.COOLDOWN);
+                    characterController.SetInvulnerability(false);
                 }
                 break;
             case SAState.COOLDOWN:
@@ -66,5 +67,6 @@ public class WarriorBrain : CharacterBrain
     {
         DodgeDirection = inputActions.PlayerMovement.Move.ReadValue<Vector2>();
         characterController.SetSAState(SAState.USING);
+        characterController.SetInvulnerability(true);
     }
 }

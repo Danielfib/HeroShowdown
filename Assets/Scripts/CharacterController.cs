@@ -173,6 +173,11 @@ public class CharacterController : MonoBehaviour
     {
         this.SAState = state;
     }
+
+    public void SetInvulnerability(bool value)
+    {
+        this.IsInvulnerable = value;
+    }
     #endregion
 }
 
