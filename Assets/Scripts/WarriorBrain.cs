@@ -57,12 +57,6 @@ public class WarriorBrain : CharacterBrain
         characterController.DieDefault();
     }
 
-    public override float GetDeflectMagnetude(CharacterController characterController)
-    {
-        //TODO: Maybe deflect force may have something to do with deflect timing?
-        return 1.5f;
-    }
-
     public override void SpecialAction(CharacterController characterController)
     {
         DodgeDirection = inputActions.PlayerMovement.Move.ReadValue<Vector2>();

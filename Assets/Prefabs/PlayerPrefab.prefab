@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3670669546270193132}
   - component: {fileID: -10280573032050441}
   m_Layer: 10
-  m_Name: PlayerWarrior
+  m_Name: PlayerPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grabber: {fileID: 8618652328124411858}
-  CharacterBrain: {fileID: 11400000, guid: 68f44015638fc4c41b3a997543e46946, type: 2}
+  CharacterBrain: {fileID: 11400000, guid: 25f35c3b0f71e0a40afbc36183db5420, type: 2}
   moveSpeed: 5
   jumpForce: 8
   Animator: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpTime: 0.3
+  _SAState: 0
   IsReflectiveToProjectiles: 0
 --- !u!114 &-10280573032050441
 MonoBehaviour:

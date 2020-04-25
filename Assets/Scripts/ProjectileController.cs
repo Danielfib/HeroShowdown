@@ -88,8 +88,10 @@ public class ProjectileController : MonoBehaviour
 
             if (charController.IsReflectiveToProjectiles)
             {
+                //Perhaps bring this behaviour to character side?
+                //^if using deflect, for example, to bounce other players, and not only on projectiles
                 Debug.Log("Deflected!!");
-                float deflectForce = TossMagnetude * charController.DeflectMagnetude;
+                float deflectForce = TossMagnetude * charController.GetDeflectMagnetude();
                 
                 gotDeflected = true;
                 Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;

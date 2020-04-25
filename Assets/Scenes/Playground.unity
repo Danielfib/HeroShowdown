@@ -8307,7 +8307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grabber: {fileID: 6930751117021664230}
-  CharacterBrain: {fileID: 11400000, guid: 68f44015638fc4c41b3a997543e46946, type: 2}
+  CharacterBrain: {fileID: 11400000, guid: 25f35c3b0f71e0a40afbc36183db5420, type: 2}
   moveSpeed: 5
   jumpForce: 8
   Animator: {fileID: 0}
@@ -8317,7 +8317,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpTime: 0.3
-  IsReflectiveToProjectiles: 0
+  _SAState: 0
+  IsReflectiveToProjectiles: 1
 --- !u!50 &2685752084132940249
 Rigidbody2D:
   serializedVersion: 4

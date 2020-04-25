@@ -10,7 +10,5 @@ public abstract class CharacterBrain : ScriptableObject
 
     public abstract void Die(CharacterController characterController);
 
-    public abstract float GetDeflectMagnetude(CharacterController characterController);
-
     public abstract void SpecialAction(CharacterController characterController);
 }

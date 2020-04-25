@@ -33,23 +33,22 @@ public class CharacterController : MonoBehaviour
     public float jumpTime;
     private bool canContinueJumping;
 
-    public SAState SAState;
+    public SAState _SAState = SAState.READY;
+    public SAState SAState
+    {
+        get { return _SAState; }
+        set {
+            _SAState = value;
+        }
+    }
 
     private bool IsInvulnerable = false;
     public bool IsReflectiveToProjectiles = false;
 
-    public float DeflectMagnetude
-    {
-        get { return this.CharacterBrain.GetDeflectMagnetude(this); }
-    }
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         this.CharacterBrain.Initialize(this);
     }
 
@@ -72,12 +71,13 @@ public class CharacterController : MonoBehaviour
     public void DieDefault()
     {
         //this.Animator.SetTrigger("Die");
+        //BUG: Using Destroy makes player spawn again when input is pressed again
         Destroy(this.gameObject);
     }
     
     public void GotHit()
     {
-        if (!IsInvulnerable)
+        if (!IsInvulnerable && !IsReflectiveToProjectiles)
             CharacterBrain.Die(this);
     }
     #endregion
@@ -177,6 +177,38 @@ public class CharacterController : MonoBehaviour
     public void SetInvulnerability(bool value)
     {
         this.IsInvulnerable = value;
+    }
+
+    public void SetDeflective(bool value)
+    {
+        this.IsReflectiveToProjectiles = value;
+    }
+
+    internal void ActivatedDeflective()
+    {
+        if (this.rb == null)
+            return;
+
+        //maybe while deflecting, make super bouncing material? To enable other interactions
+        //and not only projectile deflection (e.g. player using other player deflecting to jump higher)
+        this.rb.gravityScale = 0;
+        this.rb.velocity = Vector2.zero;
+        this.rb.mass = 500;
+        this.IsReflectiveToProjectiles = true;
+        this.SAState = SAState.USING;
+    }
+
+    internal void DeactivatedDeflective()
+    {
+        this.rb.gravityScale = 3;
+        this.rb.mass = 1;
+        this.IsReflectiveToProjectiles = false;
+        this.SAState = SAState.COOLDOWN;
+    }
+
+    public float GetDeflectMagnetude()
+    {
+        return ((MageBrain)CharacterBrain).DeflectMagnetude;
     }
     #endregion
 }
