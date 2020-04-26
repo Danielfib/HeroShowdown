@@ -10,8 +10,8 @@ public class CharacterController : MonoBehaviour
 {
     public Grabber Grabber;
 
-    [SerializeField]
-    private CharacterBrain CharacterBrain;
+    //[SerializeField]
+    public CharacterBrain CharacterBrain;
 
     [SerializeField]
     private float moveSpeed = 5f;

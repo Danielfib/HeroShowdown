@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,21 +20,30 @@ public class PlayersSelectionManager : MonoBehaviour
         menuInputActions = new MenuInputActions();
         menuInputActions.Enable();
     }
+
+    public void OnPlayerJoined(PlayerInput playerJoinHandler)
+    {
+        playerJoinHandler.gameObject.GetComponent<PlayerMenuHandler>().PlayerIndex = playerJoinHandler.playerIndex;
+        PlayersSettings.PlayerSettings.Add(
+            new PlayerSettings(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
+    }
+
+    public void OnPlayerLeft(PlayerInput playerInput)
+    {
+        //CAUTION: Following code was causing bug were OnPlayerLeft would trigger before loading scene
+        //PlayerSettings toRemove = PlayersSettings.PlayerSettings.Where(x => x.playerIndex == playerInput.playerIndex).FirstOrDefault();
+        //PlayersSettings.PlayerSettings.Remove(toRemove);
+    }
 }
 
 public class Character
 {
     public string name;
-    public string sprite;
+    public string spritePath;
 
     public Character(string name, string sprite)
     {
         this.name = name;
-        this.sprite = sprite;
+        this.spritePath = sprite;
     }
-}
-
-public class PlayerSelectionSettings
-{
-
 }

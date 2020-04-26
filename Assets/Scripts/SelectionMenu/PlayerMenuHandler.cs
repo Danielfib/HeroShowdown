@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMenuHandler : MonoBehaviour
 {
+    public int PlayerIndex;
+
     private Character SelectedCharacter;
     private Sprite CharacterSprite;
     private Sprite CharacterNameSprite;
@@ -24,7 +27,7 @@ public class PlayerMenuHandler : MonoBehaviour
 
     private void UpdateCharUIInfo()
     {
-        CharacterSprite = Resources.Load<Sprite>(SelectedCharacter.sprite);
+        CharacterSprite = Resources.Load<Sprite>(SelectedCharacter.spritePath);
         //CharacterNameSprite = Resources.Load<Sprite>(SelectedCharacter.name);
 
         this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = CharacterSprite;
@@ -60,9 +63,10 @@ public class PlayerMenuHandler : MonoBehaviour
         }
     }
 
-    private void SelectHeroOnIndex(int index)
+    private void SelectHeroOnIndex(int charIndex)
     {
-        SelectedCharacter = PlayersSelectionManager.availableCharacters[index];
+        SelectedCharacter = PlayersSelectionManager.availableCharacters[charIndex];
+        PlayersSettings.PlayerSettings.Find(x => x.playerIndex == this.PlayerIndex).character = SelectedCharacter;
     }
 
     public void ChangeHero(CallbackContext context)

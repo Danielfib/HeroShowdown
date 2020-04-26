@@ -6,17 +6,17 @@ using UnityEngine.InputSystem;
 public static class PlayersSettings
 {
     public static List<PlayerSettings> PlayerSettings = new List<PlayerSettings>();
-    public static int oi = 0;
 }
 
 public class PlayerSettings
 {
-    public int index;
+    public int playerIndex;
     public InputDevice inputDevice;
+    public Character character;
 
     public PlayerSettings(int index, InputDevice inputDevice)
     {
-        this.index = index;
+        this.playerIndex = index;
         this.inputDevice = inputDevice;
     }
 }
