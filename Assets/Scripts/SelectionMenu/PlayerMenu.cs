@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
 
-public class PlayerMenuHandler : MonoBehaviour
+public class PlayerMenu : MonoBehaviour
 {
     public int PlayerIndex;
 
@@ -36,7 +36,8 @@ public class PlayerMenuHandler : MonoBehaviour
 
     public void Progress(CallbackContext context)
     {
-        //TODO: start scene with chosen character
+        PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex).character = SelectedCharacter;
+        //TODO: make ready state and only load scene when everyone is ready
         SceneManager.LoadScene("Playground");
     }
 
@@ -66,7 +67,6 @@ public class PlayerMenuHandler : MonoBehaviour
     private void SelectHeroOnIndex(int charIndex)
     {
         SelectedCharacter = PlayersSelectionManager.availableCharacters[charIndex];
-        PlayersSettings.PlayerSettings.Find(x => x.playerIndex == this.PlayerIndex).character = SelectedCharacter;
     }
 
     public void ChangeHero(CallbackContext context)

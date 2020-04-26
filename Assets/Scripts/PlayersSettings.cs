@@ -5,16 +5,16 @@ using UnityEngine.InputSystem;
 
 public static class PlayersSettings
 {
-    public static List<PlayerSettings> PlayerSettings = new List<PlayerSettings>();
+    public static List<PlayerData> PlayerDataList = new List<PlayerData>();
 }
 
-public class PlayerSettings
+public class PlayerData
 {
     public int playerIndex;
     public InputDevice inputDevice;
     public Character character;
 
-    public PlayerSettings(int index, InputDevice inputDevice)
+    public PlayerData(int index, InputDevice inputDevice)
     {
         this.playerIndex = index;
         this.inputDevice = inputDevice;

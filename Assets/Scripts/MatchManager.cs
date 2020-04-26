@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class MatchManager : MonoBehaviour
 {
     public PlayerInputManager PlayerInputManager;
-    private List<PlayerInput> players = new List<PlayerInput>();
 
     void Start()
     {
@@ -15,21 +14,20 @@ public class MatchManager : MonoBehaviour
 
     private void LoadPlayers()
     {
-        foreach (var player in PlayersSettings.PlayerSettings)
+        foreach (var player in PlayersSettings.PlayerDataList)
         {
             PlayerInput addedPlayer = PlayerInputManager.JoinPlayer(playerIndex: player.playerIndex, 
                                                                     pairWithDevice: player.inputDevice);
             LoadPlayerHero(addedPlayer);
-            this.players.Add(addedPlayer);
         }
     }
 
     private void LoadPlayerHero(PlayerInput player)
     {
         CharacterController playerController = player.gameObject.GetComponent<CharacterController>();
-        PlayerSettings playerSettings = PlayersSettings.PlayerSettings.Find(x => x.playerIndex == player.playerIndex);
+        PlayerData playerData = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == player.playerIndex);
 
-        switch (playerSettings.character.name)
+        switch (playerData.character.name)
         {
             case "mage":
                 playerController.CharacterBrain = Resources.Load<MageBrain>("CharacterBrains/MageBrain");
@@ -38,6 +36,6 @@ public class MatchManager : MonoBehaviour
                 playerController.CharacterBrain = Resources.Load<WarriorBrain>("CharacterBrains/WarriorBrain");
                 break;
         }
-        player.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(playerSettings.character.spritePath);
+        player.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(playerData.character.spritePath);
     }
 }

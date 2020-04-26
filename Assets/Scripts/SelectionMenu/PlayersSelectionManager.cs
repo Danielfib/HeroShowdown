@@ -14,7 +14,6 @@ public class PlayersSelectionManager : MonoBehaviour
         new Character("mage", "Sprites/SpikeBall")
     };
 
-    // Start is called before the first frame update
     void Start()
     {
         menuInputActions = new MenuInputActions();
@@ -23,9 +22,9 @@ public class PlayersSelectionManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerJoinHandler)
     {
-        playerJoinHandler.gameObject.GetComponent<PlayerMenuHandler>().PlayerIndex = playerJoinHandler.playerIndex;
-        PlayersSettings.PlayerSettings.Add(
-            new PlayerSettings(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
+        playerJoinHandler.gameObject.GetComponent<PlayerMenu>().PlayerIndex = playerJoinHandler.playerIndex;
+        PlayersSettings.PlayerDataList.Add(
+            new PlayerData(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
     }
 
     public void OnPlayerLeft(PlayerInput playerInput)
