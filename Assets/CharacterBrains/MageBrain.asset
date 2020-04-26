@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068075d5068bf6b4785a713750f7ae00, type: 3}
   m_Name: MageBrain
   m_EditorClassIdentifier: 
-  DeflectDuration: 3
+  DeflectDuration: 2
   DeflectCooldown: 2
   DeflectMagnetude: 1.5
