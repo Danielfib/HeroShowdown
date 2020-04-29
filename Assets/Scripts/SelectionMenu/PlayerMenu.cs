@@ -8,6 +8,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerMenu : MonoBehaviour
 {
     public int PlayerIndex;
+    public bool IsReady;
 
     private Character SelectedCharacter;
     private Sprite CharacterSprite;
@@ -22,7 +23,8 @@ public class PlayerMenu : MonoBehaviour
     private void SetupOnStart()
     {
         currentCharacterIndex = 0;
-        SelectedCharacter = PlayersSelectionManager.availableCharacters[0];
+        SelectedCharacter = GeneralUtils.DefaultInitialCharacter;
+        UpdateCharUIInfo();
     }
 
     private void UpdateCharUIInfo()
@@ -36,16 +38,32 @@ public class PlayerMenu : MonoBehaviour
 
     public void Progress(CallbackContext context)
     {
-        PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex).character = SelectedCharacter;
-        //TODO: make ready state and only load scene when everyone is ready
-        SceneManager.LoadScene("Playground");
+        //prevents event being called twice
+        if (!context.performed)
+            return;
+
+        if (!this.IsReady)
+        {
+            PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex).character = SelectedCharacter;
+            this.IsReady = true;
+        } else
+        {
+            if (PlayersSelectionManager.IsEveryoneReady)
+            {
+                SceneManager.LoadScene("Playground");
+            }
+            else
+            {
+                //TODO: somebody not ready feedback
+            }
+        }
     }
 
     private void ChangedHeroBackwards()
     {
         if(currentCharacterIndex <= 0)
         {
-            currentCharacterIndex = PlayersSelectionManager.availableCharacters.Length - 1;
+            currentCharacterIndex = GeneralUtils.availableCharacters.Length - 1;
         }
         else
         {
@@ -55,7 +73,7 @@ public class PlayerMenu : MonoBehaviour
 
     private void ChangedheroForward()
     {
-        if(currentCharacterIndex >= PlayersSelectionManager.availableCharacters.Length - 1)
+        if(currentCharacterIndex >= GeneralUtils.availableCharacters.Length - 1)
         {
             currentCharacterIndex = 0;
         } else
@@ -66,14 +84,17 @@ public class PlayerMenu : MonoBehaviour
 
     private void SelectHeroOnIndex(int charIndex)
     {
-        SelectedCharacter = PlayersSelectionManager.availableCharacters[charIndex];
+        SelectedCharacter = GeneralUtils.availableCharacters[charIndex];
     }
 
     public void ChangeHero(CallbackContext context)
     {
-        float inputValue = context.ReadValue<float>();
+        if (!context.performed || this.IsReady)
+            return;
 
-        if (inputValue == 0)
+        float inputValue = context.ReadValue<float>();
+        Debug.Log(inputValue);
+        if (inputValue != 1 && inputValue != -1)
             return;
 
         if (inputValue < 0)
@@ -87,6 +108,17 @@ public class PlayerMenu : MonoBehaviour
 
     public void Back(CallbackContext context)
     {
+        //prevents event being called twice
+        if (!context.performed)
+            return;
 
+        if (this.IsReady)
+        {
+            this.IsReady = false;
+        }
+        else
+        {
+            //Leave player?
+        }
     }
 }
