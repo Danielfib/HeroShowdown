@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayersSelectionManager : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class PlayersSelectionManager : MonoBehaviour
 
     private MenuInputActions menuInputActions;
     private bool[] SeatsOcupied = { false, false, false, false };
+    private string LevelToLoad = "Playground";
+
+    public void LoadMatchLevel()
+    {
+        SceneManager.LoadScene(this.LevelToLoad);
+    }
 
     void Start()
     {

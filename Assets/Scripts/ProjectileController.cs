@@ -92,10 +92,11 @@ public class ProjectileController : MonoBehaviour
                 //^if using deflect, for example, to bounce other players, and not only on projectiles
                 Debug.Log("Deflected!!");
                 float deflectForce = TossMagnetude * charController.GetDeflectMagnetude();
-                
                 gotDeflected = true;
-                Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;
-                Vector2 dir = new Vector2(reflectDir.x, reflectDir.y).normalized;
+                
+                //Use this code if deflecting to direction following collision direction
+                //Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;
+                Vector2 dir = this.rb.velocity.normalized * -1;//new Vector2(reflectDir.x, reflectDir.y).normalized;
                 this.rb.velocity = Vector2.zero;
                 this.rb.AddForce(dir * deflectForce);
                 

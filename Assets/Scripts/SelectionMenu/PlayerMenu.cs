@@ -62,7 +62,8 @@ public class PlayerMenu : MonoBehaviour
         {
             if (PlayersSelectionManager.IsEveryoneReady)
             {
-                SceneManager.LoadScene("Playground");
+                //SceneManager.LoadScene("Playground");
+                GameObject.FindObjectOfType<PlayersSelectionManager>().LoadMatchLevel();
             }
             else
             {
@@ -105,7 +106,7 @@ public class PlayerMenu : MonoBehaviour
             return;
 
         float inputValue = context.ReadValue<float>();
-        Debug.Log(inputValue);
+
         if (inputValue != 1 && inputValue != -1)
             return;
 
