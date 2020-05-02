@@ -8,7 +8,19 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerMenu : MonoBehaviour
 {
     public int PlayerIndex;
-    public bool IsReady;
+
+    private bool _IsReady = false;
+    public bool IsReady
+    {
+        get { return _IsReady; }
+        set
+        {
+            this._IsReady = value;
+            this.ReadySprite.SetActive(this._IsReady);
+        }
+    }
+
+    public GameObject ReadySprite;
 
     private Character SelectedCharacter;
     private Sprite CharacterSprite;
