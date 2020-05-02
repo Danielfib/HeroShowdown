@@ -113,7 +113,7 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""7748ed5d-5b88-4c84-afb4-fe64c0c9d73b"",
-                    ""path"": ""<XInputController>/leftStick/left"",
+                    ""path"": ""<XInputController>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -124,7 +124,7 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""a2c949f4-e577-4210-b6e2-c56273e8146b"",
-                    ""path"": ""<XInputController>/leftStick/right"",
+                    ""path"": ""<XInputController>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -107,7 +107,8 @@ public class PlayerMenu : MonoBehaviour
 
         float inputValue = context.ReadValue<float>();
 
-        if (inputValue != 1 && inputValue != -1)
+        if ((inputValue != 1 && inputValue != -1)
+            || inputValue == 0)
             return;
 
         if (inputValue < 0)
