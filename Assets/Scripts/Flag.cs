@@ -13,7 +13,8 @@ public class Flag : MonoBehaviour
         if (isBeingCarried)
             return;
 
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player"
+            && collision.gameObject.GetComponent<CharacterController>().Team != this.teamIDEnum)
         {
             isBeingCarried = true;
             Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
@@ -29,4 +30,10 @@ public class Flag : MonoBehaviour
         //TODO: Spawn next 
     }
 
+    public void Scored()
+    {
+        //TODO: cool effects
+        Destroy(this.gameObject);
+        //TODO: Spawn next
+    }
 }

@@ -11,12 +11,19 @@ public class TeamBase : MonoBehaviour
     {
         if(collision.gameObject.tag == "Flag")
         {
-            Flag flag = collision.gameObject.GetComponent<Flag>();
-            if(flag.teamIDEnum == this.teamIdEnum)
+            TeamIDEnum playerTeam = collision.gameObject.transform.parent.parent.GetComponent<CharacterController>().Team;
+            if(playerTeam == this.teamIdEnum)
             {
-                Debug.Log("Team " + teamIdEnum + " scored!");
-                ScoreForTeam(teamIdEnum);
-                flag.ReturnedToBase();
+                Flag flag = collision.gameObject.GetComponent<Flag>();
+                if(flag.teamIDEnum != this.teamIdEnum)
+                {
+                    Debug.Log("Team " + teamIdEnum + " scored!");
+                    ScoreForTeam(teamIdEnum);
+                    flag.Scored();
+                } else
+                {
+                    flag.ReturnedToBase();
+                }
             }
         }
     }

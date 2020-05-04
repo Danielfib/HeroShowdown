@@ -99,7 +99,6 @@ public class ProjectileController : MonoBehaviour
                 Vector2 dir = this.rb.velocity.normalized * -1;//new Vector2(reflectDir.x, reflectDir.y).normalized;
                 this.rb.velocity = Vector2.zero;
                 this.rb.AddForce(dir * deflectForce);
-                
             }
         }
 

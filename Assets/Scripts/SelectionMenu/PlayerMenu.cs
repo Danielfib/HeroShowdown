@@ -49,6 +49,7 @@ public class PlayerMenu : MonoBehaviour
         SelectedCharacter = GeneralUtils.DefaultInitialCharacter;
         UpdateCharUIInfo();
         ChooseDefaultTeam();
+        this.IsReady = false;
     }
 
     private void UpdateCharUIInfo()
