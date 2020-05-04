@@ -159,7 +159,7 @@ public class PlayerMenu : MonoBehaviour
 
     public void ChangeTeamLeft(CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || this.IsReady)
             return;
 
         int currentTeam = (int)this._Team;
@@ -175,7 +175,7 @@ public class PlayerMenu : MonoBehaviour
 
     public void ChangeTeamRight(CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || this.IsReady)
             return;
 
         int currentTeam = (int)this._Team;
