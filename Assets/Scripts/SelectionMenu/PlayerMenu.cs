@@ -196,19 +196,19 @@ public class PlayerMenu : MonoBehaviour
         switch (this._Team)
         {
             case TeamIDEnum.RED:
-                renderer.color = Color.red;
+                renderer.color = ColorUtils.Red;
                 break;
             case TeamIDEnum.PURPLE:
-                renderer.color = new Color(141f/255f, 23f/255f, 192f/255f);
+                renderer.color = ColorUtils.Purple;
                 break;
             case TeamIDEnum.GREEN:
-                renderer.color = Color.green;
+                renderer.color = ColorUtils.Green;
                 break;
             case TeamIDEnum.BROWN:
-                renderer.color = new Color(192f/255f, 136f/255f, 63f/255f);
+                renderer.color = ColorUtils.Brown;
                 break;
             case TeamIDEnum.BLUE:
-                renderer.color = Color.blue;
+                renderer.color = ColorUtils.Blue;
                 break;
         }
     }
