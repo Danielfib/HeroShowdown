@@ -27,6 +27,17 @@ public class PlayerMenu : MonoBehaviour
     private Sprite CharacterNameSprite;
     private int currentCharacterIndex;
 
+    private TeamIDEnum _Team;
+    public TeamIDEnum Team
+    {
+        get { return _Team; }
+        set
+        {
+            this._Team = value;
+            ChangedTeam();
+        }
+    }
+
     private void Start()
     {
         SetupOnStart();
@@ -37,12 +48,12 @@ public class PlayerMenu : MonoBehaviour
         currentCharacterIndex = 0;
         SelectedCharacter = GeneralUtils.DefaultInitialCharacter;
         UpdateCharUIInfo();
+        ChooseDefaultTeam();
     }
 
     private void UpdateCharUIInfo()
     {
         CharacterSprite = Resources.Load<Sprite>(SelectedCharacter.spritePath);
-        //CharacterNameSprite = Resources.Load<Sprite>(SelectedCharacter.name);
 
         this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = CharacterSprite;
         //this.transform.GetChild(1).GetComponent<SpriteRenderer>() = CharacterNameSprite;
@@ -56,7 +67,9 @@ public class PlayerMenu : MonoBehaviour
 
         if (!this.IsReady)
         {
-            PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex).character = SelectedCharacter;
+            PlayerData playerData = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex);
+            playerData.character = SelectedCharacter;
+            playerData.team = this._Team;
             this.IsReady = true;
         } else
         {
@@ -72,6 +85,23 @@ public class PlayerMenu : MonoBehaviour
         }
     }
 
+    public void Back(CallbackContext context)
+    {
+        //prevents event being called twice
+        if (!context.performed)
+            return;
+
+        if (this.IsReady)
+        {
+            this.IsReady = false;
+        }
+        else
+        {
+            //Leave player?
+        }
+    }
+    
+    #region [HeroSelection]
     private void ChangedHeroBackwards()
     {
         if(currentCharacterIndex <= 0)
@@ -119,20 +149,68 @@ public class PlayerMenu : MonoBehaviour
         SelectHeroOnIndex(currentCharacterIndex);
         UpdateCharUIInfo();
     }
+    #endregion
 
-    public void Back(CallbackContext context)
+    #region [Team]
+    private void ChooseDefaultTeam()
     {
-        //prevents event being called twice
+        this.Team = TeamIDEnum.RED;
+    }
+
+    public void ChangeTeamLeft(CallbackContext context)
+    {
         if (!context.performed)
             return;
 
-        if (this.IsReady)
-        {
-            this.IsReady = false;
-        }
+        int currentTeam = (int)this._Team;
+
+        int newTeam;
+        if(currentTeam == 0)
+            newTeam = 4;
         else
+            newTeam = currentTeam - 1;
+
+        this.Team = (TeamIDEnum)newTeam;
+    }
+
+    public void ChangeTeamRight(CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        int currentTeam = (int)this._Team;
+
+        int newTeam;
+        if (currentTeam == 4)
+            newTeam = 0;
+        else
+            newTeam = currentTeam + 1;
+
+        this.Team = (TeamIDEnum)newTeam;
+    }
+
+    private void ChangedTeam()
+    {
+        SpriteRenderer renderer = this.GetComponentInChildren<SpriteRenderer>();
+
+        switch (this._Team)
         {
-            //Leave player?
+            case TeamIDEnum.RED:
+                renderer.color = Color.red;
+                break;
+            case TeamIDEnum.PURPLE:
+                renderer.color = new Color(141f/255f, 23f/255f, 192f/255f);
+                break;
+            case TeamIDEnum.GREEN:
+                renderer.color = Color.green;
+                break;
+            case TeamIDEnum.BROWN:
+                renderer.color = new Color(192f/255f, 136f/255f, 63f/255f);
+                break;
+            case TeamIDEnum.BLUE:
+                renderer.color = Color.blue;
+                break;
         }
     }
+    #endregion
 }

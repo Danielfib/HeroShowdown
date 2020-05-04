@@ -365,6 +365,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7369bece-d6fe-466c-b42c-0981b4e88e0d
     m_ActionName: SelectionMenu/Back[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7309711787640952633}
+        m_MethodName: ChangeTeamLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2603fe74-1eae-4a80-8569-fd5c75cec096
+    m_ActionName: SelectionMenu/ChangeTeamLeft[/Keyboard/leftBracket]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7309711787640952633}
+        m_MethodName: ChangeTeamRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e5539960-466d-44bf-831a-8f33f0f331c8
+    m_ActionName: SelectionMenu/ChangeTeamRIght
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: SelectionMenu

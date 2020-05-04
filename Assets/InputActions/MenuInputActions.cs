@@ -41,6 +41,22 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeTeamLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""2603fe74-1eae-4a80-8569-fd5c75cec096"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeTeamRIght"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5539960-466d-44bf-831a-8f33f0f331c8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -153,6 +169,50 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3601029c-9bf2-4bbd-886e-9a7fbb8a4e5b"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTeamLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23b81423-273b-464c-900a-84b972c30c9f"",
+                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTeamLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""677b9015-1e98-4a2d-b988-087e209b937b"",
+                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTeamRIght"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08942815-6095-45b3-8162-96c22fa591f4"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTeamRIght"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +224,8 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
         m_SelectionMenu_Progress = m_SelectionMenu.FindAction("Progress", throwIfNotFound: true);
         m_SelectionMenu_ChangeHero = m_SelectionMenu.FindAction("ChangeHero", throwIfNotFound: true);
         m_SelectionMenu_Back = m_SelectionMenu.FindAction("Back", throwIfNotFound: true);
+        m_SelectionMenu_ChangeTeamLeft = m_SelectionMenu.FindAction("ChangeTeamLeft", throwIfNotFound: true);
+        m_SelectionMenu_ChangeTeamRIght = m_SelectionMenu.FindAction("ChangeTeamRIght", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -216,6 +278,8 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_SelectionMenu_Progress;
     private readonly InputAction m_SelectionMenu_ChangeHero;
     private readonly InputAction m_SelectionMenu_Back;
+    private readonly InputAction m_SelectionMenu_ChangeTeamLeft;
+    private readonly InputAction m_SelectionMenu_ChangeTeamRIght;
     public struct SelectionMenuActions
     {
         private @MenuInputActions m_Wrapper;
@@ -223,6 +287,8 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
         public InputAction @Progress => m_Wrapper.m_SelectionMenu_Progress;
         public InputAction @ChangeHero => m_Wrapper.m_SelectionMenu_ChangeHero;
         public InputAction @Back => m_Wrapper.m_SelectionMenu_Back;
+        public InputAction @ChangeTeamLeft => m_Wrapper.m_SelectionMenu_ChangeTeamLeft;
+        public InputAction @ChangeTeamRIght => m_Wrapper.m_SelectionMenu_ChangeTeamRIght;
         public InputActionMap Get() { return m_Wrapper.m_SelectionMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -241,6 +307,12 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
                 @Back.started -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnBack;
                 @Back.performed -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnBack;
                 @Back.canceled -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnBack;
+                @ChangeTeamLeft.started -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnChangeTeamLeft;
+                @ChangeTeamLeft.performed -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnChangeTeamLeft;
+                @ChangeTeamLeft.canceled -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnChangeTeamLeft;
+                @ChangeTeamRIght.started -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnChangeTeamRIght;
+                @ChangeTeamRIght.performed -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnChangeTeamRIght;
+                @ChangeTeamRIght.canceled -= m_Wrapper.m_SelectionMenuActionsCallbackInterface.OnChangeTeamRIght;
             }
             m_Wrapper.m_SelectionMenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -254,6 +326,12 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
                 @Back.started += instance.OnBack;
                 @Back.performed += instance.OnBack;
                 @Back.canceled += instance.OnBack;
+                @ChangeTeamLeft.started += instance.OnChangeTeamLeft;
+                @ChangeTeamLeft.performed += instance.OnChangeTeamLeft;
+                @ChangeTeamLeft.canceled += instance.OnChangeTeamLeft;
+                @ChangeTeamRIght.started += instance.OnChangeTeamRIght;
+                @ChangeTeamRIght.performed += instance.OnChangeTeamRIght;
+                @ChangeTeamRIght.canceled += instance.OnChangeTeamRIght;
             }
         }
     }
@@ -263,5 +341,7 @@ public class @MenuInputActions : IInputActionCollection, IDisposable
         void OnProgress(InputAction.CallbackContext context);
         void OnChangeHero(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
+        void OnChangeTeamLeft(InputAction.CallbackContext context);
+        void OnChangeTeamRIght(InputAction.CallbackContext context);
     }
 }

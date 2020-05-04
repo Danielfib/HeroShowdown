@@ -37,5 +37,31 @@ public class MatchManager : MonoBehaviour
                 break;
         }
         player.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(playerData.character.spritePath);
+
+        playerController.Team = playerData.team;
+        SetPlayerColor(playerController.Team, player.GetComponentInChildren<SpriteRenderer>());
     }
+
+    private void SetPlayerColor(TeamIDEnum team, SpriteRenderer renderer)
+    {
+        switch (team)
+        {
+            case TeamIDEnum.RED:
+                renderer.color = Color.red;
+                break;
+            case TeamIDEnum.PURPLE:
+                renderer.color = new Color(141f / 255f, 23f / 255f, 192f / 255f);
+                break;
+            case TeamIDEnum.GREEN:
+                renderer.color = Color.green;
+                break;
+            case TeamIDEnum.BROWN:
+                renderer.color = new Color(192f / 255f, 136f / 255f, 63f / 255f);
+                break;
+            case TeamIDEnum.BLUE:
+                renderer.color = Color.blue;
+                break;
+        }
+    }
+
 }

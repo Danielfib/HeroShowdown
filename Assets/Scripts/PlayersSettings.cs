@@ -13,6 +13,7 @@ public class PlayerData
     public int playerIndex;
     public InputDevice inputDevice;
     public Character character;
+    public TeamIDEnum team;
 
     public PlayerData(int index, InputDevice inputDevice)
     {
