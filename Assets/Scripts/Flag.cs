@@ -9,10 +9,16 @@ public class Flag : MonoBehaviour
     public TeamIDEnum teamIDEnum;
 
     private bool isBeingCarried = false;
+    private bool MayBeCarriedAgain = true;
+
+    public float CooldownAfterDrop = 2f;
+
+    [SerializeField]
+    private Transform FlagHolder;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isBeingCarried)
+        if (isBeingCarried || !this.MayBeCarriedAgain)
             return;
 
         if(collision.gameObject.tag == "Player"
@@ -20,8 +26,8 @@ public class Flag : MonoBehaviour
         {
             isBeingCarried = true;
             Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
-            this.transform.parent = playerFlagPos;
-            this.transform.localPosition = new Vector3(0, 0, 0);
+            this.FlagHolder.parent = playerFlagPos;
+            this.FlagHolder.localPosition = new Vector3(0, 0, 0);
             this.Animator.SetBool("IsDropped", false);
         }
     }
@@ -42,7 +48,16 @@ public class Flag : MonoBehaviour
 
     public void Drop()
     {
-        this.transform.parent = null;
+        StartCoroutine("TriggerCooldownAfterDrop");
+        this.isBeingCarried = false;
+        this.FlagHolder.parent = null;
         this.Animator.SetBool("IsDropped", true);
+    }
+
+    private IEnumerator TriggerCooldownAfterDrop()
+    {
+        this.MayBeCarriedAgain = false;
+        yield return new WaitForSeconds(this.CooldownAfterDrop);
+        this.MayBeCarriedAgain = true;
     }
 }
