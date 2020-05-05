@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour
 {
+    public Animator Animator;
+
     public TeamIDEnum teamIDEnum;
 
     private bool isBeingCarried = false;
@@ -20,6 +22,7 @@ public class Flag : MonoBehaviour
             Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
             this.transform.parent = playerFlagPos;
             this.transform.localPosition = new Vector3(0, 0, 0);
+            this.Animator.SetBool("IsDropped", false);
         }
     }
 
@@ -35,5 +38,11 @@ public class Flag : MonoBehaviour
         //TODO: cool effects
         Destroy(this.gameObject);
         //TODO: Spawn next
+    }
+
+    public void Drop()
+    {
+        this.transform.parent = null;
+        this.Animator.SetBool("IsDropped", true);
     }
 }

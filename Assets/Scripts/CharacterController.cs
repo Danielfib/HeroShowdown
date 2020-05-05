@@ -78,10 +78,19 @@ public class CharacterController : MonoBehaviour
     
     public void GotHit()
     {
-        if (!IsInvulnerable && !IsReflectiveToProjectiles)
-            CharacterBrain.Die(this);
+        //if (!IsInvulnerable && !IsReflectiveToProjectiles)
+        //    CharacterBrain.Die(this);
+
+        DropFlag();
     }
     #endregion
+
+    private void DropFlag()
+    {
+        Flag flag = this.GetComponentInChildren<Flag>();
+        if (flag != null)
+            flag.Drop();
+    }
 
     #region [Walk]
     public void SetDirection(Vector2 dir)
