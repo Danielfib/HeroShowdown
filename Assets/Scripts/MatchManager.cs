@@ -40,6 +40,7 @@ public class MatchManager : MonoBehaviour
 
     private void SpawnNewFlag(TeamIDEnum flagColor)
     {
+        //TODO: Spawn at random spot
         Debug.Log("Spawned new flag!");
 
         GameObject flag = Instantiate(this.FlagPrefab, new Vector3(0, 0, 0), Quaternion.identity);
