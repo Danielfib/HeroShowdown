@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6769833765311612144}
   m_Layer: 0
   m_Name: FlagSprite
-  m_TagString: Untagged
+  m_TagString: Flag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

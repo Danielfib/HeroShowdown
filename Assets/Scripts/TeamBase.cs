@@ -11,7 +11,7 @@ public class TeamBase : MonoBehaviour
     {
         if(collision.gameObject.tag == "Flag")
         {
-            TeamIDEnum playerTeam = collision.gameObject.transform.parent.parent.GetComponent<CharacterController>().Team;
+            TeamIDEnum playerTeam = collision.gameObject.transform.parent.parent.parent.GetComponent<CharacterController>().Team;
             if(playerTeam == this.teamIdEnum)
             {
                 Flag flag = collision.gameObject.GetComponent<Flag>();
