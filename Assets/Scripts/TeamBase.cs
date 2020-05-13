@@ -20,9 +20,6 @@ public class TeamBase : MonoBehaviour
                     Debug.Log("Team " + teamIdEnum + " scored!");
                     ScoreForTeam(teamIdEnum);
                     flag.Scored();
-                } else
-                {
-                    flag.ReturnedToBase();
                 }
             }
         }

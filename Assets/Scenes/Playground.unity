@@ -5530,6 +5530,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInputManager: {fileID: 485676423}
+  FlagScoreRespawnCooldown: 3
+  FlagRetrievedRespawnCooldown: 8
+  FlagPrefab: {fileID: 1406014346354217163, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
+    type: 3}
 --- !u!4 &114428353
 Transform:
   m_ObjectHideFlags: 0

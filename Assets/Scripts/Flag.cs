@@ -13,6 +13,17 @@ public class Flag : MonoBehaviour
 
     public float CooldownAfterDrop = 2f;
 
+    private bool _IsDropped;
+    private bool IsDropped
+    {
+        get { return _IsDropped; }
+        set
+        {
+            this.Animator.SetBool("IsDropped", value);
+            this._IsDropped = value;
+        }
+    }
+
     [SerializeField]
     private Transform FlagHolder;
 
@@ -21,26 +32,35 @@ public class Flag : MonoBehaviour
         if (isBeingCarried || !this.MayBeCarriedAgain)
             return;
 
-        if(collision.gameObject.tag == "Player"
-            && collision.gameObject.GetComponent<CharacterController>().Team != this.teamIDEnum)
+        if(collision.gameObject.tag == "Player")
         {
-            isBeingCarried = true;
-            Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
-            this.FlagHolder.parent = playerFlagPos;
-            this.FlagHolder.localPosition = new Vector3(0, 0, 0);
-            this.Animator.SetBool("IsDropped", false);
+            if(collision.gameObject.GetComponent<CharacterController>().Team != this.teamIDEnum)
+            {
+                isBeingCarried = true;
+                Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
+                this.FlagHolder.parent = playerFlagPos;
+                this.FlagHolder.localPosition = new Vector3(0, 0, 0);
+                IsDropped = false;
+            }
+            else if (IsDropped)
+            {
+                Retrieved();
+            }
         }
     }
 
-    public void ReturnedToBase()
+    public void Retrieved()
     {
+        GameObject.FindObjectOfType<MatchManager>().StartFlagRespawn(this.teamIDEnum, wasRetrieved: true);
         //TODO: cool effects
+        Debug.Log("Flag retrieved!");
         Destroy(this.gameObject);
         //TODO: Spawn next 
     }
 
     public void Scored()
     {
+        GameObject.FindObjectOfType<MatchManager>().StartFlagRespawn(this.teamIDEnum, wasRetrieved: false);
         //TODO: cool effects
         Destroy(this.gameObject);
         //TODO: Spawn next
@@ -51,7 +71,7 @@ public class Flag : MonoBehaviour
         StartCoroutine("TriggerCooldownAfterDrop");
         this.isBeingCarried = false;
         this.FlagHolder.parent = null;
-        this.Animator.SetBool("IsDropped", true);
+        IsDropped = true;
     }
 
     private IEnumerator TriggerCooldownAfterDrop()
