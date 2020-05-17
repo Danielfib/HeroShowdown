@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,7 +44,12 @@ public class MatchManager : MonoBehaviour
         //TODO: Spawn at random spot
         Debug.Log("Spawned new flag!");
 
-        GameObject flag = Instantiate(this.FlagPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        //chooses at random a spawnspot of given team to spawn flag into
+        FlagSpawnSpot[] spawnSpots = FindObjectsOfType<FlagSpawnSpot>().Where(x => x.TeamID == flagColor).ToArray();
+        int rInd = Mathf.RoundToInt(Random.Range(0, spawnSpots.Length - 1));
+        Vector3 posToSpawn = spawnSpots[rInd].gameObject.transform.position;
+
+        GameObject flag = Instantiate(this.FlagPrefab, posToSpawn, Quaternion.identity);
         flag.GetComponentInChildren<Flag>().teamIDEnum = flagColor;
         flag.GetComponentInChildren<SpriteRenderer>().color = ColorUtils.TeamIdEnumToColor(flagColor);
     }
