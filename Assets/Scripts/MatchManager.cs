@@ -15,6 +15,10 @@ public class MatchManager : MonoBehaviour
 
     [SerializeField]
     private GameObject FlagPrefab;
+    [SerializeField]
+    private GameObject UIFlagCountdownPrefab;
+    [SerializeField]
+    private GameObject FlagRespawnCanvas;
 
     void Start()
     {
@@ -31,17 +35,23 @@ public class MatchManager : MonoBehaviour
 
     private IEnumerator FlagRespawn(float cooldown, TeamIDEnum flagColor)
     {
-        //TODO: if needed to call update, where do i call it?
-                    // maybe use DOTween to control interface
+        CreateFlagRespawnCountdown(cooldown, flagColor);
         
         yield return new WaitForSeconds(cooldown);
 
         SpawnNewFlag(flagColor);
     }
 
+    private void CreateFlagRespawnCountdown(float cooldown, TeamIDEnum team)
+    {
+        GameObject flagCountdown = Instantiate(this.UIFlagCountdownPrefab, this.FlagRespawnCanvas.transform);
+        CircularCountdown countdown = flagCountdown.GetComponent<CircularCountdown>();
+        countdown.SetupColor(team);
+        countdown.StartCountdown(cooldown);
+    }
+
     private void SpawnNewFlag(TeamIDEnum flagColor)
     {
-        //TODO: Spawn at random spot
         Debug.Log("Spawned new flag!");
 
         //chooses at random a spawnspot of given team to spawn flag into
