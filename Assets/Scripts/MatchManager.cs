@@ -20,10 +20,25 @@ public class MatchManager : MonoBehaviour
     [SerializeField]
     private GameObject FlagRespawnCanvas;
 
+    private int MaxPoints = 3;
+
     void Start()
     {
         LoadPlayers();
     }
+
+    #region [Points_Management]
+    public void UpdatePoints(TeamIDEnum team, int points)
+    {
+        if (points >= this.MaxPoints)
+            EndGame(team);
+    }
+
+    private void EndGame(TeamIDEnum winningTeam)
+    {
+        Debug.Log("Winner: " + winningTeam);
+    }
+    #endregion
 
     #region [Flag_Respawn_Management]
     public void StartFlagRespawn(TeamIDEnum flagColor, bool wasRetrieved)
@@ -52,8 +67,6 @@ public class MatchManager : MonoBehaviour
 
     private void SpawnNewFlag(TeamIDEnum flagColor)
     {
-        Debug.Log("Spawned new flag!");
-
         //chooses at random a spawnspot of given team to spawn flag into
         FlagSpawnSpot[] spawnSpots = FindObjectsOfType<FlagSpawnSpot>().Where(x => x.TeamID == flagColor).ToArray();
         int rInd = Mathf.RoundToInt(Random.Range(0, spawnSpots.Length - 1));

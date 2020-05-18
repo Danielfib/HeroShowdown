@@ -29,7 +29,6 @@ public class CircularCountdown : MonoBehaviour
 
     private void FinishedCountdown()
     {
-        Debug.Log("cabou!!!!");
         Destroy(this.gameObject);
     }
 }

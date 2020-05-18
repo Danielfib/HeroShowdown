@@ -7,6 +7,14 @@ public class TeamBase : MonoBehaviour
 {
     public TeamIDEnum teamIdEnum;
 
+    private MatchManager MatchManager;
+    private int Points;
+
+    private void Start()
+    {
+        this.MatchManager = GameObject.FindObjectOfType<MatchManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Flag")
@@ -17,29 +25,18 @@ public class TeamBase : MonoBehaviour
                 Flag flag = collision.gameObject.GetComponent<Flag>();
                 if(flag.teamIDEnum != this.teamIdEnum)
                 {
-                    Debug.Log("Team " + teamIdEnum + " scored!");
-                    ScoreForTeam(teamIdEnum);
+                    Score();
                     flag.Scored();
                 }
             }
         }
     }
 
-    private void ScoreForTeam(TeamIDEnum team)
+    private void Score()
     {
-        switch (team)
-        {
-            case TeamIDEnum.BLUE:
-                break;
-            case TeamIDEnum.RED:
-                break;
-            case TeamIDEnum.PURPLE:
-                break;
-            case TeamIDEnum.GREEN:
-                break;
-            case TeamIDEnum.BROWN:
-                break;
-        }
+        Debug.Log("Team " + teamIdEnum + " scored!");
+        this.Points++;
+        this.MatchManager.UpdatePoints(this.teamIdEnum, this.Points);
     }
 }
 
