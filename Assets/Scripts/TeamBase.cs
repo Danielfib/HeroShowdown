@@ -42,5 +42,5 @@ public class TeamBase : MonoBehaviour
 
 public enum TeamIDEnum
 {
-    RED, BLUE, BROWN, GREEN, PURPLE
+    RED, BLUE
 }

@@ -16,15 +16,15 @@ public static class ColorUtils
             case TeamIDEnum.BLUE:
                 colorToReturn = Blue;
                 break;
-            case TeamIDEnum.BROWN:
-                colorToReturn = Brown;
-                break;
-            case TeamIDEnum.GREEN:
-                colorToReturn = Green;
-                break;
-            case TeamIDEnum.PURPLE:
-                colorToReturn = Purple;
-                break;
+            //case TeamIDEnum.BROWN:
+            //    colorToReturn = Brown;
+            //    break;
+            //case TeamIDEnum.GREEN:
+            //    colorToReturn = Green;
+            //    break;
+            //case TeamIDEnum.PURPLE:
+            //    colorToReturn = Purple;
+            //    break;
             case TeamIDEnum.RED:
                 colorToReturn = Red;
                 break;

@@ -116,18 +116,18 @@ public class MatchManager : MonoBehaviour
             case TeamIDEnum.RED:
                 renderer.color = ColorUtils.Red;
                 break;
-            case TeamIDEnum.PURPLE:
-                renderer.color = ColorUtils.Purple;
-                break;
-            case TeamIDEnum.GREEN:
-                renderer.color = ColorUtils.Green;
-                break;
-            case TeamIDEnum.BROWN:
-                renderer.color = ColorUtils.Brown;
-                break;
             case TeamIDEnum.BLUE:
                 renderer.color = ColorUtils.Blue;
                 break;
+            //case TeamIDEnum.PURPLE:
+            //    renderer.color = ColorUtils.Purple;
+            //    break;
+            //case TeamIDEnum.GREEN:
+            //    renderer.color = ColorUtils.Green;
+            //    break;
+            //case TeamIDEnum.BROWN:
+            //    renderer.color = ColorUtils.Brown;
+            //    break;
         }
     }
     #endregion

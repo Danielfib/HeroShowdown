@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -167,7 +168,7 @@ public class PlayerMenu : MonoBehaviour
 
         int newTeam;
         if(currentTeam == 0)
-            newTeam = 4;
+            newTeam = Enum.GetNames(typeof(TeamIDEnum)).Length - 1;
         else
             newTeam = currentTeam - 1;
 
@@ -180,9 +181,9 @@ public class PlayerMenu : MonoBehaviour
             return;
 
         int currentTeam = (int)this._Team;
-
+        
         int newTeam;
-        if (currentTeam == 4)
+        if (currentTeam == Enum.GetNames(typeof(TeamIDEnum)).Length - 1)
             newTeam = 0;
         else
             newTeam = currentTeam + 1;
@@ -199,15 +200,15 @@ public class PlayerMenu : MonoBehaviour
             case TeamIDEnum.RED:
                 renderer.color = ColorUtils.Red;
                 break;
-            case TeamIDEnum.PURPLE:
-                renderer.color = ColorUtils.Purple;
-                break;
-            case TeamIDEnum.GREEN:
-                renderer.color = ColorUtils.Green;
-                break;
-            case TeamIDEnum.BROWN:
-                renderer.color = ColorUtils.Brown;
-                break;
+            //case TeamIDEnum.PURPLE:
+            //    renderer.color = ColorUtils.Purple;
+            //    break;
+            //case TeamIDEnum.GREEN:
+            //    renderer.color = ColorUtils.Green;
+            //    break;
+            //case TeamIDEnum.BROWN:
+            //    renderer.color = ColorUtils.Brown;
+            //    break;
             case TeamIDEnum.BLUE:
                 renderer.color = ColorUtils.Blue;
                 break;
