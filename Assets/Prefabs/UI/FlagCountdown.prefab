@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainImage: {fileID: 5888451022325780003}
   DecreasingImage: {fileID: 5888451022491618224}
+  ShouldDestroyOnComplete: 1
 --- !u!1 &5888451022491618238
 GameObject:
   m_ObjectHideFlags: 0

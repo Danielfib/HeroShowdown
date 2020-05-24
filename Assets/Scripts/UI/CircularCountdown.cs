@@ -10,6 +10,9 @@ public class CircularCountdown : MonoBehaviour
     private Image MainImage;
     [SerializeField]
     private Image DecreasingImage;
+
+    [SerializeField]
+    private bool ShouldDestroyOnComplete;
     
 
     public void SetupColor(TeamIDEnum team)
@@ -19,16 +22,18 @@ public class CircularCountdown : MonoBehaviour
 
     public void StartCountdown(float time)
     {
-        TweenCallback finisheCallback = new TweenCallback(FinishedCountdown);
+        this.DecreasingImage.fillAmount = 1;
+        TweenCallback finishedCallback = new TweenCallback(FinishedCountdown);
 
-        Sequence opa = DOTween.Sequence();
-        opa.Append(this.DecreasingImage.DOFillAmount(0f, time));
-        opa.Play();
-        opa.OnComplete(finisheCallback);
+        Sequence fillSequence = DOTween.Sequence();
+        fillSequence.Append(this.DecreasingImage.DOFillAmount(0f, time));
+        fillSequence.Play();
+        fillSequence.OnComplete(finishedCallback);
     }
 
     private void FinishedCountdown()
     {
-        Destroy(this.gameObject);
+        if(this.ShouldDestroyOnComplete)
+            Destroy(this.gameObject);
     }
 }
