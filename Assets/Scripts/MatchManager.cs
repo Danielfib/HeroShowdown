@@ -107,6 +107,7 @@ public class MatchManager : MonoBehaviour
 
         playerController.Team = playerData.team;
         SetPlayerColor(playerController.Team, player.GetComponentInChildren<SpriteRenderer>());
+        PositionPlayer(player.gameObject.transform, playerData.team);
     }
 
     private void SetPlayerColor(TeamIDEnum team, SpriteRenderer renderer)
@@ -129,6 +130,12 @@ public class MatchManager : MonoBehaviour
             //    renderer.color = ColorUtils.Brown;
             //    break;
         }
+    }
+
+    private void PositionPlayer(Transform playerTransform, TeamIDEnum team)
+    {
+        TeamBase teamBase = GameObject.FindObjectsOfType<TeamBase>().Where(x => x.teamIdEnum == team).FirstOrDefault();
+        playerTransform.position = teamBase.transform.position;
     }
     #endregion
 }

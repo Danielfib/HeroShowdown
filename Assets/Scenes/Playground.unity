@@ -6006,17 +6006,17 @@ PrefabInstance:
     - target: {fileID: 1406014345950017707, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.23921569
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1406014345950017707, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.8980392
+      value: 0.85069823
       objectReference: {fileID: 0}
     - target: {fileID: 1406014345950017707, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.38779366
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1406014346354217160, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
         type: 3}
@@ -6081,7 +6081,7 @@ PrefabInstance:
     - target: {fileID: 6769833765311612144, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
         type: 3}
       propertyPath: teamIDEnum
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d341218a880fd4dbc8f9fdb3cbdacf, type: 3}
@@ -7956,7 +7956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4569edb05b58f34b8b8fcae08d2275d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamIdEnum: 3
+  teamIdEnum: 1
 --- !u!50 &1552231282
 Rigidbody2D:
   serializedVersion: 4
@@ -8044,7 +8044,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 182855423865772039, guid: e15bc0094a5a51e4185ebe230031a81f, type: 3}
-  m_Color: {r: 0.26824498, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.78902435, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
