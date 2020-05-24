@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -46,6 +47,8 @@ public class CharacterController : MonoBehaviour
     private bool IsInvulnerable = false;
     public bool IsReflectiveToProjectiles = false;
 
+    public PlayerHUDIconController PlayerHUDIconController;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -72,16 +75,22 @@ public class CharacterController : MonoBehaviour
     public void DieDefault()
     {
         //this.Animator.SetTrigger("Die");
-        //BUG: Using Destroy makes player spawn again when input is pressed again
-        Destroy(this.gameObject);
+        GetComponent<PlayerRespawnManager>().StartRespawnCounter(this.PlayerHUDIconController);
     }
     
+    public void SpawnOnBase()
+    {
+        TeamBase teamBase = GameObject.FindObjectsOfType<TeamBase>().Where(x => x.teamIdEnum == this.Team).FirstOrDefault();
+        this.gameObject.transform.position = teamBase.transform.position;
+    }
+
     public void GotHit()
     {
-        //if (!IsInvulnerable && !IsReflectiveToProjectiles)
-        //    CharacterBrain.Die(this);
-
-        DropFlag();
+        if (!IsInvulnerable && !IsReflectiveToProjectiles)
+        {
+            DropFlag();
+            CharacterBrain.Die(this);
+        }
     }
     #endregion
 

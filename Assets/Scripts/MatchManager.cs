@@ -20,6 +20,10 @@ public class MatchManager : MonoBehaviour
     [SerializeField]
     private GameObject FlagRespawnCanvas;
 
+    [SerializeField]
+    private PlayerIconsHUD PlayerIconsHUD;
+
+
     private int MaxPoints = 3;
 
     void Start()
@@ -92,9 +96,9 @@ public class MatchManager : MonoBehaviour
     private void LoadPlayerHero(PlayerInput player)
     {
         CharacterController playerController = player.gameObject.GetComponent<CharacterController>();
-        PlayerData playerData = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == player.playerIndex);
+        PlayerData pd = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == player.playerIndex);
 
-        switch (playerData.character.name)
+        switch (pd.character.name)
         {
             case "mage":
                 playerController.CharacterBrain = Resources.Load<MageBrain>("CharacterBrains/MageBrain");
@@ -103,33 +107,17 @@ public class MatchManager : MonoBehaviour
                 playerController.CharacterBrain = Resources.Load<WarriorBrain>("CharacterBrains/WarriorBrain");
                 break;
         }
-        player.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(playerData.character.spritePath);
+        
+        playerController.Team = pd.team;
+        SpriteRenderer playerSpriteRenderer = player.gameObject.GetComponent<SpriteRenderer>();
+        playerSpriteRenderer.sprite = Resources.Load<Sprite>(pd.character.spritePath);
+        playerSpriteRenderer.color = ColorUtils.TeamIdEnumToColor(pd.team);
 
-        playerController.Team = playerData.team;
-        SetPlayerColor(playerController.Team, player.GetComponentInChildren<SpriteRenderer>());
-        PositionPlayer(player.gameObject.transform, playerData.team);
-    }
+        PositionPlayer(player.gameObject.transform, pd.team);
 
-    private void SetPlayerColor(TeamIDEnum team, SpriteRenderer renderer)
-    {
-        switch (team)
-        {
-            case TeamIDEnum.RED:
-                renderer.color = ColorUtils.Red;
-                break;
-            case TeamIDEnum.BLUE:
-                renderer.color = ColorUtils.Blue;
-                break;
-            //case TeamIDEnum.PURPLE:
-            //    renderer.color = ColorUtils.Purple;
-            //    break;
-            //case TeamIDEnum.GREEN:
-            //    renderer.color = ColorUtils.Green;
-            //    break;
-            //case TeamIDEnum.BROWN:
-            //    renderer.color = ColorUtils.Brown;
-            //    break;
-        }
+        //Loading HUD player icon
+        PlayerHUDIconController iconController = PlayerIconsHUD.LoadPlayerIconToTeam(pd);
+        playerController.PlayerHUDIconController = iconController;
     }
 
     private void PositionPlayer(Transform playerTransform, TeamIDEnum team)
