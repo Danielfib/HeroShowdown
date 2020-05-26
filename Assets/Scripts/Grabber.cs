@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Grabber : MonoBehaviour
 {
-    //public bool CanGrabObject = true;
     private GameObject CurrentlyGrabbableObject;
     private GameObject CurrentlyGrabingObject;
 
@@ -31,8 +30,8 @@ public class Grabber : MonoBehaviour
         go.transform.parent = this.gameObject.transform;
         go.transform.localPosition = new Vector3(0, 0, 0);
         
-
         CurrentlyGrabingObject = go;
+        UpdateColliderIsTriggerUponGrab(false);
     }
 
     private void TossObject()
@@ -41,8 +40,8 @@ public class Grabber : MonoBehaviour
             return;
 
         CurrentlyGrabingObject.transform.parent = null;
-        CurrentlyGrabingObject.GetComponent<Rigidbody2D>().simulated = true;
         CurrentlyGrabingObject.GetComponent<ProjectileController>().ReceiveTossAction();
+        UpdateColliderIsTriggerUponGrab(true);
     }
 
     public void BecameGrababble(GameObject gameObject)
@@ -61,5 +60,14 @@ public class Grabber : MonoBehaviour
             TryToGrab();
         else
             TossObject();
+    }
+
+    /// <summary>
+    /// Implemented to fix bug where when grabing a projectile, this projectile would not collidw with walls
+    /// Thus, it was possible to toss through walls, if projectile already was inside wall
+    /// </summary>
+    private void UpdateColliderIsTriggerUponGrab(bool value)
+    {
+        this.GetComponent<Collider2D>().isTrigger = value;
     }
 }

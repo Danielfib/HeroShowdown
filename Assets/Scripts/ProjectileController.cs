@@ -24,6 +24,7 @@ public class ProjectileController : MonoBehaviour
 
     public void ReceiveTossAction()
     {
+        GetComponent<Rigidbody2D>().simulated = true;
         this.gameObject.layer = LayerMask.NameToLayer("Projectiles");
         this.ProjectileBrain.Toss(this);
     }
@@ -32,7 +33,6 @@ public class ProjectileController : MonoBehaviour
     {
         //dir = MathUtils.ClampVectorTo8DiagonalVector(dir, 0.4f);
         StartCoroutine(TurnOffGravityForDuration(ProjectileBrain.GetGravityDisableDurationDuringToss()));
-        StartCoroutine(TurnOffCollisionForDuration(0.1f));
         rb.AddForce(dir * TossMagnetude);
     }
 
@@ -43,8 +43,8 @@ public class ProjectileController : MonoBehaviour
 
     public void ReturnToGrabbableState()
     {
-        EnableGravity(0.9f);
         this.gameObject.layer = LayerMask.NameToLayer("Grabbables");
+        EnableGravity(0.9f);
     }
 
     private void DisableGravity()
@@ -67,15 +67,6 @@ public class ProjectileController : MonoBehaviour
         EnableGravity(gravityScale);
     }
 
-    private IEnumerator TurnOffCollisionForDuration(float duration)
-    {
-        this.GetComponent<CircleCollider2D>().isTrigger = true;
-
-        yield return new WaitForSeconds(duration);
-
-        this.GetComponent<CircleCollider2D>().isTrigger = false;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         bool gotDeflected = false;
@@ -85,7 +76,6 @@ public class ProjectileController : MonoBehaviour
         {
             CharacterController charController = collision.gameObject.GetComponent<CharacterController>();
             charController.GotHit();
-
             if (charController.IsReflectiveToProjectiles)
             {
                 //Perhaps bring this behaviour to character side?
