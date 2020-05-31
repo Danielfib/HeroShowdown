@@ -58,16 +58,19 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        FlipSpriteOnWalkDirection();
+
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         this.CharacterBrain.Think(this);
-
-        FlipSpriteOnWalkDirection();
     }
 
     #region [Combat]
     public void GrabToss(CallbackContext context)
     {
+        //prevent tossing before turning, and killing yourself
+        FlipSpriteOnWalkDirection();
+
         if (context.performed)
             DoGrabToss(this.moveDirection);
     }
