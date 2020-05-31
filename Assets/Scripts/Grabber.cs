@@ -34,13 +34,13 @@ public class Grabber : MonoBehaviour
         UpdateColliderIsTriggerUponGrab(false);
     }
 
-    private void TossObject()
+    private void TossObject(Vector2 dir)
     {
         if (CurrentlyGrabingObject == null)
             return;
 
         CurrentlyGrabingObject.transform.parent = null;
-        CurrentlyGrabingObject.GetComponent<ProjectileController>().ReceiveTossAction();
+        CurrentlyGrabingObject.GetComponent<ProjectileController>().ReceiveTossAction(dir);
         UpdateColliderIsTriggerUponGrab(true);
     }
 
@@ -54,12 +54,12 @@ public class Grabber : MonoBehaviour
         CurrentlyGrabbableObject = null;
     }
 
-    public void GrabTossAction()
+    public void GrabTossAction(Vector2 dir)
     {
         if (_canGrabObject)
             TryToGrab();
         else
-            TossObject();
+            TossObject(dir);
     }
 
     /// <summary>

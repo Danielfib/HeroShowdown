@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WarriorBrain", menuName = "Character Brain/Warrior Brain")]
 public class WarriorBrain : CharacterBrain
 {
-    private InputActions inputActions;
+    private InputActions InputActions;
 
     public float DodgeSpeed;
     public float DodgeCooldown;
@@ -15,8 +15,8 @@ public class WarriorBrain : CharacterBrain
 
     public override void Initialize(CharacterController characterController)
     {
-        this.inputActions = new InputActions();
-        this.inputActions.Enable();
+        this.InputActions = new InputActions();
+        this.InputActions.Enable();
     }
 
     public override void Think(CharacterController characterController)
@@ -59,7 +59,7 @@ public class WarriorBrain : CharacterBrain
 
     public override void SpecialAction(CharacterController characterController)
     {
-        DodgeDirection = inputActions.PlayerMovement.Move.ReadValue<Vector2>();
+        DodgeDirection = InputActions.PlayerMovement.Move.ReadValue<Vector2>();
         characterController.SetSAState(SAState.USING);
         characterController.SetInvulnerability(true);
     }

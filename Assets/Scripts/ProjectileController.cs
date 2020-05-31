@@ -22,11 +22,11 @@ public class ProjectileController : MonoBehaviour
         ProjectileBrain.Think(this);
     }
 
-    public void ReceiveTossAction()
+    public void ReceiveTossAction(Vector2 dir)
     {
         GetComponent<Rigidbody2D>().simulated = true;
         this.gameObject.layer = LayerMask.NameToLayer("Projectiles");
-        this.ProjectileBrain.Toss(this);
+        this.ProjectileBrain.Toss(this, dir);
     }
 
     public void StandardToss(Vector2 dir)

@@ -8,7 +8,7 @@ public abstract class ProjectileBrain : ScriptableObject
 
     public abstract void Think(ProjectileController projectileController);
 
-    public abstract void Toss(ProjectileController projectileController);
+    public abstract void Toss(ProjectileController projectileController, Vector2 dir);
 
     public abstract float GetGravityDisableDurationDuringToss();
 

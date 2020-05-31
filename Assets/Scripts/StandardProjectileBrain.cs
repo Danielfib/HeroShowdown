@@ -8,12 +8,9 @@ public class StandardProjectileBrain : ProjectileBrain
     public float MinVelocityToStop = 5f;
     public float TossGravityDisableDuration = 1f;
     public float GravityScale = 0.8f;
-    private InputActions inputActions;
 
     public override void Initialize(ProjectileController projectileController)
     {
-        this.inputActions = new InputActions();
-        this.inputActions.Enable();
     }
 
     public override void Think(ProjectileController projectileController)
@@ -26,10 +23,8 @@ public class StandardProjectileBrain : ProjectileBrain
         }
     }
 
-    public override void Toss(ProjectileController projectileController)
+    public override void Toss(ProjectileController projectileController, Vector2 dir)
     {
-        Vector2 dir = this.inputActions.PlayerMovement.Move.ReadValue<Vector2>();
-
         if (dir == Vector2.zero)
             projectileController.ReleaseProjectile();
         else

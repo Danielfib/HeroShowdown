@@ -68,8 +68,13 @@ public class CharacterController : MonoBehaviour
     #region [Combat]
     public void GrabToss(CallbackContext context)
     {
-        if(context.performed)
-            Grabber.GrabTossAction();
+        if (context.performed)
+            DoGrabToss(this.moveDirection);
+    }
+
+    public void DoGrabToss(Vector2 dir)
+    {
+        Grabber.GrabTossAction(dir);
     }
 
     public void DieDefault()
