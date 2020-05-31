@@ -59,7 +59,7 @@ public class WarriorBrain : CharacterBrain
 
     public override void SpecialAction(CharacterController characterController)
     {
-        DodgeDirection = InputActions.PlayerMovement.Move.ReadValue<Vector2>();
+        DodgeDirection = characterController.GetMoveDirection();
         characterController.SetSAState(SAState.USING);
         characterController.SetInvulnerability(true);
     }

@@ -235,6 +235,13 @@ public class CharacterController : MonoBehaviour
         return ((MageBrain)CharacterBrain).DeflectMagnetude;
     }
     #endregion
+
+    #region [Auxiliary]
+    public Vector2 GetMoveDirection()
+    {
+        return this.moveDirection;
+    }
+    #endregion
 }
 
 public enum SAState
