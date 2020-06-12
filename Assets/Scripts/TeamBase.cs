@@ -13,6 +13,7 @@ public class TeamBase : MonoBehaviour
     private void Start()
     {
         this.MatchManager = GameObject.FindObjectOfType<MatchManager>();
+        this.MatchManager.SpawnNewFlag(this.teamIdEnum);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

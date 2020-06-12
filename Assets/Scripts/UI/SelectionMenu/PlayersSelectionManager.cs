@@ -17,7 +17,7 @@ public class PlayersSelectionManager : MonoBehaviour
 
     private MenuInputActions menuInputActions;
     private bool[] SeatsOcupied = { false, false, false, false };
-    private string LevelToLoad = "Playground";
+    private string LevelToLoad = "PirateCave(S)";
 
     public void LoadMatchLevel()
     {

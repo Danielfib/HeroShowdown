@@ -49,6 +49,9 @@ TagManager:
   - name: Ground
     uniqueID: 3786835211
     locked: 0
+  - name: Foreground
+    uniqueID: 1909155955
+    locked: 0
   - name: Projectiles
     uniqueID: 2708798905
     locked: 0

@@ -69,7 +69,7 @@ public class MatchManager : MonoBehaviour
         countdown.StartCountdown(cooldown);
     }
 
-    private void SpawnNewFlag(TeamIDEnum flagColor)
+    public void SpawnNewFlag(TeamIDEnum flagColor)
     {
         //chooses at random a spawnspot of given team to spawn flag into
         FlagSpawnSpot[] spawnSpots = FindObjectsOfType<FlagSpawnSpot>().Where(x => x.TeamID == flagColor).ToArray();
