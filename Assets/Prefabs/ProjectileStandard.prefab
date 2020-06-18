@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 378136065420080509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.81, y: -1.29, z: -4.0214844}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 378136066319877249}
   m_Father: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1586168391
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1e1031b619ee8d94cbdac4e236c7c73a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileBrain: {fileID: 11400000, guid: c4448e4427e7b194ab74325fa3ad53d3, type: 2}
   rb: {fileID: 0}
-  TossMagnetude: 700
+  TossMagnetude: 1000
 --- !u!58 &378136065420080500
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinVelocityToStop: 1
   TossGravityDisableDuration: 1
+  GravityScale: 0.8

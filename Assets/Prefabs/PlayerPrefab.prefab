@@ -103,8 +103,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.016038984, y: -0.013738215}
-  m_Size: {x: 0.62382215, y: 1.1444494}
+  m_Offset: {x: -0.036648512, y: -0.008585811}
+  m_Size: {x: 1.2833242, y: 2.3707116}
   m_Direction: 0
 --- !u!50 &3670669546270193133
 Rigidbody2D:
@@ -142,8 +142,8 @@ MonoBehaviour:
   Grabber: {fileID: 8618652328124411858}
   CharacterBrain: {fileID: 11400000, guid: 25f35c3b0f71e0a40afbc36183db5420, type: 2}
   Team: 0
-  moveSpeed: 5
-  jumpForce: 8
+  moveSpeed: 8
+  jumpForce: 12
   Animator: {fileID: 0}
   feetPos: {fileID: 3670669546456621193}
   checkRadius: 0.1
@@ -287,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3670669546456621192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.593, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3670669546270193136}
@@ -317,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3670669547769157823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.897, z: 0}
+  m_LocalPosition: {x: 0, y: 1.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3670669546270193136}
@@ -349,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6854886005892113735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 1.16, y: 0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3670669546270193136}
@@ -380,6 +380,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31, y: -0.008968318}
-  m_Size: {x: 1.2352004, y: 1.0179371}
+  m_Offset: {x: 0.055816624, y: -0.2820454}
+  m_Size: {x: 2.1926818, y: 1.6877532}
   m_Direction: 1
