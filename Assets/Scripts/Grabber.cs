@@ -12,19 +12,19 @@ public class Grabber : MonoBehaviour
         get { return this.transform.childCount == 0; }
     }
 
-    public void TryToGrab()
+    public GrabTossActionResults TryToGrab()
     {
-        if (CurrentlyGrabbableObject == null)
-            return;
+        if (CurrentlyGrabbableObject == null || !_canGrabObject)
+        {
+            return GrabTossActionResults.COULD_NOT_GRAB;
+        }
 
         Grab(CurrentlyGrabbableObject);
+        return GrabTossActionResults.GRABBED;
     }
 
     private void Grab(GameObject go)
     {
-        if (!_canGrabObject)
-            return;
-
         go.GetComponent<Rigidbody2D>().simulated = false;
         go.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         go.transform.parent = this.gameObject.transform;
@@ -54,12 +54,17 @@ public class Grabber : MonoBehaviour
         CurrentlyGrabbableObject = null;
     }
 
-    public void GrabTossAction(Vector2 dir)
+    public GrabTossActionResults GrabTossAction(Vector2 dir)
     {
         if (_canGrabObject)
-            TryToGrab();
+        {
+            return TryToGrab();
+        }
         else
+        {
             TossObject(dir);
+            return GrabTossActionResults.TOSSED;
+        }
     }
 
     /// <summary>
@@ -69,5 +74,12 @@ public class Grabber : MonoBehaviour
     private void UpdateColliderIsTriggerUponGrab(bool value)
     {
         this.GetComponent<Collider2D>().isTrigger = value;
+    }
+
+    public enum GrabTossActionResults
+    {
+        GRABBED,
+        TOSSED,
+        COULD_NOT_GRAB
     }
 }

@@ -49,9 +49,12 @@ public class CharacterController : MonoBehaviour
 
     public PlayerHUDIconController PlayerHUDIconController;
 
+    private AnimatorsController animController;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animController = GetComponentInChildren<AnimatorsController>();
 
         this.CharacterBrain.Initialize(this);
     }
@@ -63,6 +66,8 @@ public class CharacterController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         this.CharacterBrain.Think(this);
+
+        AnimateMovement();
     }
 
     #region [Combat]
@@ -77,7 +82,20 @@ public class CharacterController : MonoBehaviour
 
     public void DoGrabToss(Vector2 dir)
     {
-        Grabber.GrabTossAction(dir);
+        var didGrab = Grabber.GrabTossAction(dir);
+
+        switch (didGrab)
+        {
+            case Grabber.GrabTossActionResults.GRABBED:
+                Animate(AnimationUtils.AnimationTriggers.IS_GRAB);
+                break;
+            case Grabber.GrabTossActionResults.TOSSED:
+                Animate(AnimationUtils.AnimationTriggers.IS_TOSS);
+                break;
+            case Grabber.GrabTossActionResults.COULD_NOT_GRAB:
+                Animate(AnimationUtils.AnimationTriggers.IS_TOSS);
+                break;
+        }
     }
 
     public void DieDefault()
@@ -188,7 +206,10 @@ public class CharacterController : MonoBehaviour
     {
         if(context.performed
            && this.SAState == SAState.READY)
+        {
             this.CharacterBrain.SpecialAction(this);
+            Animate(AnimationUtils.AnimationTriggers.IS_SPECIAL_ACTION);
+        }
     }
     
     public void DoDodge(Vector2 dir, float dodgeSpeed)
@@ -243,6 +264,37 @@ public class CharacterController : MonoBehaviour
     public Vector2 GetMoveDirection()
     {
         return this.moveDirection;
+    }
+    #endregion
+
+    #region [Animation]
+    private void Animate(string triggerID)
+    {
+        //Debug.Log(triggerID);
+        this.animController?.TrySetTrigger(triggerID);
+    }
+
+    private void AnimateUpperBody(string triggerID)
+    {
+        //TODO: animate separately
+    }
+
+    private void AnimateMovement()
+    {
+        if (isGrounded)
+        {
+            if(this.moveDirection.x != 0)
+            {
+                Animate(AnimationUtils.AnimationTriggers.IS_RUNNING);
+            }
+            else
+            {
+                Animate(AnimationUtils.AnimationTriggers.IS_IDLE);
+            }
+        } else
+        {
+            Animate(AnimationUtils.AnimationTriggers.IS_JUMPING);
+        }
     }
     #endregion
 }
