@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GeneralUtils : MonoBehaviour
+public class CharactersManager : MonoBehaviour
 {
-    public static GeneralUtils Instance;
-
     [SerializeField]
     public CharacterSO[] availableCharacters;
 

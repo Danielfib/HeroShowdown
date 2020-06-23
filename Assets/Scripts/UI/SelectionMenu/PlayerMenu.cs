@@ -28,7 +28,7 @@ public class PlayerMenu : MonoBehaviour
     private Sprite CharacterNameSprite;
     private int currentCharacterIndex;
 
-    public GeneralUtils charactersManager;
+    public CharactersManager charactersManager;
 
     private TeamIDEnum _Team;
     public TeamIDEnum Team
@@ -48,7 +48,7 @@ public class PlayerMenu : MonoBehaviour
 
     private void Awake()
     {
-        charactersManager = GameObject.Find("CharactersManager").GetComponent<GeneralUtils>();
+        charactersManager = GameObject.Find("CharactersManager").GetComponent<CharactersManager>();
     }
 
     private void SetupOnStart()
@@ -65,7 +65,6 @@ public class PlayerMenu : MonoBehaviour
         CharacterSprite = SelectedCharacter.sprite;
 
         this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = CharacterSprite;
-        //this.transform.GetChild(1).GetComponent<SpriteRenderer>() = CharacterNameSprite;
     }
 
     public void Progress(CallbackContext context)
@@ -84,7 +83,6 @@ public class PlayerMenu : MonoBehaviour
         {
             if (PlayersSelectionManager.IsEveryoneReady)
             {
-                //SceneManager.LoadScene("Playground");
                 GameObject.FindObjectOfType<PlayersSelectionManager>().LoadMatchLevel();
             }
             else

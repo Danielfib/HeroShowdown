@@ -19,7 +19,6 @@ public class PlayerIconsHUD : MonoBehaviour
 
         Image playerImage = playerIcon.GetComponent<Image>();
         playerImage.sprite = pd.character.sprite;
-        playerImage.color = ColorUtils.TeamIdEnumToColor(pd.team);
 
         return playerIcon.GetComponent<PlayerHUDIconController>();
     }
