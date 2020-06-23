@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3164cf8ff6e3f304fb6fa5eeb3b44028, type: 3}
+  m_Name: MageCharacterData
+  m_EditorClassIdentifier: 
+  name: 
+  sprite: {fileID: -5157728286253989380, guid: 02fd0400bc02fab4e9dd36413152e52b, type: 3}
+  upperBodyAnimator: {fileID: 9100000, guid: 160e58c90a69ca44fb9aaeed62416c79, type: 2}
+  lowerBodyAnimator: {fileID: 9100000, guid: e1440e88239bf284d978253a91557d29, type: 2}

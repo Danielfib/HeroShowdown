@@ -23,10 +23,12 @@ public class PlayerMenu : MonoBehaviour
 
     public GameObject ReadySprite;
 
-    private Character SelectedCharacter;
+    private CharacterSO SelectedCharacter;
     private Sprite CharacterSprite;
     private Sprite CharacterNameSprite;
     private int currentCharacterIndex;
+
+    public GeneralUtils charactersManager;
 
     private TeamIDEnum _Team;
     public TeamIDEnum Team
@@ -44,10 +46,15 @@ public class PlayerMenu : MonoBehaviour
         SetupOnStart();
     }
 
+    private void Awake()
+    {
+        charactersManager = GameObject.Find("CharactersManager").GetComponent<GeneralUtils>();
+    }
+
     private void SetupOnStart()
     {
         currentCharacterIndex = 0;
-        SelectedCharacter = GeneralUtils.DefaultInitialCharacter;
+        SelectedCharacter = this.charactersManager.GetDefaultInitialCharacter();
         UpdateCharUIInfo();
         ChooseDefaultTeam();
         this.IsReady = false;
@@ -55,7 +62,7 @@ public class PlayerMenu : MonoBehaviour
 
     private void UpdateCharUIInfo()
     {
-        CharacterSprite = Resources.Load<Sprite>(SelectedCharacter.spritePath);
+        CharacterSprite = SelectedCharacter.sprite;
 
         this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = CharacterSprite;
         //this.transform.GetChild(1).GetComponent<SpriteRenderer>() = CharacterNameSprite;
@@ -108,7 +115,7 @@ public class PlayerMenu : MonoBehaviour
     {
         if(currentCharacterIndex <= 0)
         {
-            currentCharacterIndex = GeneralUtils.availableCharacters.Length - 1;
+            currentCharacterIndex = this.charactersManager.availableCharacters.Length - 1;
         }
         else
         {
@@ -118,7 +125,7 @@ public class PlayerMenu : MonoBehaviour
 
     private void ChangedheroForward()
     {
-        if(currentCharacterIndex >= GeneralUtils.availableCharacters.Length - 1)
+        if(currentCharacterIndex >= this.charactersManager.availableCharacters.Length - 1)
         {
             currentCharacterIndex = 0;
         } else
@@ -129,12 +136,12 @@ public class PlayerMenu : MonoBehaviour
 
     private void SelectHeroOnIndex(int charIndex)
     {
-        SelectedCharacter = GeneralUtils.availableCharacters[charIndex];
+        SelectedCharacter = this.charactersManager.availableCharacters[charIndex];
     }
 
     public void ChangeHero(CallbackContext context)
     {
-        if (!context.performed || this.IsReady)
+        if (!context.performed || this.IsReady || charactersManager == null)
             return;
 
         float inputValue = context.ReadValue<float>();

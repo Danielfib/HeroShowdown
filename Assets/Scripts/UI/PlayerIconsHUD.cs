@@ -18,7 +18,7 @@ public class PlayerIconsHUD : MonoBehaviour
         GameObject playerIcon = Instantiate(this.PlayerHUDIconPrefab, GetTransformTeamPanel(pd.team));
 
         Image playerImage = playerIcon.GetComponent<Image>();
-        playerImage.sprite = Resources.Load<Sprite>(pd.character.spritePath);
+        playerImage.sprite = pd.character.sprite;
         playerImage.color = ColorUtils.TeamIdEnumToColor(pd.team);
 
         return playerIcon.GetComponent<PlayerHUDIconController>();

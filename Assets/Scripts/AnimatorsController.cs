@@ -15,7 +15,7 @@ public class AnimatorsController : MonoBehaviour
 
     public void TrySetTrigger(string triggerID)
     {
-        if (!blockAnimationTransitions)
+        if (!blockAnimationTransitions && this.animators != null)
         {
             foreach(var animator in this.animators)
             {

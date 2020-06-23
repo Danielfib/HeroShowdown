@@ -109,10 +109,6 @@ public class MatchManager : MonoBehaviour
         }
         
         playerController.Team = pd.team;
-        SpriteRenderer playerSpriteRenderer = player.gameObject.GetComponent<SpriteRenderer>();
-        playerSpriteRenderer.sprite = Resources.Load<Sprite>(pd.character.spritePath);
-        playerSpriteRenderer.color = ColorUtils.TeamIdEnumToColor(pd.team);
-
         PositionPlayer(player.gameObject.transform, pd.team);
 
         //Loading HUD player icon

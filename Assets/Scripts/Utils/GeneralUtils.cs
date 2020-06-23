@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public static class GeneralUtils
+public class GeneralUtils : MonoBehaviour
 {
-    public static Character[] availableCharacters =
-    {
-        new Character("warrior", "Sprites/Character_Sprite_Sheet"),
-        new Character("mage", "Sprites/PirateCaracter")
-    };
+    public static GeneralUtils Instance;
 
-    public static Character DefaultInitialCharacter = availableCharacters[0];
+    [SerializeField]
+    public CharacterSO[] availableCharacters;
+
+    public CharacterSO GetDefaultInitialCharacter()
+    {
+        return this.availableCharacters[0];
+    }
 }
