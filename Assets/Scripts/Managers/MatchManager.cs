@@ -103,8 +103,8 @@ public class MatchManager : MonoBehaviour
             case "mage":
                 playerController.CharacterBrain = Resources.Load<MageBrain>("CharacterBrains/MageBrain");
                 break;
-            case "warrior":
-                playerController.CharacterBrain = Resources.Load<WarriorBrain>("CharacterBrains/WarriorBrain");
+            case "pirate":
+                playerController.CharacterBrain = Resources.Load<PirateBrain>("CharacterBrains/PirateBrain");
                 break;
         }
         

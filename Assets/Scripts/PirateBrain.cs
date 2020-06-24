@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WarriorBrain", menuName = "Character Brain/Warrior Brain")]
-public class WarriorBrain : CharacterBrain
+[CreateAssetMenu(fileName = "PirateBrain", menuName = "Character Brain/Pirate Brain")]
+public class PirateBrain : CharacterBrain
 {
     private InputActions InputActions;
 
