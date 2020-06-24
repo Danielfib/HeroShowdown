@@ -30,6 +30,8 @@ public class PlayerMenu : MonoBehaviour
 
     public CharactersManager charactersManager;
 
+    private SpriteRenderer[] spriteRenderers;
+
     private TeamIDEnum _Team;
     public TeamIDEnum Team
     {
@@ -58,6 +60,8 @@ public class PlayerMenu : MonoBehaviour
         UpdateCharUIInfo();
         ChooseDefaultTeam();
         this.IsReady = false;
+        this.spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        SetupSpriteMaterials();
     }
 
     private void UpdateCharUIInfo()
@@ -217,6 +221,21 @@ public class PlayerMenu : MonoBehaviour
             case TeamIDEnum.BLUE:
                 renderer.color = ColorUtils.Blue;
                 break;
+        }
+
+        SetupSpriteMaterials();
+    }
+
+    private void SetupSpriteMaterials()
+    {
+        Color color = ColorUtils.TeamIdEnumToColor(this._Team);
+
+        if (this.spriteRenderers != null)
+        {
+            foreach (var spriteRenderer in spriteRenderers)
+            {
+                spriteRenderer.material.SetColor("_NewColor", color);
+            }
         }
     }
     #endregion

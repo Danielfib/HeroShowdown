@@ -55,6 +55,7 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animController = GetComponentInChildren<AnimatorsController>();
+        animController.teamIDEnum = this.Team;
 
         this.CharacterBrain.Initialize(this);
     }
