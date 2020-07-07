@@ -114,6 +114,8 @@ public class MatchManager : MonoBehaviour
         //Loading HUD player icon
         PlayerHUDIconController iconController = PlayerIconsHUD.LoadPlayerIconToTeam(pd);
         playerController.PlayerHUDIconController = iconController;
+
+        playerController.InitializeAnimators(pd.character.upperBodyAnimator, pd.character.lowerBodyAnimator);
     }
 
     private void PositionPlayer(Transform playerTransform, TeamIDEnum team)

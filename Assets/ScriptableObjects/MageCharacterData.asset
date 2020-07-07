@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   sprite: {fileID: -5157728286253989380, guid: 02fd0400bc02fab4e9dd36413152e52b, type: 3}
-  upperBodyAnimator: {fileID: 9100000, guid: 160e58c90a69ca44fb9aaeed62416c79, type: 2}
-  lowerBodyAnimator: {fileID: 9100000, guid: e1440e88239bf284d978253a91557d29, type: 2}
+  upperBodyAnimator: {fileID: 0}
+  lowerBodyAnimator: {fileID: 0}
