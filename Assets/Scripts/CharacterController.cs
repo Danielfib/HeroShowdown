@@ -278,8 +278,8 @@ public class CharacterController : MonoBehaviour
 
         Animator[] animators = this.transform.GetComponentsInChildren<Animator>();
 
-        animators[0].runtimeAnimatorController = up;
-        animators[1].runtimeAnimatorController = lower;
+        animators[0].runtimeAnimatorController = lower;
+        animators[1].runtimeAnimatorController = up;
     }
 
     private void Animate(string triggerID)
