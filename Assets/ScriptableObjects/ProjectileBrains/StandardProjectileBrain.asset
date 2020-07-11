@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: StandardProjectileBrain
   m_EditorClassIdentifier: 
   MinVelocityToStop: 1
-  TossGravityDisableDuration: 1
+  TossGravityDisableDuration: 0.3
   GravityScale: 0.8

@@ -194,7 +194,7 @@ MonoBehaviour:
   Grabber: {fileID: 8618652328124411858}
   CharacterBrain: {fileID: 11400000, guid: 25f35c3b0f71e0a40afbc36183db5420, type: 2}
   Team: 0
-  moveSpeed: 8
+  moveSpeed: 10
   jumpForce: 12
   Animator: {fileID: 0}
   feetPos: {fileID: 3670669546456621193}

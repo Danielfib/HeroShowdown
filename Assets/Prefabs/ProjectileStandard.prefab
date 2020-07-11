@@ -99,7 +99,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.2
+  m_LinearDrag: 0.3
   m_AngularDrag: 0
   m_GravityScale: 0.8
   m_Material: {fileID: 6200000, guid: e43bee6f0753c254ea45d0bda9b23e53, type: 2}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileBrain: {fileID: 11400000, guid: c4448e4427e7b194ab74325fa3ad53d3, type: 2}
   rb: {fileID: 0}
-  TossMagnetude: 1000
+  TossMagnetude: 1500
 --- !u!58 &378136065420080500
 CircleCollider2D:
   m_ObjectHideFlags: 0
