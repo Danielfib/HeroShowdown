@@ -128,6 +128,21 @@ public class CharacterController : MonoBehaviour
             flag.Drop();
     }
 
+    #region [Interact]
+    public void TryInteract(CallbackContext context)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 5);
+        foreach(var col in colliders)
+        {
+            if(col.tag == "Interactable")
+            {
+                col.GetComponent<Interactable>().Interacted();
+                return;
+            }
+        }
+    }
+    #endregion
+
     #region [Walk]
     public void SetDirection(Vector2 dir)
     {

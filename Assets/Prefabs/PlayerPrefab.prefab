@@ -302,6 +302,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: aeb54e0b-5ccf-401e-bbeb-a067a9993ab3
     m_ActionName: PlayerMovement/SpecialAction[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3670669546270193132}
+        m_MethodName: TryInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f3bbfd7a-1bcb-488f-9d4d-d5d5b92275a3
+    m_ActionName: PlayerMovement/Interact[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flag
   - Grabber
+  - Interactable
   layers:
   - Default
   - TransparentFX
