@@ -131,13 +131,16 @@ public class CharacterController : MonoBehaviour
     #region [Interact]
     public void TryInteract(CallbackContext context)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 5);
-        foreach(var col in colliders)
+        if (context.performed)
         {
-            if(col.tag == "Interactable")
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 5);
+            foreach(var col in colliders)
             {
-                col.GetComponent<Interactable>().Interacted();
-                return;
+                if(col.tag == "Interactable")
+                {
+                    col.GetComponent<Interactable>().Interacted();
+                    return;
+                }
             }
         }
     }

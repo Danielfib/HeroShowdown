@@ -28,7 +28,7 @@ public class StandardProjectileBrain : ProjectileBrain
         if (dir == Vector2.zero)
             projectileController.ReleaseProjectile();
         else
-            projectileController.StandardToss(dir);
+            projectileController.StandardToss(dir, LayerMask.NameToLayer("Projectiles"));
     }
 
     public override float GetGravityDisableDurationDuringToss()

@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,10 +13,24 @@ public class ProjectileController : MonoBehaviour
     [SerializeField]
     private float TossMagnetude = 20;
 
+    [HideInInspector]
+    public bool ShouldDestroyByTime;
+    [HideInInspector]
+    public float DestroyAfterSeconds = 5f;
+
     void Start()
     {
         ProjectileBrain.Initialize(this);
         rb = GetComponent<Rigidbody2D>();
+
+        if (ShouldDestroyByTime)
+            StartCoroutine(DestroyCoroutine());
+    }
+
+    private IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(DestroyAfterSeconds);
+        Destroy(this.gameObject);
     }
 
     void Update()
@@ -25,14 +41,16 @@ public class ProjectileController : MonoBehaviour
     public void ReceiveTossAction(Vector2 dir)
     {
         GetComponent<Rigidbody2D>().simulated = true;
-        this.gameObject.layer = LayerMask.NameToLayer("Projectiles");
         this.ProjectileBrain.Toss(this, dir);
     }
 
-    public void StandardToss(Vector2 dir)
+    public void StandardToss(Vector2 dir, LayerMask layer, bool shouldDecay = true)
     {
-        //dir = MathUtils.ClampVectorTo8DiagonalVector(dir, 0.4f);
-        StartCoroutine(TurnOffGravityForDuration(ProjectileBrain.GetGravityDisableDurationDuringToss()));
+        this.gameObject.layer = layer;
+
+        if (shouldDecay)
+            StartCoroutine(TurnOffGravityForDuration(ProjectileBrain.GetGravityDisableDurationDuringToss()));
+
         rb.AddForce(dir * TossMagnetude);
     }
 
@@ -67,12 +85,19 @@ public class ProjectileController : MonoBehaviour
         EnableGravity(gravityScale);
     }
 
+    public void Explode(float radius)
+    {
+        //TODO
+        Destroy(this.gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         bool gotDeflected = false;
 
         if (collision.gameObject.tag == "Player"
-            && this.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
+            && (this.gameObject.layer == LayerMask.NameToLayer("Projectiles")
+            || this.gameObject.layer == LayerMask.NameToLayer("OnlyHitsPlayers")))
         {
             CharacterController charController = collision.gameObject.GetComponent<CharacterController>();
             charController.GotHit();
@@ -95,5 +120,19 @@ public class ProjectileController : MonoBehaviour
         if(!gotDeflected) {
             ProjectileBrain.HandleCollision(this);
         }
+    }
+}
+
+[CustomEditor(typeof(ProjectileController))]
+public class ProjectileControllerEditor: Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        var myScript = target as ProjectileController;
+        myScript.ShouldDestroyByTime = GUILayout.Toggle(myScript.ShouldDestroyByTime, "ShouldDestroyByTime ");
+        if(myScript.ShouldDestroyByTime)
+            myScript.DestroyAfterSeconds = EditorGUILayout.FloatField("Destroy after: ", myScript.DestroyAfterSeconds);
     }
 }
