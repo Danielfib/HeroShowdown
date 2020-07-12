@@ -10,9 +10,25 @@ public class Cannon : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint;
 
+    [SerializeField]
+    private float cooldown = 2f;
+    [SerializeField]
+    private bool isOnCooldown;
+
     public void PlayerInteracted()
     {
-        ProjectileController projectile = Instantiate(CannonBall, spawnPoint).GetComponent<ProjectileController>();
-        projectile.ReceiveTossAction(this.transform.right * this.transform.localScale.x);
+        if (!this.isOnCooldown)
+        {
+            ProjectileController projectile = Instantiate(CannonBall, spawnPoint).GetComponent<ProjectileController>();
+            projectile.ReceiveTossAction(this.transform.right * this.transform.localScale.x);
+            StartCoroutine(CooldownCoroutine());
+        }
+    }
+
+    private IEnumerator CooldownCoroutine()
+    {
+        this.isOnCooldown = true;
+        yield return new WaitForSeconds(this.cooldown);
+        this.isOnCooldown = false;
     }
 }
