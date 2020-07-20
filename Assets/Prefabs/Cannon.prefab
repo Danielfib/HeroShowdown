@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669251688181283857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 1.634, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7004703286186470501}
@@ -94,6 +94,8 @@ MonoBehaviour:
   CannonBall: {fileID: 7556644062929636253, guid: 9ca37a9a462d66a449ea3d96fda55449,
     type: 3}
   spawnPoint: {fileID: 4955918356878292462}
+  cooldown: 2
+  isOnCooldown: 0
 --- !u!212 &7004703286186470490
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -157,6 +159,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.095999956, y: 1}
-  m_Size: {x: 4, y: 2}
+  m_Offset: {x: -0.52589303, y: 0.99999994}
+  m_Size: {x: 2.7562432, y: 2.0000007}
   m_Direction: 1

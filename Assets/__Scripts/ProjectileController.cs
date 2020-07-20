@@ -13,10 +13,15 @@ public class ProjectileController : MonoBehaviour
     [SerializeField]
     private float TossMagnetude = 20;
 
-    [HideInInspector]
-    public bool ShouldDestroyByTime;
-    [HideInInspector]
-    public float DestroyAfterSeconds = 5f;
+    [SerializeField]
+    private bool ShouldDestroyByTime;
+    [SerializeField]
+    private float DestroyAfterSeconds = 5f;
+
+    private void Awake()
+    {
+        EditorUtility.SetDirty(this);
+    }
 
     void Start()
     {
@@ -120,19 +125,5 @@ public class ProjectileController : MonoBehaviour
         if(!gotDeflected) {
             ProjectileBrain.HandleCollision(this);
         }
-    }
-}
-
-[CustomEditor(typeof(ProjectileController))]
-public class ProjectileControllerEditor: Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        var myScript = target as ProjectileController;
-        myScript.ShouldDestroyByTime = GUILayout.Toggle(myScript.ShouldDestroyByTime, "ShouldDestroyByTime ");
-        if(myScript.ShouldDestroyByTime)
-            myScript.DestroyAfterSeconds = EditorGUILayout.FloatField("Destroy after: ", myScript.DestroyAfterSeconds);
     }
 }
