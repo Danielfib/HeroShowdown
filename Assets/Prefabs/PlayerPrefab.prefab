@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnCooldown: 10
   SpriteRenderer: {fileID: 0}
-  Collider: {fileID: 0}
+  Collider: {fileID: 6631472011971855948}
   CharacterController: {fileID: 3670669546270193132}
   PlayerInput: {fileID: -10280573032050441}
   rb: {fileID: 3670669546270193133}

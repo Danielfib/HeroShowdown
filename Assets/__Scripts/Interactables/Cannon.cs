@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Interactable))]
 public class Cannon : MonoBehaviour
 {
     [SerializeField]
@@ -10,10 +11,16 @@ public class Cannon : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint;
 
-    [SerializeField]
+    private Animator animator;
+
     private float cooldown = 2f;
-    [SerializeField]
     private bool isOnCooldown;
+
+    private void Start()
+    {
+        this.cooldown = this.GetComponent<Interactable>().cooldownTime;
+        this.animator = this.GetComponent<Animator>();
+    }
 
     public void PlayerInteracted()
     {
@@ -21,14 +28,25 @@ public class Cannon : MonoBehaviour
         {
             ProjectileController projectile = Instantiate(CannonBall, spawnPoint).GetComponent<ProjectileController>();
             projectile.ReceiveTossAction(this.transform.right * this.transform.localScale.x);
-            StartCoroutine(CooldownCoroutine());
         }
     }
 
-    private IEnumerator CooldownCoroutine()
+    #region [Messages_Methods]
+    private void InteractableCooldownStart()
     {
         this.isOnCooldown = true;
-        yield return new WaitForSeconds(this.cooldown);
-        this.isOnCooldown = false;
+        animator.SetTrigger("StartCooldown");
     }
+
+    private void InteractableCooldownEnd()
+    {
+        this.isOnCooldown = false;
+        animator.SetTrigger("EndCooldown");
+    }
+
+    private void SetupCooldown(float cooldownTime)
+    {
+        this.cooldown = cooldownTime;
+    }
+    #endregion
 }

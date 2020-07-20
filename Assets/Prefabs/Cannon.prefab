@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7004703286186470491}
   - component: {fileID: 7004703286186470490}
   - component: {fileID: 7004703286186470502}
+  - component: {fileID: 6947346730726683629}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Interactable
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ButtonIconGO: {fileID: 5889660514017743208, guid: 5aa6b3747f66ace45822b7547b642746,
     type: 3}
+  cooldownTime: 2
 --- !u!114 &7004703286186470491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,8 +96,6 @@ MonoBehaviour:
   CannonBall: {fileID: 7556644062929636253, guid: 9ca37a9a462d66a449ea3d96fda55449,
     type: 3}
   spawnPoint: {fileID: 4955918356878292462}
-  cooldown: 2
-  isOnCooldown: 0
 --- !u!212 &7004703286186470490
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,3 +162,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.52589303, y: 0.99999994}
   m_Size: {x: 2.7562432, y: 2.0000007}
   m_Direction: 1
+--- !u!95 &6947346730726683629
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004703286186470503}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98020527eb9b54b4b8e7b15671472cd0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

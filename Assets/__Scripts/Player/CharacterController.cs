@@ -138,7 +138,7 @@ public class CharacterController : MonoBehaviour
             {
                 if(col.tag == "Interactable")
                 {
-                    col.GetComponent<Interactable>().Interacted();
+                    col.GetComponent<Interactable>().InteractedAction();
                     return;
                 }
             }

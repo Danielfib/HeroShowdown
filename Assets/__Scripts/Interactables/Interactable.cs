@@ -13,9 +13,13 @@ public class Interactable : MonoBehaviour
 
     private InteractableButtonIcon buttonIcon;
 
+    public float cooldownTime = 2f;
+    private bool isOnCooldown;
+
     private void Start()
     {
         this.buttonIcon = Instantiate(ButtonIconGO, this.transform).GetComponent<InteractableButtonIcon>();
+        BroadcastMessage("SetupCooldown", cooldownTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,9 +33,27 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void Interacted()
+    public void InteractedAction()
     {
-        SendMessage("PlayerInteracted");
+        if (!isOnCooldown)
+        {
+            DoInteract();
+        }
+    }
+
+    private void DoInteract()
+    {
+        BroadcastMessage("PlayerInteracted");
+        StartCoroutine(CooldownCoroutine());
+    }
+
+    private IEnumerator CooldownCoroutine()
+    {
+        this.isOnCooldown = true;
+        BroadcastMessage("InteractableCooldownStart");
+        yield return new WaitForSeconds(this.cooldownTime);
+        this.isOnCooldown = false;
+        BroadcastMessage("InteractableCooldownEnd");
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -37,6 +37,18 @@ public class InteractableButtonIcon : MonoBehaviour
     {
         sr.enabled = false;
     }
+
+    #region [Messages_Methods]
+    private void InteractableCooldownStart()
+    {
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.3f);
+    }
+
+    private void InteractableCooldownEnd()
+    {
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+    }
+    #endregion
 }
 
 

@@ -149,8 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHUDIconPrefab: {fileID: 6571200347002787302, guid: 5db02519b7f08b74e9923918cae92893,
     type: 3}
-  RedTeamContainer: {fileID: 4330213971201518905}
-  BlueTeamContainer: {fileID: 4330213972869427965}
+  RedTeamContainer: {fileID: 4330213971201518906}
+  BlueTeamContainer: {fileID: 4330213972869427966}
 --- !u!1 &4330213972869427966
 GameObject:
   m_ObjectHideFlags: 0

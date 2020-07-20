@@ -10,8 +10,6 @@ public class PlayerRespawnManager : MonoBehaviour
     private float SpawnCooldown = 10f;
 
     [SerializeField]
-    private SpriteRenderer SpriteRenderer;
-    [SerializeField]
     private Collider2D Collider;
     [SerializeField]
     private CharacterController CharacterController;
@@ -57,7 +55,11 @@ public class PlayerRespawnManager : MonoBehaviour
 
     private void ToggleComponentsEnabled(bool value)
     {
-        this.SpriteRenderer.enabled = value;
+        for(var i = 0; i < this.transform.childCount; i++)
+        {
+            this.transform.GetChild(i).gameObject.SetActive(value);
+        }
+
         this.Collider.enabled = value;
         this.CharacterController.enabled = value;
         this.PlayerInput.enabled = value;
