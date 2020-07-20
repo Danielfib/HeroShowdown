@@ -95,9 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e4b7fb235e8824395a06b16f9f9fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerButtonSprite: {fileID: 3052182395561689994, guid: e15bc0094a5a51e4185ebe230031a81f,
+  controllerButtonSprite: {fileID: -4172828572795986600, guid: b2b0c786a8229364e96539adfe879ed5,
     type: 3}
-  KeyboardButtonSprite: {fileID: 2347532270071011419, guid: e15bc0094a5a51e4185ebe230031a81f,
+  KeyboardButtonSprite: {fileID: 5727549980511073603, guid: e76d2738f3c1b034c8e2262d544edbc2,
     type: 3}
 --- !u!114 &5889660514017743211
 MonoBehaviour:
