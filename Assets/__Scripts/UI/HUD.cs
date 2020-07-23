@@ -45,4 +45,9 @@ public class HUD : MonoBehaviour
                 return null;
         }
     }
+
+    public void UpdateTeamPoints(int points, TeamIDEnum team)
+    {
+        GetTeamHUD(team).UpdatePoints(points);
+    }
 }

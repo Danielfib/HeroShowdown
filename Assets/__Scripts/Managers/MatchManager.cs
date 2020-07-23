@@ -31,6 +31,8 @@ public class MatchManager : MonoBehaviour
     #region [Points_Management]
     public void UpdatePoints(TeamIDEnum team, int points)
     {
+        HUDManager.UpdateTeamPoints(points, team);
+
         if (points >= this.MaxPoints)
             EndGame(team);
     }

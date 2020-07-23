@@ -24,8 +24,10 @@ public class TeamHUD : MonoBehaviour
 
     }
 
-    public void IncreaseScore()
+    public void UpdatePoints(int points)
     {
-
+        //TODO: update progress bar
+        //and have maximum score on constant somewhere
+        progressBar.value = (float)points / 5f;
     }
 }
