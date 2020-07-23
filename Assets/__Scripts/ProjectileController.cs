@@ -20,7 +20,9 @@ public class ProjectileController : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
     void Start()

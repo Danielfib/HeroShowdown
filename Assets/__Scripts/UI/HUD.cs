@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerIconsHUD : MonoBehaviour
+public class HUD : MonoBehaviour
 {
     [SerializeField]
     private GameObject PlayerHUDIconPrefab;
 
     [SerializeField]
-    private GameObject RedTeamContainer;
+    private TeamHUD RedTeamContainer;
     [SerializeField]
-    private GameObject BlueTeamContainer;
+    private TeamHUD BlueTeamContainer;
 
     public PlayerHUDIconController LoadPlayerIconToTeam(PlayerData pd)
     {
@@ -23,14 +23,24 @@ public class PlayerIconsHUD : MonoBehaviour
         return playerIcon.GetComponent<PlayerHUDIconController>();
     }
 
+    public void StartFlagRespawn(TeamIDEnum team, float duration)
+    {
+        GetTeamHUD(team).StartFlagCountdown(duration);
+    }
+
     private Transform GetTransformTeamPanel(TeamIDEnum team)
+    {
+        return GetTeamHUD(team).transform;
+    }
+
+    private TeamHUD GetTeamHUD(TeamIDEnum team)
     {
         switch (team)
         {
             case TeamIDEnum.RED:
-                return this.RedTeamContainer.transform;
+                return this.RedTeamContainer;
             case TeamIDEnum.BLUE:
-                return this.BlueTeamContainer.transform;
+                return this.BlueTeamContainer;
             default:
                 return null;
         }

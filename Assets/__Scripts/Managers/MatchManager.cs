@@ -17,12 +17,9 @@ public class MatchManager : MonoBehaviour
     private GameObject FlagPrefab;
     [SerializeField]
     private GameObject UIFlagCountdownPrefab;
-    [SerializeField]
-    private GameObject FlagRespawnCanvas;
 
     [SerializeField]
-    private PlayerIconsHUD PlayerIconsHUD;
-
+    private HUD HUDManager;
 
     private int MaxPoints = 3;
 
@@ -54,19 +51,11 @@ public class MatchManager : MonoBehaviour
 
     private IEnumerator FlagRespawn(float cooldown, TeamIDEnum flagColor)
     {
-        CreateFlagRespawnCountdown(cooldown, flagColor);
-        
+        this.HUDManager.StartFlagRespawn(flagColor, cooldown);
+
         yield return new WaitForSeconds(cooldown);
 
         SpawnNewFlag(flagColor);
-    }
-
-    private void CreateFlagRespawnCountdown(float cooldown, TeamIDEnum team)
-    {
-        GameObject flagCountdown = Instantiate(this.UIFlagCountdownPrefab, this.FlagRespawnCanvas.transform);
-        CircularCountdown countdown = flagCountdown.GetComponent<CircularCountdown>();
-        countdown.SetupColor(team);
-        countdown.StartCountdown(cooldown);
     }
 
     public void SpawnNewFlag(TeamIDEnum flagColor)
@@ -112,7 +101,7 @@ public class MatchManager : MonoBehaviour
         PositionPlayer(player.gameObject.transform, pd.team);
 
         //Loading HUD player icon
-        PlayerHUDIconController iconController = PlayerIconsHUD.LoadPlayerIconToTeam(pd);
+        PlayerHUDIconController iconController = HUDManager.LoadPlayerIconToTeam(pd);
         playerController.PlayerHUDIconController = iconController;
 
         playerController.InitializeAnimators(pd.character.upperBodyAnimator, pd.character.lowerBodyAnimator);
