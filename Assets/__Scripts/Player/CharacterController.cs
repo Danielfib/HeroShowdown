@@ -94,7 +94,7 @@ public class CharacterController : MonoBehaviour
                 Animate(AnimationUtils.AnimationTriggers.IS_TOSS);
                 break;
             case Grabber.GrabTossActionResults.COULD_NOT_GRAB:
-                Animate(AnimationUtils.AnimationTriggers.IS_TOSS);
+                //Animate(AnimationUtils.AnimationTriggers.IS_TOSS);
                 break;
         }
     }
