@@ -8,41 +8,43 @@ public class Flag : MonoBehaviour
 
     public TeamIDEnum teamIDEnum;
 
-    private bool isBeingCarried = false;
-    private bool MayBeCarriedAgain = true;
-
-    public float CooldownAfterDrop = 2f;
-
-    private bool _IsDropped;
-    private bool IsDropped
+    private FlagStates _flagState;
+    public FlagStates FlagState
     {
-        get { return _IsDropped; }
+        get { return this._flagState; }
         set
         {
-            this.Animator.SetBool("IsDropped", value);
-            this._IsDropped = value;
+            this._flagState = value;
+            UpdateFlagState();
         }
     }
+
+    public float CooldownAfterDrop = 2f;
 
     [SerializeField]
     private Transform FlagHolder;
 
+    private void Start()
+    {
+        this.FlagState = FlagStates.NORMAL;    
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isBeingCarried || !this.MayBeCarriedAgain)
+        if (FlagState == FlagStates.BEING_CARRIED || FlagState == FlagStates.DROPPED_COOLDOWN)
             return;
 
         if(collision.gameObject.tag == "Player")
         {
             if(collision.gameObject.GetComponent<CharacterController>().Team != this.teamIDEnum)
             {
-                isBeingCarried = true;
+                this.FlagState = FlagStates.BEING_CARRIED;
                 Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
                 this.FlagHolder.parent = playerFlagPos;
                 this.FlagHolder.localPosition = new Vector3(0, 0, 0);
-                IsDropped = false;
+                this.Animator.SetBool("IsDropped", false);
             }
-            else if (IsDropped)
+            else if (FlagState == FlagStates.DROPPED)
             {
                 Retrieved();
             }
@@ -51,38 +53,45 @@ public class Flag : MonoBehaviour
 
     public void Retrieved()
     {
+        FlagState = FlagStates.NORMAL;
         MatchManager.Instance.StartFlagRespawn(this.teamIDEnum, wasRetrieved: true);
         //TODO: cool effects
         Debug.Log("Flag retrieved!");
         Destroy(this.gameObject);
-        //TODO: Spawn next 
     }
 
     public void Scored()
     {
+        FlagState = FlagStates.NORMAL;
         MatchManager.Instance.StartFlagRespawn(this.teamIDEnum, wasRetrieved: false);
         //TODO: cool effects
         Destroy(this.gameObject);
-        //TODO: Spawn next
     }
 
     public void Drop()
     {
-        StartCoroutine("TriggerCooldownAfterDrop");
-        this.isBeingCarried = false;
+        StartCoroutine(TriggerCooldownAfterDrop());
         this.FlagHolder.parent = null;
-        IsDropped = true;
     }
 
     private IEnumerator TriggerCooldownAfterDrop()
     {
-        this.MayBeCarriedAgain = false;
+        this.FlagState = FlagStates.DROPPED_COOLDOWN;
         yield return new WaitForSeconds(this.CooldownAfterDrop);
-        this.MayBeCarriedAgain = true;
+        this.FlagState = FlagStates.DROPPED;
+        this.Animator.SetBool("IsDropped", true);
     }
 
     private void UpdateFlagState()
     {
-
+        HUDManager.Instance.UpdateFlagStatusIcon(this.teamIDEnum, FlagState);
     }
+}
+
+public enum FlagStates
+{
+    NORMAL,             //In spawn location 
+    DROPPED,            //Dropped in the middle of the map (available to be retrieved)
+    BEING_CARRIED,      //Being carried by enemy
+    DROPPED_COOLDOWN    //Enemy dropped, but still cant pick back up
 }

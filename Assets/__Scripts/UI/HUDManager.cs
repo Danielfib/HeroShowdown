@@ -50,4 +50,9 @@ public class HUDManager : Singleton<HUDManager>
     {
         GetTeamHUD(team).UpdatePoints(points);
     }
+
+    public void UpdateFlagStatusIcon(TeamIDEnum team, FlagStates flagState)
+    {
+        GetTeamHUD(team).UpdateFlagStatus(flagState);
+    }
 }
