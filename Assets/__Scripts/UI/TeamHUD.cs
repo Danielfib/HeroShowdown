@@ -7,8 +7,8 @@ public class TeamHUD : MonoBehaviour
 {
     public TeamIDEnum team;
 
-    [SerializeField]
-    private Transform membersContainer;
+    public Transform membersContainer;
+
     [SerializeField]
     private CircularCountdown flagCountdown;
     [SerializeField]
@@ -62,7 +62,6 @@ public class TeamHUD : MonoBehaviour
                 break;
         }
 
-        
         return sprite;
     }
 }
