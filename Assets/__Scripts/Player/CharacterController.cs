@@ -307,11 +307,6 @@ public class CharacterController : MonoBehaviour
         this.animController?.TrySetTrigger(triggerID);
     }
 
-    private void AnimateUpperBody(string triggerID)
-    {
-        //TODO: animate separately
-    }
-
     private void AnimateMovement()
     {
         if (isGrounded)
