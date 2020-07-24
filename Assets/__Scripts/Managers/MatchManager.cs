@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MatchManager : MonoBehaviour
+public class MatchManager : Singleton<MatchManager>
 {
     public PlayerInputManager PlayerInputManager;
 

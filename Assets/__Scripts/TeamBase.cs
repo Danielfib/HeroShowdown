@@ -7,13 +7,11 @@ public class TeamBase : MonoBehaviour
 {
     public TeamIDEnum teamIdEnum;
 
-    private MatchManager MatchManager;
     private int Points;
 
     private void Start()
     {
-        this.MatchManager = GameObject.FindObjectOfType<MatchManager>();
-        this.MatchManager.SpawnNewFlag(this.teamIdEnum);
+        MatchManager.Instance.SpawnNewFlag(this.teamIdEnum);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +35,7 @@ public class TeamBase : MonoBehaviour
     {
         Debug.Log("Team " + teamIdEnum + " scored!");
         this.Points++;
-        this.MatchManager.UpdatePoints(this.teamIdEnum, this.Points);
+        MatchManager.Instance.UpdatePoints(this.teamIdEnum, this.Points);
     }
 }
 

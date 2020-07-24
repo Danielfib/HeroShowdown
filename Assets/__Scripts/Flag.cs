@@ -51,7 +51,7 @@ public class Flag : MonoBehaviour
 
     public void Retrieved()
     {
-        GameObject.FindObjectOfType<MatchManager>().StartFlagRespawn(this.teamIDEnum, wasRetrieved: true);
+        MatchManager.Instance.StartFlagRespawn(this.teamIDEnum, wasRetrieved: true);
         //TODO: cool effects
         Debug.Log("Flag retrieved!");
         Destroy(this.gameObject);
@@ -60,7 +60,7 @@ public class Flag : MonoBehaviour
 
     public void Scored()
     {
-        GameObject.FindObjectOfType<MatchManager>().StartFlagRespawn(this.teamIDEnum, wasRetrieved: false);
+        MatchManager.Instance.StartFlagRespawn(this.teamIDEnum, wasRetrieved: false);
         //TODO: cool effects
         Destroy(this.gameObject);
         //TODO: Spawn next
@@ -79,5 +79,10 @@ public class Flag : MonoBehaviour
         this.MayBeCarriedAgain = false;
         yield return new WaitForSeconds(this.CooldownAfterDrop);
         this.MayBeCarriedAgain = true;
+    }
+
+    private void UpdateFlagState()
+    {
+
     }
 }
