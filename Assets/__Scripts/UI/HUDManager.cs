@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour
+public class HUDManager : Singleton<HUDManager>
 {
     [SerializeField]
     private GameObject PlayerHUDIconPrefab;

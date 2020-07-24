@@ -18,9 +18,6 @@ public class MatchManager : Singleton<MatchManager>
     [SerializeField]
     private GameObject UIFlagCountdownPrefab;
 
-    [SerializeField]
-    private HUD HUDManager;
-
     private int MaxPoints = 3;
 
     void Start()
@@ -31,7 +28,7 @@ public class MatchManager : Singleton<MatchManager>
     #region [Points_Management]
     public void UpdatePoints(TeamIDEnum team, int points)
     {
-        HUDManager.UpdateTeamPoints(points, team);
+        HUDManager.Instance.UpdateTeamPoints(points, team);
 
         if (points >= this.MaxPoints)
             EndGame(team);
@@ -53,7 +50,7 @@ public class MatchManager : Singleton<MatchManager>
 
     private IEnumerator FlagRespawn(float cooldown, TeamIDEnum flagColor)
     {
-        this.HUDManager.StartFlagRespawn(flagColor, cooldown);
+        HUDManager.Instance.StartFlagRespawn(flagColor, cooldown);
 
         yield return new WaitForSeconds(cooldown);
 
@@ -103,7 +100,7 @@ public class MatchManager : Singleton<MatchManager>
         PositionPlayer(player.gameObject.transform, pd.team);
 
         //Loading HUD player icon
-        PlayerHUDIconController iconController = HUDManager.LoadPlayerIconToTeam(pd);
+        PlayerHUDIconController iconController = HUDManager.Instance.LoadPlayerIconToTeam(pd);
         playerController.PlayerHUDIconController = iconController;
 
         playerController.InitializeAnimators(pd.character.upperBodyAnimator, pd.character.lowerBodyAnimator);
