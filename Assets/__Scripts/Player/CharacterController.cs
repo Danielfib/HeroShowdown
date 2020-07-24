@@ -133,10 +133,11 @@ public class CharacterController : MonoBehaviour
     {
         if (context.performed)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 5);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
             foreach(var col in colliders)
             {
-                if(col.tag == "Interactable")
+                if(col.tag == "Interactable"
+                    && GetComponent<Collider2D>().IsTouching(col))
                 {
                     col.GetComponent<Interactable>().InteractedAction();
                     return;
