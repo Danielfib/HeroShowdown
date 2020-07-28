@@ -45,8 +45,9 @@ public class CharacterController : MonoBehaviour
     }
 
     private bool IsInvulnerable = false;
+    [HideInInspector]
     public bool IsReflectiveToProjectiles = false;
-
+    [HideInInspector]
     public PlayerHUDIconController PlayerHUDIconController;
 
     private AnimatorsController animController;

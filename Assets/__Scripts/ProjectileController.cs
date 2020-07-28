@@ -18,6 +18,8 @@ public class ProjectileController : MonoBehaviour
     [SerializeField]
     private float DestroyAfterSeconds = 5f;
 
+    private CharacterController ignoreCharacter;
+
     private void Awake()
     {
 #if UNITY_EDITOR
@@ -45,8 +47,13 @@ public class ProjectileController : MonoBehaviour
         ProjectileBrain.Think(this);
     }
 
-    public void ReceiveTossAction(Vector2 dir)
+    public void ReceiveTossAction(Vector2 dir, CharacterController cc = null)
     {
+        if(cc != null)
+        {
+            StartCoroutine(IgnoreCharacterCoroutine(cc));
+            this.transform.position = cc.transform.position;
+        }
         GetComponent<Rigidbody2D>().simulated = true;
         this.ProjectileBrain.Toss(this, dir);
     }
@@ -107,25 +114,45 @@ public class ProjectileController : MonoBehaviour
             || this.gameObject.layer == LayerMask.NameToLayer("OnlyHitsPlayers")))
         {
             CharacterController charController = collision.gameObject.GetComponent<CharacterController>();
-            charController.GotHit();
-            if (charController.IsReflectiveToProjectiles)
+            if (charController != this.ignoreCharacter)
             {
-                //Perhaps bring this behaviour to character side?
-                //^if using deflect, for example, to bounce other players, and not only on projectiles
-                Debug.Log("Deflected!!");
-                float deflectForce = TossMagnetude * charController.GetDeflectMagnetude();
-                gotDeflected = true;
+                charController.GotHit();
+                if (charController.IsReflectiveToProjectiles)
+                {
+                    //Perhaps bring this behaviour to character side?
+                    //^if using deflect, for example, to bounce other players, and not only on projectiles
+                    Debug.Log("Deflected!!");
+                    float deflectForce = TossMagnetude * charController.GetDeflectMagnetude();
+                    gotDeflected = true;
                 
-                //Use this code if deflecting to direction following collision direction
-                //Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;
-                Vector2 dir = this.rb.velocity.normalized * -1;//new Vector2(reflectDir.x, reflectDir.y).normalized;
-                this.rb.velocity = Vector2.zero;
-                this.rb.AddForce(dir * deflectForce);
+                    //Use this code if deflecting to direction following collision direction
+                    //Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;
+                    Vector2 dir = this.rb.velocity.normalized * -1;//new Vector2(reflectDir.x, reflectDir.y).normalized;
+                    this.rb.velocity = Vector2.zero;
+                    this.rb.AddForce(dir * deflectForce);
+                }
+            }
+            else
+            {
+                //is colliding with player that tossed
+                return;
             }
         }
 
         if(!gotDeflected) {
             ProjectileBrain.HandleCollision(this);
         }
+    }
+
+    /// <summary>
+    /// This method is used so that when player tossed the projectile, it is not hit by it initially
+    /// </summary>
+    /// <param name="cc"></param>
+    /// <returns></returns>
+    private IEnumerator IgnoreCharacterCoroutine(CharacterController cc)
+    {
+        this.ignoreCharacter = cc;
+        yield return new WaitForSeconds(1f);
+        this.ignoreCharacter = null;
     }
 }
