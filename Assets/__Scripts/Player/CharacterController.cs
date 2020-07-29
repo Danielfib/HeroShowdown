@@ -35,7 +35,8 @@ public class CharacterController : MonoBehaviour
     public float jumpTime;
     private bool canContinueJumping;
 
-    public SAState _SAState = SAState.READY;
+    private SAState _SAState = SAState.READY;
+    [HideInInspector]
     public SAState SAState
     {
         get { return _SAState; }
