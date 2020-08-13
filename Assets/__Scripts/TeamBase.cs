@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class TeamBase : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject scoredParticlesFX;
+
     public TeamIDEnum teamIdEnum;
 
     private int Points;
@@ -35,6 +38,11 @@ public class TeamBase : MonoBehaviour
     {
         Debug.Log("Team " + teamIdEnum + " scored!");
         this.Points++;
+
+        GameObject pfx = Instantiate(scoredParticlesFX, transform);
+        pfx.GetComponent<Renderer>().material.color = ColorUtils.TeamIdEnumToColor(teamIdEnum);
+        Destroy(pfx, 2f);
+
         MatchManager.Instance.UpdatePoints(this.teamIdEnum, this.Points);
     }
 }
