@@ -7,6 +7,7 @@ public class CharacterSO : ScriptableObject
 {
     public string name;
     public Sprite sprite;
+    public Sprite HUDIcon;
 
     public RuntimeAnimatorController upperBodyAnimator;
     public RuntimeAnimatorController lowerBodyAnimator;

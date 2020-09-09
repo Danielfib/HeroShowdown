@@ -18,7 +18,7 @@ public class HUDManager : Singleton<HUDManager>
         GameObject playerIcon = Instantiate(this.PlayerHUDIconPrefab, GetTeamHUD(pd.team).membersContainer);
 
         Image playerImage = playerIcon.GetComponent<Image>();
-        playerImage.sprite = pd.character.sprite;
+        playerImage.sprite = pd.character.HUDIcon;
 
         return playerIcon.GetComponent<PlayerHUDIconController>();
     }
