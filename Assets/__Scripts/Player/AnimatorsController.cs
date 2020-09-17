@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimatorsController : MonoBehaviour
 {
     private Animator[] animators;
+    private CharacterController cc;
 
     [System.NonSerialized]
     public TeamIDEnum teamIDEnum;
@@ -12,8 +13,17 @@ public class AnimatorsController : MonoBehaviour
     void Start()
     {
         var animators = GetComponentsInChildren<Animator>();
+        cc = GetComponentInParent<CharacterController>();
         this.animators = animators;
         SetupSpriteMaterials();
+    }
+
+    private void Update()
+    {
+        foreach(var animator in this.animators)
+        {
+            animator.SetBool("IsGrounded", cc.isGrounded);
+        }
     }
 
     public void TrySetTrigger(string triggerID)

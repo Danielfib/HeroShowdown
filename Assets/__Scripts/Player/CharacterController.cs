@@ -26,7 +26,8 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveDirection;
 
-    private bool isGrounded;
+    [HideInInspector]
+    public bool isGrounded;
     public Transform feetPos;
     public float checkRadius;
     public LayerMask whatIsGround;

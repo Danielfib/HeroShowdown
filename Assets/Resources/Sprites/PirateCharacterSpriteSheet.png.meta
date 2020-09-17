@@ -86,6 +86,120 @@ TextureImporter:
   - first:
       213: 2161762469654021811
     second: PirateCharacterSpriteSheet_27
+  - first:
+      213: -6010500381579148083
+    second: PirateCharacterSpriteSheet_0
+  - first:
+      213: -8613897677566735468
+    second: PirateCharacterSpriteSheet_1
+  - first:
+      213: 2141290371229649303
+    second: PirateCharacterSpriteSheet_2
+  - first:
+      213: 325802383576005774
+    second: PirateCharacterSpriteSheet_3
+  - first:
+      213: 5407929042408988626
+    second: PirateCharacterSpriteSheet_4
+  - first:
+      213: -215749383177070101
+    second: PirateCharacterSpriteSheet_5
+  - first:
+      213: -1288011158810658616
+    second: PirateCharacterSpriteSheet_6
+  - first:
+      213: -7126798261888568473
+    second: PirateCharacterSpriteSheet_7
+  - first:
+      213: 6765217340781587244
+    second: PirateCharacterSpriteSheet_8
+  - first:
+      213: -8208220901531985084
+    second: PirateCharacterSpriteSheet_9
+  - first:
+      213: -2740298140368885146
+    second: PirateCharacterSpriteSheet_10
+  - first:
+      213: -8701384434562528214
+    second: PirateCharacterSpriteSheet_11
+  - first:
+      213: -7040524082325754906
+    second: PirateCharacterSpriteSheet_12
+  - first:
+      213: 4598756055401653703
+    second: PirateCharacterSpriteSheet_13
+  - first:
+      213: 988662956105756542
+    second: PirateCharacterSpriteSheet_14
+  - first:
+      213: 1329714859239101952
+    second: PirateCharacterSpriteSheet_15
+  - first:
+      213: 8298849135214003483
+    second: PirateCharacterSpriteSheet_16
+  - first:
+      213: 3167064300686015328
+    second: PirateCharacterSpriteSheet_17
+  - first:
+      213: 8708659964206122839
+    second: PirateCharacterSpriteSheet_18
+  - first:
+      213: 7164631093637328737
+    second: PirateCharacterSpriteSheet_19
+  - first:
+      213: -1038923080855625650
+    second: PirateCharacterSpriteSheet_20
+  - first:
+      213: 6587832115614216577
+    second: PirateCharacterSpriteSheet_21
+  - first:
+      213: 5037875939067969603
+    second: PirateCharacterSpriteSheet_22
+  - first:
+      213: -4204742551493153667
+    second: PirateCharacterSpriteSheet_23
+  - first:
+      213: 3632141814517361983
+    second: PirateCharacterSpriteSheet_24
+  - first:
+      213: -4464761118701213673
+    second: PirateCharacterSpriteSheet_25
+  - first:
+      213: 3619064524570277866
+    second: PirateCharacterSpriteSheet_26
+  - first:
+      213: 6972202046355589497
+    second: PirateCharacterSpriteSheet_27
+  - first:
+      213: 4548167746272175929
+    second: PirateCharacterSpriteSheet_28
+  - first:
+      213: -5839155153206963165
+    second: PirateCharacterSpriteSheet_29
+  - first:
+      213: -6601200430471862970
+    second: PirateCharacterSpriteSheet_30
+  - first:
+      213: -6476772571706529273
+    second: PirateCharacterSpriteSheet_31
+  - first:
+      213: 128564136271040755
+    second: PirateCharacterSpriteSheet_32
+  - first:
+      213: -2247366698671998222
+    second: PirateCharacterSpriteSheet_33
+  - first:
+      213: 3642954834308980008
+    second: PirateCharacterSpriteSheet_34
+  - first:
+      213: 5511262723175939211
+    second: PirateCharacterSpriteSheet_35
+  - first:
+      213: 2281023806723384084
+    second: PirateCharacterSpriteSheet_36
+  - first:
+      213: 2116586138974052709
+    second: PirateCharacterSpriteSheet_37
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -199,7 +313,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6
-        y: 147
+        y: 146
         width: 21
         height: 26
       alignment: 9
@@ -240,12 +354,12 @@ TextureImporter:
       name: PirateCharacterSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 84
-        y: 149
-        width: 21
-        height: 27
+        x: 72
+        y: 148
+        width: 19
+        height: 24
       alignment: 9
-      pivot: {x: 0.59403735, y: 0.09295993}
+      pivot: {x: 0.66090757, y: 0.06181844}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -303,12 +417,12 @@ TextureImporter:
       name: PirateCharacterSpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 91
-        y: 129
-        width: 10
+        x: 77
+        y: 128
+        width: 12
         height: 14
       alignment: 9
-      pivot: {x: 0.64596176, y: 0.9599642}
+      pivot: {x: 0.6199665, y: 0.82627434}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -778,6 +892,216 @@ TextureImporter:
       bones: []
       spriteID: 3b6cf7c338f100e10800000000000000
       internalID: 2161762469654021811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 128
+        width: 12
+        height: 16
+      alignment: 9
+      pivot: {x: 0.6275406, y: 0.8394232}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 937217fc7765e1f30800000000000000
+      internalID: 4548167746272175929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 147
+        width: 19
+        height: 27
+      alignment: 9
+      pivot: {x: 0.60653687, y: 0.094063655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32415b8435727fea0800000000000000
+      internalID: -5839155153206963165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 151
+        width: 21
+        height: 25
+      alignment: 9
+      pivot: {x: 0.6413923, y: 0.017648315}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645a192ee23d364a0800000000000000
+      internalID: -6601200430471862970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 129
+        width: 10
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5536087, y: 0.9525299}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a607459a1ed16a0800000000000000
+      internalID: -6476772571706529273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 128
+        width: 13
+        height: 16
+      alignment: 9
+      pivot: {x: 0.49536017, y: 0.8392086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f05a499660c8c100800000000000000
+      internalID: 128564136271040755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 149
+        width: 21
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5435057, y: 0.09590031}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fafc9505efbfc0e0800000000000000
+      internalID: -2247366698671998222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 128
+        width: 12
+        height: 14
+      alignment: 9
+      pivot: {x: 0.62302524, y: 0.81325203}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d57cfde106e8230800000000000000
+      internalID: 3642954834308980008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 148
+        width: 19
+        height: 24
+      alignment: 9
+      pivot: {x: 0.66259766, y: 0.06418419}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8cf0ce2f30fb7c40800000000000000
+      internalID: 5511262723175939211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 150
+        width: 21
+        height: 26
+      alignment: 9
+      pivot: {x: 0.6430526, y: 0.060641363}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 413e4fb1113d7af10800000000000000
+      internalID: 2281023806723384084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateCharacterSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 129
+        width: 10
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5534973, y: 0.95854515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561601611ef9f5d10800000000000000
+      internalID: 2116586138974052709
       vertices: []
       indices: 
       edges: []
