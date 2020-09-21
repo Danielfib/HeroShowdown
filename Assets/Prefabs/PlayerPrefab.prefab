@@ -155,7 +155,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.095243156, y: 0.18694651}
+  m_Offset: {x: -0.11040956, y: 0.19738185}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -166,7 +166,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.67296696, y: 1.8571742}
+  m_Size: {x: 0.7110354, y: 1.9384091}
   m_EdgeRadius: 0.1
 --- !u!50 &3670669546270193133
 Rigidbody2D:
@@ -207,6 +207,7 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 10
   Animator: {fileID: 0}
+  isGrounded: 0
   feetPos: {fileID: 3670669546456621193}
   checkRadius: 0.45
   whatIsGround:
@@ -215,6 +216,8 @@ MonoBehaviour:
   jumpTime: 0.3
   IsReflectiveToProjectiles: 0
   PlayerHUDIconController: {fileID: 0}
+  dieFXPrefab: {fileID: 6520213445659637759, guid: 2e8f8bfdc5f0c5d42b6f92b8b37a58f5,
+    type: 3}
 --- !u!114 &-10280573032050441
 MonoBehaviour:
   m_ObjectHideFlags: 0

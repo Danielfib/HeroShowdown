@@ -54,6 +54,9 @@ public class CharacterController : MonoBehaviour
 
     private AnimatorsController animController;
 
+    [SerializeField]
+    private GameObject dieFXPrefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -105,6 +108,10 @@ public class CharacterController : MonoBehaviour
     public void DieDefault()
     {
         //this.Animator.SetTrigger("Die");
+        var fx = Instantiate(dieFXPrefab);
+        fx.transform.position = transform.position;
+        fx.GetComponent<Renderer>().material.color = ColorUtils.TeamIdEnumToColor(Team);
+
         GetComponent<PlayerRespawnManager>().StartRespawnCounter(this.PlayerHUDIconController);
     }
     
