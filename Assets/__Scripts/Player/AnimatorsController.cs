@@ -33,6 +33,7 @@ public class AnimatorsController : MonoBehaviour
             foreach(var animator in this.animators)
             {
                 animator.SetTrigger(triggerID);
+
             }
         }
     }

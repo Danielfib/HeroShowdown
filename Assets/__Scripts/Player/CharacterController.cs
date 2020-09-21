@@ -45,6 +45,8 @@ public class CharacterController : MonoBehaviour
             _SAState = value;
         }
     }
+    [HideInInspector]
+    public SpriteBarCooldown sbCooldown;
 
     private bool IsInvulnerable = false;
     [HideInInspector]
@@ -61,6 +63,7 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animController = GetComponentInChildren<AnimatorsController>();
+        sbCooldown = GetComponentInChildren<SpriteBarCooldown>();
         animController.teamIDEnum = this.Team;
 
         this.CharacterBrain.Initialize(this);
@@ -281,7 +284,6 @@ public class CharacterController : MonoBehaviour
         this.rb.gravityScale = 3;
         this.rb.mass = 1;
         this.IsReflectiveToProjectiles = false;
-        this.SAState = SAState.COOLDOWN;
     }
 
     public float GetDeflectMagnetude()

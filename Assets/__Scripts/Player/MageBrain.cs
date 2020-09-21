@@ -40,6 +40,8 @@ public class MageBrain : CharacterBrain
                 {
                     DeflectTimer = DeflectCooldown;
                     characterController.DeactivatedDeflective();
+                    characterController.SetSAState(SAState.COOLDOWN);
+                    characterController.sbCooldown.startCountdown(DeflectCooldown);
                 }
                 break;
             case SAState.COOLDOWN:
