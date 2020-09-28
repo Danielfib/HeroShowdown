@@ -12,5 +12,6 @@ public static class AnimationUtils
         public static string IS_SPECIAL_ACTION = "UsedSpecialAction";
         public static string IS_TOSS = "Tossed";
         public static string IS_GRAB = "Grabbed";
+        public static string ENDED_SPECIAL_ACTION = "EndedSpecialAction";
     }
 }

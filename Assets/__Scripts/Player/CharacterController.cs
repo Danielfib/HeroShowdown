@@ -290,6 +290,11 @@ public class CharacterController : MonoBehaviour
     {
         return ((MageBrain)CharacterBrain).DeflectMagnetude;
     }
+
+    public void FinishedSpecialAction()
+    {
+        Animate(AnimationUtils.AnimationTriggers.ENDED_SPECIAL_ACTION);
+    }
     #endregion
 
     #region [Auxiliary]
@@ -333,7 +338,7 @@ public class CharacterController : MonoBehaviour
             }
         } else
         {
-            Animate(AnimationUtils.AnimationTriggers.IS_JUMPING);
+            //Animate(AnimationUtils.AnimationTriggers.IS_JUMPING);
         }
     }
     #endregion

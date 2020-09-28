@@ -32,6 +32,7 @@ public class PirateBrain : CharacterBrain
                 {
                     DodgeTimer = DodgeCooldown;
                     characterController.SetSAState(SAState.COOLDOWN);
+                    characterController.FinishedSpecialAction();
                     characterController.sbCooldown.startCountdown(DodgeCooldown);
                     characterController.SetInvulnerability(false);
                 }

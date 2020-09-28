@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AnimatorsController : MonoBehaviour
@@ -12,7 +13,7 @@ public class AnimatorsController : MonoBehaviour
 
     void Start()
     {
-        var animators = GetComponentsInChildren<Animator>();
+        var animators = GetComponentsInChildren<Animator>().Where(x => x.runtimeAnimatorController).ToArray();
         cc = GetComponentInParent<CharacterController>();
         this.animators = animators;
         SetupSpriteMaterials();
@@ -33,7 +34,6 @@ public class AnimatorsController : MonoBehaviour
             foreach(var animator in this.animators)
             {
                 animator.SetTrigger(triggerID);
-
             }
         }
     }
