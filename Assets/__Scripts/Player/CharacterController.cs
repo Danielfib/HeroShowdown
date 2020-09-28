@@ -302,15 +302,15 @@ public class CharacterController : MonoBehaviour
     #region [Animation]
     public void InitializeAnimators(RuntimeAnimatorController up, RuntimeAnimatorController lower)
     {
-        if(up == null || lower == null)
+        if(up == null && lower == null)
         {
             Debug.LogError("No animators to asign");
         }
 
         Animator[] animators = this.transform.GetComponentsInChildren<Animator>();
 
-        animators[0].runtimeAnimatorController = lower;
-        animators[1].runtimeAnimatorController = up;
+        if(lower) animators[0].runtimeAnimatorController = lower;
+        if(up) animators[1].runtimeAnimatorController = up;
     }
 
     private void Animate(string triggerID)

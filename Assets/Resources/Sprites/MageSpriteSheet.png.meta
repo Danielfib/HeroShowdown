@@ -1,0 +1,1268 @@
+fileFormatVersion: 2
+guid: 1cc03f8caf48b1340a7098d7d0a35646
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2161728569512832201
+    second: MageSpriteSheet_0
+  - first:
+      213: -5434629368432878890
+    second: MageSpriteSheet_1
+  - first:
+      213: -5298819370399050267
+    second: MageSpriteSheet_2
+  - first:
+      213: -3779218348937293656
+    second: MageSpriteSheet_3
+  - first:
+      213: -8531513467757050114
+    second: MageSpriteSheet_4
+  - first:
+      213: 6519225846045719417
+    second: MageSpriteSheet_5
+  - first:
+      213: -2332254044033850698
+    second: MageSpriteSheet_6
+  - first:
+      213: 7432205722425313948
+    second: MageSpriteSheet_7
+  - first:
+      213: -2839533820035865682
+    second: MageSpriteSheet_8
+  - first:
+      213: -1171933793611929972
+    second: MageSpriteSheet_9
+  - first:
+      213: -8550273365470191606
+    second: MageSpriteSheet_10
+  - first:
+      213: 5788937459131311448
+    second: MageSpriteSheet_11
+  - first:
+      213: -1537751206137411051
+    second: MageSpriteSheet_12
+  - first:
+      213: -6215519669566578302
+    second: MageSpriteSheet_13
+  - first:
+      213: -8502596950628598908
+    second: MageSpriteSheet_14
+  - first:
+      213: 8477639180788064130
+    second: MageSpriteSheet_15
+  - first:
+      213: 897588123718563972
+    second: MageSpriteSheet_16
+  - first:
+      213: -2965624742445955032
+    second: MageSpriteSheet_17
+  - first:
+      213: -6107161502777308537
+    second: MageSpriteSheet_18
+  - first:
+      213: -9134796138812633676
+    second: MageSpriteSheet_19
+  - first:
+      213: -3105835233258704486
+    second: MageSpriteSheet_20
+  - first:
+      213: -4583418360843603394
+    second: MageSpriteSheet_21
+  - first:
+      213: 5812563291824362972
+    second: MageSpriteSheet_22
+  - first:
+      213: -7772219070456563851
+    second: MageSpriteSheet_23
+  - first:
+      213: -7415947039816924990
+    second: MageSpriteSheet_24
+  - first:
+      213: -6433660211993746681
+    second: MageSpriteSheet_25
+  - first:
+      213: 4981682522052925524
+    second: MageSpriteSheet_26
+  - first:
+      213: 3958185883767839225
+    second: MageSpriteSheet_27
+  - first:
+      213: 7980392371447688010
+    second: MageSpriteSheet_28
+  - first:
+      213: -4655129175161635512
+    second: MageSpriteSheet_29
+  - first:
+      213: -4725575198452885501
+    second: MageSpriteSheet_30
+  - first:
+      213: -4360963898492196931
+    second: MageSpriteSheet_31
+  - first:
+      213: 2616348558825702427
+    second: MageSpriteSheet_32
+  - first:
+      213: -7271120787376038637
+    second: MageSpriteSheet_33
+  - first:
+      213: -7988313774960017189
+    second: MageSpriteSheet_34
+  - first:
+      213: 1326122208418094826
+    second: MageSpriteSheet_35
+  - first:
+      213: 8662793108890333618
+    second: MageSpriteSheet_36
+  - first:
+      213: 5364592519397173332
+    second: MageSpriteSheet_37
+  - first:
+      213: 3860891694028348804
+    second: MageSpriteSheet_38
+  - first:
+      213: 2857522440324811627
+    second: MageSpriteSheet_39
+  - first:
+      213: 4881071889658108494
+    second: MageSpriteSheet_40
+  - first:
+      213: -4802952053501916243
+    second: MageSpriteSheet_41
+  - first:
+      213: -9087437066155795227
+    second: MageSpriteSheet_42
+  - first:
+      213: 2386044186583894911
+    second: MageSpriteSheet_43
+  - first:
+      213: -2711010876723845959
+    second: MageSpriteSheet_44
+  - first:
+      213: 2911085146654057482
+    second: MageSpriteSheet_45
+  - first:
+      213: -7881111462349805191
+    second: MageSpriteSheet_46
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MageSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 191
+        width: 22
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733df51c15ffff1e0800000000000000
+      internalID: -2161728569512832201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 191
+        width: 22
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6da17a022615494b0800000000000000
+      internalID: -5434629368432878890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 191
+        width: 24
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5d7626bdfc676b0800000000000000
+      internalID: -5298819370399050267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 191
+        width: 23
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a054fe4fe48d8bc0800000000000000
+      internalID: -3779218348937293656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 191
+        width: 22
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef641e5f3b9f99980800000000000000
+      internalID: -8531513467757050114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 191
+        width: 23
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bb91cdd51f87a50800000000000000
+      internalID: 6519225846045719417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 191
+        width: 25
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2e463cd4b22afd0800000000000000
+      internalID: -2332254044033850698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 191
+        width: 24
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a49ce1abf742760800000000000000
+      internalID: 7432205722425313948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 143
+        width: 23
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3ed010903f798d0800000000000000
+      internalID: -2839533820035865682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 144
+        width: 23
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c862c738c647cbfe0800000000000000
+      internalID: -1171933793611929972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 145
+        width: 23
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a006aa6eca3575980800000000000000
+      internalID: -8550273365470191606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 167
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855697ea2ff665050800000000000000
+      internalID: 5788937459131311448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 144
+        width: 23
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a4045ec6fc8aae0800000000000000
+      internalID: -1537751206137411051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 181
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281e701bac90eb9a0800000000000000
+      internalID: -6215519669566578302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 143
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b76714f15b00a80800000000000000
+      internalID: -8502596950628598908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 144
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f5ec02bef96a570800000000000000
+      internalID: 8477639180788064130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 143
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 488bad494afd47c00800000000000000
+      internalID: 897588123718563972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 143
+        width: 25
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8284661620cf7d6d0800000000000000
+      internalID: -2965624742445955032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 166
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a840968f00f3ba0800000000000000
+      internalID: -6107161502777308537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 172
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd867a5f4faa3180800000000000000
+      internalID: -9134796138812633676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 155
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a91f8be8f4bd5e4d0800000000000000
+      internalID: -3105835233258704486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 150
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e32f9e8e84d6460c0800000000000000
+      internalID: -4583418360843603394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 157
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd59aa3848f5aa050800000000000000
+      internalID: 5812563291824362972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 151
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5777be43fe7832490800000000000000
+      internalID: -7772219070456563851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 147
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c04a9a6573451990800000000000000
+      internalID: -7415947039816924990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 148
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7036c8acf1c07b6a0800000000000000
+      internalID: -6433660211993746681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 144
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4589cb61cdd722540800000000000000
+      internalID: 4981682522052925524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 96
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f992f4071d4ee630800000000000000
+      internalID: 3958185883767839225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 96
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b6064749c00ce60800000000000000
+      internalID: 7980392371447688010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 96
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84dfeeadda8a56fb0800000000000000
+      internalID: -4655129175161635512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 96
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308d1d8e4626b6eb0800000000000000
+      internalID: -4725575198452885501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 96
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7e110907eba73c0800000000000000
+      internalID: -4360963898492196931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 96
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b144969f6232f4420800000000000000
+      internalID: 2616348558825702427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 96
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d1e7dfa2ac71b90800000000000000
+      internalID: -7271120787376038637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 95
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0062112fec32190800000000000000
+      internalID: -7988313774960017189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 47
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aee54895f15576210800000000000000
+      internalID: 1326122208418094826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 47
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b13c126f6c683870800000000000000
+      internalID: 8662793108890333618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 47
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458e26b397cd27a40800000000000000
+      internalID: 5364592519397173332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 47
+        width: 22
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48dd0d23a84a49530800000000000000
+      internalID: 3860891694028348804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 48
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b84490585f7a720800000000000000
+      internalID: 2857522440324811627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 50
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a573ac50d0db340800000000000000
+      internalID: 4881071889658108494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 50
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab09c1fd8c785db0800000000000000
+      internalID: -4802952053501916243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_42
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 48
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ecd019b220f2e180800000000000000
+      internalID: -9087437066155795227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_43
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b08bfbb8eec1120800000000000000
+      internalID: 2386044186583894911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_44
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 0
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4a7ae98fd806ad0800000000000000
+      internalID: -2711010876723845959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_45
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 0
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a042b3d6480466820800000000000000
+      internalID: 2911085146654057482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MageSpriteSheet_46
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979616381eaa0a290800000000000000
+      internalID: -7881111462349805191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

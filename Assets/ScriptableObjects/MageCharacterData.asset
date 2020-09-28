@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MageCharacterData
   m_EditorClassIdentifier: 
   name: 
-  sprite: {fileID: -5157728286253989380, guid: 02fd0400bc02fab4e9dd36413152e52b, type: 3}
+  sprite: {fileID: -2161728569512832201, guid: 1cc03f8caf48b1340a7098d7d0a35646, type: 3}
   HUDIcon: {fileID: -3876643576250633040, guid: e15bc0094a5a51e4185ebe230031a81f,
     type: 3}
   upperBodyAnimator: {fileID: 0}
-  lowerBodyAnimator: {fileID: 0}
+  lowerBodyAnimator: {fileID: 9100000, guid: 51b78d82af7c8e74bb24e0e77f54b7dc, type: 2}
