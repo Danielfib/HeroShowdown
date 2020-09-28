@@ -95,7 +95,7 @@ public class MatchManager : Singleton<MatchManager>
                 playerController.CharacterBrain = Resources.Load<PirateBrain>("CharacterBrains/PirateBrain");
                 break;
         }
-        
+
         playerController.Team = pd.team;
         PositionPlayer(player.gameObject.transform, pd.team);
 
