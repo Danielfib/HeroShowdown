@@ -63,7 +63,10 @@ public class Grabber : MonoBehaviour
         else
         {
             TossObject(dir);
-            return GrabTossActionResults.TOSSED;
+            if (dir == Vector2.zero)
+                return GrabTossActionResults.RELEASED;
+            else
+                return GrabTossActionResults.TOSSED;
         }
     }
 
@@ -80,6 +83,7 @@ public class Grabber : MonoBehaviour
     {
         GRABBED,
         TOSSED,
-        COULD_NOT_GRAB
+        COULD_NOT_GRAB,
+        RELEASED
     }
 }

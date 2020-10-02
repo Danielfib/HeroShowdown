@@ -219,6 +219,8 @@ MonoBehaviour:
   PlayerHUDIconController: {fileID: 0}
   dieFXPrefab: {fileID: 6520213445659637759, guid: 2e8f8bfdc5f0c5d42b6f92b8b37a58f5,
     type: 3}
+  tossFXPrefab: {fileID: 9043163370897410451, guid: 5d780b997151e8a4a92752a2715ca779,
+    type: 3}
 --- !u!114 &-10280573032050441
 MonoBehaviour:
   m_ObjectHideFlags: 0
