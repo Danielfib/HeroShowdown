@@ -53,6 +53,9 @@ TagManager:
   - name: Ground
     uniqueID: 3786835211
     locked: 0
+  - name: TeamBase
+    uniqueID: 3295291181
+    locked: 0
   - name: Foreground
     uniqueID: 1909155955
     locked: 0

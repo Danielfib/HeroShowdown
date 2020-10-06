@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 [RequireComponent(typeof(Collider2D))]
 public class TeamBase : MonoBehaviour
@@ -15,6 +16,9 @@ public class TeamBase : MonoBehaviour
     private void Start()
     {
         MatchManager.Instance.SpawnNewFlag(this.teamIdEnum);
+        Color c = ColorUtils.TeamIdEnumToColor(teamIdEnum);
+        GetComponent<SpriteRenderer>().color = c;
+        GetComponent<Light2D>().color = c;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
