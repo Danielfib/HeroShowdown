@@ -107,6 +107,75 @@ TextureImporter:
   - first:
       213: -9173544209066347279
     second: PirateLevelTileset_18
+  - first:
+      213: 779069385811187509
+    second: PirateLevelTileset_16
+  - first:
+      213: -3178852535744153678
+    second: PirateLevelTileset_17
+  - first:
+      213: -3314071538429712147
+    second: PirateLevelTileset_18
+  - first:
+      213: -7640094308872663657
+    second: PirateLevelTileset_19
+  - first:
+      213: 1443563351875290681
+    second: PirateLevelTileset_20
+  - first:
+      213: 6186206104738493270
+    second: PirateLevelTileset_21
+  - first:
+      213: -5973332128289962729
+    second: PirateLevelTileset_22
+  - first:
+      213: -5796975711618701693
+    second: PirateLevelTileset_23
+  - first:
+      213: -7774596484313323615
+    second: PirateLevelTileset_24
+  - first:
+      213: -7887486548036390399
+    second: PirateLevelTileset_19
+  - first:
+      213: 316963625495389188
+    second: PirateLevelTileset_20
+  - first:
+      213: -8148952979297829730
+    second: PirateLevelTileset_21
+  - first:
+      213: -6240465779106351098
+    second: PirateLevelTileset_22
+  - first:
+      213: 195712444423256131
+    second: PirateLevelTileset_23
+  - first:
+      213: 1802674346016537338
+    second: PirateLevelTileset_24
+  - first:
+      213: 7452018227180432843
+    second: PirateLevelTileset_25
+  - first:
+      213: 3736684278877799684
+    second: PirateLevelTileset_26
+  - first:
+      213: 6790282441951652761
+    second: PirateLevelTileset_25
+  - first:
+      213: 304978168961763417
+    second: PirateLevelTileset_26
+  - first:
+      213: 2525444578775453025
+    second: PirateLevelTileset_27
+  - first:
+      213: -6456025238328686803
+    second: PirateLevelTileset_28
+  - first:
+      213: -7087216920367867452
+    second: PirateLevelTileset_29
+  - first:
+      213: -6115959993732090548
+    second: PirateLevelTileset_30
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -220,7 +289,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 48
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -241,7 +310,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 48
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -262,7 +331,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 48
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -283,7 +352,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 48
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -304,7 +373,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -325,7 +394,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -346,7 +415,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 32
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -366,8 +435,8 @@ TextureImporter:
       name: PirateLevelTileset_7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -387,8 +456,8 @@ TextureImporter:
       name: PirateLevelTileset_8
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -408,8 +477,8 @@ TextureImporter:
       name: PirateLevelTileset_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 48
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -429,8 +498,8 @@ TextureImporter:
       name: PirateLevelTileset_10
       rect:
         serializedVersion: 2
-        x: 48
-        y: 16
+        x: 80
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -450,8 +519,8 @@ TextureImporter:
       name: PirateLevelTileset_11
       rect:
         serializedVersion: 2
-        x: 80
-        y: 16
+        x: 112
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -471,8 +540,8 @@ TextureImporter:
       name: PirateLevelTileset_12
       rect:
         serializedVersion: 2
-        x: 112
-        y: 16
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -492,8 +561,8 @@ TextureImporter:
       name: PirateLevelTileset_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -513,8 +582,8 @@ TextureImporter:
       name: PirateLevelTileset_14
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -534,8 +603,8 @@ TextureImporter:
       name: PirateLevelTileset_15
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 48
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -555,8 +624,8 @@ TextureImporter:
       name: PirateLevelTileset_16
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 64
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -566,8 +635,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 011ad6555abf365f0800000000000000
-      internalID: -764490824201428720
+      spriteID: 53758ac8a7fcfca00800000000000000
+      internalID: 779069385811187509
       vertices: []
       indices: 
       edges: []
@@ -576,7 +645,196 @@ TextureImporter:
       name: PirateLevelTileset_17
       rect:
         serializedVersion: 2
-        x: 64
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b7be95067272e3d0800000000000000
+      internalID: -3178852535744153678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_18
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de82aa79e7d0202d0800000000000000
+      internalID: -3314071538429712147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1027e9536c40a8290800000000000000
+      internalID: -7887486548036390399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_20
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4046f50fcb4166400800000000000000
+      internalID: 316963625495389188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9c7799b07a19ee80800000000000000
+      internalID: -8148952979297829730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6087263ff696569a0800000000000000
+      internalID: -6240465779106351098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_23
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348b8f76e6f47b200800000000000000
+      internalID: 195712444423256131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa760844c2640910800000000000000
+      internalID: 1802674346016537338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_25
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ba91d87edeb3e50800000000000000
+      internalID: 6790282441951652761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_26
+      rect:
+        serializedVersion: 2
+        x: 80
         y: 0
         width: 16
         height: 16
@@ -587,14 +845,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37fcaab3137b37fc0800000000000000
-      internalID: -3498251063454412941
+      spriteID: 958073167008b3400800000000000000
+      internalID: 304978168961763417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PirateLevelTileset_18
+      name: PirateLevelTileset_27
       rect:
         serializedVersion: 2
         x: 96
@@ -608,8 +866,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f43247352601b080800000000000000
-      internalID: -9173544209066347279
+      spriteID: 16dc8d9c67e2c0320800000000000000
+      internalID: 2525444578775453025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_28
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27467050479766a0800000000000000
+      internalID: -6456025238328686803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9d557b2c525ad90800000000000000
+      internalID: -7087216920367867452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PirateLevelTileset_30
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4539191acebf1ba0800000000000000
+      internalID: -6115959993732090548
       vertices: []
       indices: 
       edges: []
