@@ -10,6 +10,7 @@ public class MS_PlayerInputHandler : MonoBehaviour
     void Start()
     {
         optionsManager = GameObject.FindObjectOfType<MS_OptionsManager>();
+        optionsManager.InitializeSelector();
     }
 
     public void Navigate(CallbackContext context)

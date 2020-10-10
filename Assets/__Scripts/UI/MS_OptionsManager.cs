@@ -15,7 +15,7 @@ public class MS_OptionsManager : MonoBehaviour
     private void Start()
     {
         selector = Instantiate(selectorPrefab, transform.parent);
-        UpdateSelectorPosition();
+        selector.SetActive(false);
     }
 
     public void Navigate(Vector2 dir)
@@ -57,5 +57,11 @@ public class MS_OptionsManager : MonoBehaviour
             selectedIndex--;
         else
             selectedIndex = transform.childCount - 1;
+    }
+
+    public void InitializeSelector()
+    {
+        selector.SetActive(true);
+        selector.transform.position = transform.GetChild(0).transform.position;
     }
 }
