@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class MS_OptionsManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class MS_OptionsManager : MonoBehaviour
 
     public void Navigate(Vector2 dir)
     {
-        if (dir.y < 0)
+        if (dir.y > 0)
             DecreaseSelectedIndex();
         else
             IncreaseSelectedIndex();
@@ -29,7 +30,7 @@ public class MS_OptionsManager : MonoBehaviour
 
     public void Submit()
     {
-
+        transform.GetChild(selectedIndex).GetComponent<Button>().onClick.Invoke();
     }
 
     public void Cancel()
@@ -39,7 +40,7 @@ public class MS_OptionsManager : MonoBehaviour
 
     private void UpdateSelectorPosition()
     {
-        selector.transform.DOMove(transform.GetChild(selectedIndex).transform.position, 0.4f);
+        selector.transform.DOMove(transform.GetChild(selectedIndex).transform.position, 0.2f);
     }
 
     private void IncreaseSelectedIndex()
