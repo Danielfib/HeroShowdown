@@ -45,7 +45,7 @@ public class MS_OptionsManager : MonoBehaviour
     private void UpdateSelectorPosition()
     {
         Vector3 finalPos = transform.GetChild(selectedIndex).transform.position;
-        finalPos.x = 340;
+        finalPos.x = -10f;
         selector.transform.DOMove(finalPos, 0.2f);
     }
 
