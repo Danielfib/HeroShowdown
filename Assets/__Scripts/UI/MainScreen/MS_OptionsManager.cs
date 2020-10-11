@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 public class MS_OptionsManager : MonoBehaviour
 {
@@ -20,11 +21,14 @@ public class MS_OptionsManager : MonoBehaviour
 
     public void Navigate(Vector2 dir)
     {
+        transform.GetChild(selectedIndex).GetComponentInChildren<TextMeshProUGUI>().color = ColorUtils.UnselectedButtonColor;
+
         if (dir.y > 0)
             DecreaseSelectedIndex();
         else
             IncreaseSelectedIndex();
 
+        transform.GetChild(selectedIndex).GetComponentInChildren<TextMeshProUGUI>().color = ColorUtils.SelectedButtonColor;
         UpdateSelectorPosition();
     }
 
@@ -40,7 +44,9 @@ public class MS_OptionsManager : MonoBehaviour
 
     private void UpdateSelectorPosition()
     {
-        selector.transform.DOMove(transform.GetChild(selectedIndex).transform.position, 0.2f);
+        Vector3 finalPos = transform.GetChild(selectedIndex).transform.position;
+        finalPos.x = 340;
+        selector.transform.DOMove(finalPos, 0.2f);
     }
 
     private void IncreaseSelectedIndex()
@@ -63,5 +69,6 @@ public class MS_OptionsManager : MonoBehaviour
     {
         selector.SetActive(true);
         selector.transform.position = transform.GetChild(0).transform.position;
+        transform.GetChild(selectedIndex).GetComponentInChildren<TextMeshProUGUI>().color = ColorUtils.SelectedButtonColor;
     }
 }

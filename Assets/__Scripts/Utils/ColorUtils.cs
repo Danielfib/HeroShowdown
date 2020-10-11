@@ -8,6 +8,10 @@ public static class ColorUtils
     public static Color Purple = new Color(141f / 255f, 23f / 255f, 192f / 255f);
     public static Color Blue = Color.cyan;
 
+    //UI
+    public static Color UnselectedButtonColor = Color.white;
+    public static Color SelectedButtonColor = Color.yellow;
+
     public static Color TeamIdEnumToColor(TeamIDEnum color)
     {
         Color colorToReturn = Color.white;
