@@ -42,11 +42,11 @@ public class MS_OptionsManager : MonoBehaviour
 
     }
 
-    private void UpdateSelectorPosition()
+    private void UpdateSelectorPosition(float dur = 0.2f)
     {
         Vector3 finalPos = transform.GetChild(selectedIndex).transform.position;
         finalPos.x = -10f;
-        selector.transform.DOMove(finalPos, 0.2f);
+        selector.transform.DOMove(finalPos, dur);
     }
 
     private void IncreaseSelectedIndex()
@@ -70,5 +70,6 @@ public class MS_OptionsManager : MonoBehaviour
         selector.SetActive(true);
         selector.transform.position = transform.GetChild(0).transform.position;
         transform.GetChild(selectedIndex).GetComponentInChildren<TextMeshProUGUI>().color = ColorUtils.SelectedButtonColor;
+        UpdateSelectorPosition(0f);
     }
 }

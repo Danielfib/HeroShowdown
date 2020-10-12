@@ -103,6 +103,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a3322739-c93c-4c4d-98ad-24d68c718529
     m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3479064395208105284}
+        m_MethodName: NavUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b2c8f303-b03e-4557-a229-1be0dbce582d
+    m_ActionName: UI/NavUp[/XInputControllerWindows/leftStick/up,/Keyboard/upArrow,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3479064395208105284}
+        m_MethodName: NavDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b9d7c1c6-0d3b-4faa-836f-30c47a5e3f9d
+    m_ActionName: UI/NavDown[/XInputControllerWindows/leftStick/down,/Keyboard/downArrow,/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI

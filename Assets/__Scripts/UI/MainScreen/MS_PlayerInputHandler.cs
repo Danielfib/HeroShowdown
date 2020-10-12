@@ -13,12 +13,18 @@ public class MS_PlayerInputHandler : MonoBehaviour
         optionsManager.InitializeSelector();
     }
 
-    public void Navigate(CallbackContext context)
+    public void NavUp(CallbackContext context)
     {
         if (optionsManager == null || !context.performed) return;
 
-        Vector2 dir = context.ReadValue<Vector2>();
-        optionsManager.Navigate(dir);
+        optionsManager.Navigate(Vector2.up);
+    }
+
+    public void NavDown(CallbackContext context)
+    {
+        if (optionsManager == null || !context.performed) return;
+
+        optionsManager.Navigate(Vector2.down);
     }
 
     public void Submit(CallbackContext context)
