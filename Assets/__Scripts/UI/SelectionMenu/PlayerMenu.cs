@@ -113,9 +113,12 @@ public class PlayerMenu : MonoBehaviour
     }
     
     #region [HeroSelection]
-    private void ChangedHeroBackwards()
+    public void ChangedHeroBackwards(CallbackContext context)
     {
-        if(currentCharacterIndex <= 0)
+        if (!context.performed || this.IsReady || charactersManager == null)
+            return;
+
+        if (currentCharacterIndex <= 0)
         {
             currentCharacterIndex = this.charactersManager.availableCharacters.Length - 1;
         }
@@ -123,42 +126,31 @@ public class PlayerMenu : MonoBehaviour
         {
             currentCharacterIndex--;
         }
+
+        SelectHeroOnIndex(currentCharacterIndex);
+        UpdateCharUIInfo();
     }
 
-    private void ChangedheroForward()
+    public void ChangedHeroForward(CallbackContext context)
     {
-        if(currentCharacterIndex >= this.charactersManager.availableCharacters.Length - 1)
+        if (!context.performed || this.IsReady || charactersManager == null)
+            return;
+
+        if (currentCharacterIndex >= this.charactersManager.availableCharacters.Length - 1)
         {
             currentCharacterIndex = 0;
         } else
         {
             currentCharacterIndex++;
         }
+
+        SelectHeroOnIndex(currentCharacterIndex);
+        UpdateCharUIInfo();
     }
 
     private void SelectHeroOnIndex(int charIndex)
     {
         SelectedCharacter = this.charactersManager.availableCharacters[charIndex];
-    }
-
-    public void ChangeHero(CallbackContext context)
-    {
-        if (!context.performed || this.IsReady || charactersManager == null)
-            return;
-
-        float inputValue = context.ReadValue<float>();
-
-        if ((inputValue != 1 && inputValue != -1)
-            || inputValue == 0)
-            return;
-
-        if (inputValue < 0)
-            ChangedHeroBackwards();
-        else
-            ChangedheroForward();
-
-        SelectHeroOnIndex(currentCharacterIndex);
-        UpdateCharUIInfo();
     }
     #endregion
 

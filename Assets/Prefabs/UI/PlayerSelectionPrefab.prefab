@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 7309711787640952633}
   - component: {fileID: 7309711787640952639}
   m_Layer: 0
-  m_Name: PlayerMenuPrefab
+  m_Name: PlayerSelectionPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,21 +339,6 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7309711787640952633}
-        m_MethodName: ChangeHero
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f0aec1db-a19c-49d1-a7cc-4678ed80d744
-    m_ActionName: SelectionMenu/ChangeHero[/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7309711787640952633}
         m_MethodName: Back
         m_Mode: 0
         m_Arguments:
@@ -396,6 +381,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e5539960-466d-44bf-831a-8f33f0f331c8
     m_ActionName: SelectionMenu/ChangeTeamRIght
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7309711787640952633}
+        m_MethodName: ChangedHeroForward
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: de1b6ba9-73cf-421f-a319-a1dda0f180a2
+    m_ActionName: SelectionMenu/ChangeHeroForward[/XInputControllerWindows/leftStick/right,/Keyboard/rightArrow,/XInputControllerWindows/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7309711787640952633}
+        m_MethodName: ChangedHeroBackwards
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2725c684-4b03-44dc-92c6-e1ea68cd4939
+    m_ActionName: SelectionMenu/ChangeHeroBackward[/XInputControllerWindows/leftStick/left,/Keyboard/leftArrow,/XInputControllerWindows/dpad/left]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: SelectionMenu
