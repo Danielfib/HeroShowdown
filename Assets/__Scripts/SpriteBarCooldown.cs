@@ -12,6 +12,7 @@ public class SpriteBarCooldown : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         originalScale = transform.localScale;
+        transform.localScale = Vector3.zero;
         this.enabled = false;
     }
 
