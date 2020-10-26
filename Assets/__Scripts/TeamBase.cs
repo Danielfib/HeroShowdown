@@ -31,8 +31,8 @@ public class TeamBase : MonoBehaviour
                 Flag flag = collision.gameObject.GetComponent<Flag>();
                 if(flag.teamIDEnum != this.teamIdEnum)
                 {
-                    Score();
                     flag.Scored();
+                    Score();
                 }
             }
         }

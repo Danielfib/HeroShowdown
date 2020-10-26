@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class MatchManager : Singleton<MatchManager>
 {
     public PlayerInputManager PlayerInputManager;
+    public EndingScreenManager EndingScreenManager;
 
     [SerializeField]
     private float FlagScoreRespawnCooldown;
@@ -18,7 +19,7 @@ public class MatchManager : Singleton<MatchManager>
     [SerializeField]
     private GameObject UIFlagCountdownPrefab;
 
-    private int MaxPoints = 3;
+    private int MaxPoints = 1;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class MatchManager : Singleton<MatchManager>
     private void EndGame(TeamIDEnum winningTeam)
     {
         Debug.Log("Winner: " + winningTeam);
+        EndingScreenManager.SetupEndingScreen(winningTeam);
     }
     #endregion
 
@@ -95,7 +97,7 @@ public class MatchManager : Singleton<MatchManager>
                 playerController.CharacterBrain = Resources.Load<PirateBrain>("CharacterBrains/PirateBrain");
                 break;
         }
-
+        playerController.PlayerIndex = player.playerIndex;
         playerController.Team = pd.team;
         PositionPlayer(player.gameObject.transform, pd.team);
 

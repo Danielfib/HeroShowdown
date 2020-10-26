@@ -64,6 +64,7 @@ public class Flag : MonoBehaviour
     {
         FlagState = FlagStates.NORMAL;
         MatchManager.Instance.StartFlagRespawn(this.teamIDEnum, wasRetrieved: false);
+        GetComponentInParent<CharacterController>().Scored();
         Destroy(this.gameObject);
     }
 

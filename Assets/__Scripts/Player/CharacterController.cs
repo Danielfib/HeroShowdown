@@ -8,7 +8,8 @@ using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController : MonoBehaviour
-{
+{ 
+    public int PlayerIndex;
     public Grabber Grabber;
 
     public CharacterBrain CharacterBrain;
@@ -60,6 +61,9 @@ public class CharacterController : MonoBehaviour
     private GameObject dieFXPrefab;
     [SerializeField]
     private GameObject tossFXPrefab;
+
+    [HideInInspector]
+    public int pointStats, deathsStats, killsStats;
 
     void Start()
     {
@@ -138,6 +142,7 @@ public class CharacterController : MonoBehaviour
         {
             DropFlag();
             CharacterBrain.Die(this);
+            deathsStats++;
         }
     }
     #endregion
@@ -155,9 +160,9 @@ public class CharacterController : MonoBehaviour
         if (context.performed)
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
-            foreach(var col in colliders)
+            foreach (var col in colliders)
             {
-                if(col.tag == "Interactable"
+                if (col.tag == "Interactable"
                     && GetComponent<Collider2D>().IsTouching(col))
                 {
                     col.GetComponent<Interactable>().InteractedAction();
@@ -165,6 +170,11 @@ public class CharacterController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Scored()
+    {
+        pointStats++;
     }
     #endregion
 
