@@ -11,4 +11,5 @@ public class CharacterSO : ScriptableObject
 
     public RuntimeAnimatorController upperBodyAnimator;
     public RuntimeAnimatorController lowerBodyAnimator;
+    public RuntimeAnimatorController UIAnimator;
 }

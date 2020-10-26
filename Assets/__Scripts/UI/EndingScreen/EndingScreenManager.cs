@@ -27,6 +27,8 @@ public class EndingScreenManager : MonoBehaviour
             EndingScreenSeat seat = Instantiate(seatPrefab, seatsHorizontalLayout.transform).GetComponent<EndingScreenSeat>();
             seat.UpdateStats(player.deathsStats, player.killsStats, player.pointStats);
             seat.UpdateTitle(player.PlayerIndex);
+
+            seat.UpdateHeroImage(player.UIAnimator);
         }
     }
 }

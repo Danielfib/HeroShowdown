@@ -17,3 +17,4 @@ MonoBehaviour:
   HUDIcon: {fileID: 21300000, guid: f76e3bd98944d49498aac518ffac3c39, type: 3}
   upperBodyAnimator: {fileID: 0}
   lowerBodyAnimator: {fileID: 9100000, guid: 51b78d82af7c8e74bb24e0e77f54b7dc, type: 2}
+  UIAnimator: {fileID: 9100000, guid: 606747157915cee41af19776efad726b, type: 2}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class EndingScreenSeat : MonoBehaviour
@@ -18,5 +19,10 @@ public class EndingScreenSeat : MonoBehaviour
     public void UpdateTitle(int playerIndex)
     {
         titleText.text = "Player " + (playerIndex + 1);
+    }
+
+    public void UpdateHeroImage(RuntimeAnimatorController animator)
+    {
+        GetComponentInChildren<Animator>().runtimeAnimatorController = animator;
     }
 }

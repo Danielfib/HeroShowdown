@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4405694542752398167}
   - component: {fileID: 4405694542752398166}
   m_Layer: 5
-  m_Name: PlayerCount
+  m_Name: PlayerTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 4405694542872131080}
   - component: {fileID: 4405694542872131083}
   m_Layer: 5
-  m_Name: Stats
+  m_Name: StatsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 4405694544091806606}
   - component: {fileID: 4405694544091806604}
   - component: {fileID: 4405694544091806607}
+  - component: {fileID: 7757750949478622604}
   m_Layer: 5
   m_Name: HeroImage
   m_TagString: Untagged
@@ -481,3 +482,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7757750949478622604
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405694544091806601}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50adbbcbd09edb74189fd372f8bd5df1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

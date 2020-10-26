@@ -23,6 +23,8 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField]
     private Animator Animator;
+    [HideInInspector]
+    public RuntimeAnimatorController UIAnimator;
 
     private Rigidbody2D rb;
     private Vector2 moveDirection;

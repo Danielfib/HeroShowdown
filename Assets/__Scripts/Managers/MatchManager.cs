@@ -106,6 +106,7 @@ public class MatchManager : Singleton<MatchManager>
         playerController.PlayerHUDIconController = iconController;
 
         playerController.InitializeAnimators(pd.character.upperBodyAnimator, pd.character.lowerBodyAnimator);
+        playerController.UIAnimator = pd.character.UIAnimator;
     }
 
     private void PositionPlayer(Transform playerTransform, TeamIDEnum team)
