@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 4405694544091806604}
   - component: {fileID: 4405694544091806607}
   - component: {fileID: 7757750949478622604}
+  - component: {fileID: 7761549840630120904}
   m_Layer: 5
   m_Name: HeroImage
   m_TagString: Untagged
@@ -465,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 6b3ccd4e28087b14aa2289e412beee6f, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -501,3 +502,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7761549840630120904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405694544091806601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc811220cbfec1478d03755e0a56bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

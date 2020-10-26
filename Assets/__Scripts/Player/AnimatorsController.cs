@@ -7,6 +7,7 @@ public class AnimatorsController : MonoBehaviour
 {
     private Animator[] animators;
     private CharacterController cc;
+    private SwitchColorToTeamColor[] materialColorSwitchers;
 
     [System.NonSerialized]
     public TeamIDEnum teamIDEnum;
@@ -15,8 +16,12 @@ public class AnimatorsController : MonoBehaviour
     {
         var animators = GetComponentsInChildren<Animator>().Where(x => x.runtimeAnimatorController).ToArray();
         cc = GetComponentInParent<CharacterController>();
+        materialColorSwitchers = GetComponentsInChildren<SwitchColorToTeamColor>();
         this.animators = animators;
-        SetupSpriteMaterials();
+        foreach(var m in materialColorSwitchers)
+        {
+            m.SetupSpriteMaterials(cc.Team);
+        }
     }
 
     private void Update()
@@ -34,20 +39,6 @@ public class AnimatorsController : MonoBehaviour
             foreach(var animator in this.animators)
             {
                 animator.SetTrigger(triggerID);
-            }
-        }
-    }
-
-    private void SetupSpriteMaterials()
-    {
-        SpriteRenderer[] spriteRenderers = this.GetComponentsInChildren<SpriteRenderer>();
-        Color color = ColorUtils.TeamIdEnumToColor(this.teamIDEnum);
-
-        if (spriteRenderers != null)
-        {
-            foreach(var spriteRenderer in spriteRenderers)
-            {
-                spriteRenderer.material.SetColor("_NewColor", color);
             }
         }
     }

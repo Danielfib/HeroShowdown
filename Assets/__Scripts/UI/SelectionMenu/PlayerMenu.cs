@@ -27,8 +27,9 @@ public class PlayerMenu : MonoBehaviour
     private Sprite CharacterSprite;
     private Sprite CharacterNameSprite;
     private int currentCharacterIndex;
+    private SwitchColorToTeamColor materialColorSwitcher;
 
-    public CharactersManager charactersManager;
+    private CharactersManager characterManager;
 
     private SpriteRenderer[] spriteRenderers;
 
@@ -50,18 +51,24 @@ public class PlayerMenu : MonoBehaviour
 
     private void Awake()
     {
-        charactersManager = GameObject.Find("CharactersManager").GetComponent<CharactersManager>();
+        characterManager = GameObject.Find("CharactersManager").GetComponent<CharactersManager>();
     }
 
     private void SetupOnStart()
     {
         currentCharacterIndex = 0;
-        SelectedCharacter = this.charactersManager.GetDefaultInitialCharacter();
+        SelectedCharacter = this.characterManager.GetDefaultInitialCharacter();
         UpdateCharUIInfo();
         ChooseDefaultTeam();
         this.IsReady = false;
         this.spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        SetupSpriteMaterials();
+        InitializeColorSwitcher();
+        materialColorSwitcher.SetupSpriteMaterials(this._Team);
+    }
+
+    private void InitializeColorSwitcher()
+    {
+        this.materialColorSwitcher = GetComponentInChildren<SwitchColorToTeamColor>();
     }
 
     private void UpdateCharUIInfo()
@@ -115,12 +122,12 @@ public class PlayerMenu : MonoBehaviour
     #region [HeroSelection]
     public void ChangedHeroBackwards(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || charactersManager == null)
+        if (!context.performed || this.IsReady || characterManager == null)
             return;
 
         if (currentCharacterIndex <= 0)
         {
-            currentCharacterIndex = this.charactersManager.availableCharacters.Length - 1;
+            currentCharacterIndex = this.characterManager.availableCharacters.Length - 1;
         }
         else
         {
@@ -133,10 +140,10 @@ public class PlayerMenu : MonoBehaviour
 
     public void ChangedHeroForward(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || charactersManager == null)
+        if (!context.performed || this.IsReady || characterManager == null)
             return;
 
-        if (currentCharacterIndex >= this.charactersManager.availableCharacters.Length - 1)
+        if (currentCharacterIndex >= this.characterManager.availableCharacters.Length - 1)
         {
             currentCharacterIndex = 0;
         } else
@@ -150,7 +157,7 @@ public class PlayerMenu : MonoBehaviour
 
     private void SelectHeroOnIndex(int charIndex)
     {
-        SelectedCharacter = this.charactersManager.availableCharacters[charIndex];
+        SelectedCharacter = this.characterManager.availableCharacters[charIndex];
     }
     #endregion
 
@@ -215,20 +222,14 @@ public class PlayerMenu : MonoBehaviour
                 break;
         }
 
-        SetupSpriteMaterials();
-    }
-
-    private void SetupSpriteMaterials()
-    {
-        Color color = ColorUtils.TeamIdEnumToColor(this._Team);
-
-        if (this.spriteRenderers != null)
+        if(materialColorSwitcher)
+            materialColorSwitcher.SetupSpriteMaterials(this._Team);
+        else
         {
-            foreach (var spriteRenderer in spriteRenderers)
-            {
-                spriteRenderer.material.SetColor("_NewColor", color);
-            }
+            InitializeColorSwitcher();
+            materialColorSwitcher.SetupSpriteMaterials(this._Team);
         }
+            
     }
     #endregion
 }
