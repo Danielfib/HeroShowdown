@@ -73,7 +73,7 @@ public class CharacterController : MonoBehaviour
         animController = GetComponentInChildren<AnimatorsController>();
         sbCooldown = GetComponentInChildren<SpriteBarCooldown>();
         animController.teamIDEnum = this.Team;
-
+        KilledAction += Killed;
         this.CharacterBrain.Initialize(this);
     }
 
@@ -87,6 +87,24 @@ public class CharacterController : MonoBehaviour
 
         AnimateMovement();
     }
+
+    #region [Stats_Count]
+    public Action KilledAction;
+    private void Killed()
+    {
+        this.killsStats++;
+    }
+
+    public void Scored()
+    {
+        pointStats++;
+    }
+
+    private void DieCount()
+    {
+        this.deathsStats++;
+    }
+    #endregion
 
     #region [Combat]
     public void GrabToss(CallbackContext context)
@@ -138,23 +156,17 @@ public class CharacterController : MonoBehaviour
         this.gameObject.transform.position = teamBase.transform.position;
     }
 
-    public void GotHit()
+    public void GotHit(Action tossingPlayerCallback)
     {
         if (!IsInvulnerable && !IsReflectiveToProjectiles)
         {
+            tossingPlayerCallback();
+            DieCount();
             DropFlag();
             CharacterBrain.Die(this);
-            deathsStats++;
         }
     }
     #endregion
-
-    private void DropFlag()
-    {
-        Flag flag = this.GetComponentInChildren<Flag>();
-        if (flag != null)
-            flag.Drop();
-    }
 
     #region [Interact]
     public void TryInteract(CallbackContext context)
@@ -174,9 +186,11 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void Scored()
+    private void DropFlag()
     {
-        pointStats++;
+        Flag flag = this.GetComponentInChildren<Flag>();
+        if (flag != null)
+            flag.Drop();
     }
     #endregion
 

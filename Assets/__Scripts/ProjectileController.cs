@@ -19,6 +19,7 @@ public class ProjectileController : MonoBehaviour
     private float DestroyAfterSeconds = 5f;
 
     private CharacterController ignoreCharacter;
+    private Action playerKilledCallback;
 
     private void Awake()
     {
@@ -76,6 +77,7 @@ public class ProjectileController : MonoBehaviour
     public void ReturnToGrabbableState()
     {
         this.gameObject.layer = LayerMask.NameToLayer("Grabbables");
+        playerKilledCallback = null;
         EnableGravity(0.9f);
     }
 
@@ -116,7 +118,7 @@ public class ProjectileController : MonoBehaviour
             CharacterController charController = collision.gameObject.GetComponent<CharacterController>();
             if (charController != this.ignoreCharacter)
             {
-                charController.GotHit();
+                charController.GotHit(playerKilledCallback);
                 if (charController.IsReflectiveToProjectiles)
                 {
                     //Perhaps bring this behaviour to character side?
@@ -134,7 +136,7 @@ public class ProjectileController : MonoBehaviour
             }
             else
             {
-                //is colliding with player that tossed
+                //is colliding with player that tossed on the initial period of ignoring him
                 return;
             }
         }
@@ -152,6 +154,7 @@ public class ProjectileController : MonoBehaviour
     private IEnumerator IgnoreCharacterCoroutine(CharacterController cc)
     {
         this.ignoreCharacter = cc;
+        playerKilledCallback = cc.KilledAction;
         yield return new WaitForSeconds(1f);
         this.ignoreCharacter = null;
     }
