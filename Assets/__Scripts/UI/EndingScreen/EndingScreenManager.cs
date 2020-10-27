@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class EndingScreenManager : MonoBehaviour
 {
@@ -11,6 +13,15 @@ public class EndingScreenManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI winningTeamText;
+
+    private void Update()
+    {
+        //Escape on keyboard or B on xbox controller
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick button 1"))
+        {
+            SceneManager.LoadScene("SelectionScreen");
+        }
+    }
 
     public void SetupEndingScreen(TeamIDEnum winningTeam)
     {
