@@ -47,6 +47,6 @@ Material:
     - Color_FDE39203: {r: 0.29411766, g: 0.16078432, b: 0.003921569, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _NewColor: {r: 0, g: 1, b: 1, a: 1}
-    - _OldColor: {r: 0.29411766, g: 0.16078432, b: 0.003921569, a: 1}
+    - _NewColor: {r: 1, g: 0.023584902, b: 0.023584902, a: 1}
+    - _OldColor: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

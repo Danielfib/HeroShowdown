@@ -229,7 +229,6 @@ public class PlayerMenu : MonoBehaviour
             InitializeColorSwitcher();
             materialColorSwitcher.SetupSpriteMaterials(this._Team);
         }
-            
     }
     #endregion
 }

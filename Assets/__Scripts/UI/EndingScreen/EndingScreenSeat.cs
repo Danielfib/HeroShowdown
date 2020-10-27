@@ -25,4 +25,9 @@ public class EndingScreenSeat : MonoBehaviour
     {
         GetComponentInChildren<Animator>().runtimeAnimatorController = animator;
     }
+
+    public void UpdateTeamColor(TeamIDEnum team)
+    {
+        GetComponentInChildren<SwitchColorToTeamColor>().SetupImageMaterials(team);
+    }
 }

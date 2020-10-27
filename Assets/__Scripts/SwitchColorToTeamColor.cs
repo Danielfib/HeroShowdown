@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwitchColorToTeamColor : MonoBehaviour
 {
@@ -8,12 +9,28 @@ public class SwitchColorToTeamColor : MonoBehaviour
     {
         SpriteRenderer[] spriteRenderers = this.GetComponentsInChildren<SpriteRenderer>();
         Color color = ColorUtils.TeamIdEnumToColor(team);
-
+       
         if (spriteRenderers != null)
         {
             foreach (var spriteRenderer in spriteRenderers)
             {
-                spriteRenderer.sharedMaterial.SetColor("_NewColor", color);
+                spriteRenderer.material.SetColor("_NewColor", color);
+            }
+        }
+    }
+
+    public void SetupImageMaterials(TeamIDEnum team)
+    {
+        Image[] images = this.GetComponentsInChildren<Image>();
+        Color color = ColorUtils.TeamIdEnumToColor(team);
+
+        if (images != null)
+        {
+            foreach (var image in images)
+            {
+                Material newMat = new Material(image.material);
+                newMat.SetColor("_NewColor", color);
+                image.material = newMat;
             }
         }
     }
