@@ -5,20 +5,27 @@ using UnityEngine.UI;
 
 public class SwitchColorToTeamColor : MonoBehaviour
 {
-    public void SetupSpriteMaterials(TeamIDEnum team)
+    private Material mat;
+
+    private void Awake()
     {
-        SpriteRenderer[] spriteRenderers = this.gameObject.GetComponentsInChildren<SpriteRenderer>();
-        Color color = ColorUtils.TeamIdEnumToColor(team);
-       
-        if (spriteRenderers != null)
+        mat = new Material(Shader.Find("Shader Graphs/ChangeColorToColor"));
+        mat.SetColor("_OldColor", ColorUtils.ReplaceColor);
+    }
+
+    private void Start()
+    {
+        Renderer[] renderers = this.gameObject.GetComponentsInChildren<Renderer>();
+        foreach(var r in renderers)
         {
-            foreach (var spriteRenderer in spriteRenderers)
-            {
-                Material newMat = new Material(spriteRenderer.material);
-                newMat.SetColor("_NewColor", color);
-                spriteRenderer.material = newMat;
-            }
+            r.material = mat;
         }
+    }
+
+    public void ChangeMaterialColor(TeamIDEnum team)
+    {
+        Color color = ColorUtils.TeamIdEnumToColor(team);
+        this.mat.SetColor("_NewColor", color);
     }
 
     public void SetupImageMaterials(TeamIDEnum team)

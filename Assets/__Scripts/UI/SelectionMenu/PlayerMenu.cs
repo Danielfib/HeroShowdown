@@ -63,7 +63,6 @@ public class PlayerMenu : MonoBehaviour
         this.IsReady = false;
         this.spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         InitializeColorSwitcher();
-        materialColorSwitcher.SetupSpriteMaterials(this._Team);
     }
 
     private void InitializeColorSwitcher()
@@ -204,7 +203,7 @@ public class PlayerMenu : MonoBehaviour
         if(!materialColorSwitcher)
             InitializeColorSwitcher();
 
-        materialColorSwitcher.SetupSpriteMaterials(this._Team);
+        materialColorSwitcher.ChangeMaterialColor(this._Team);
     }
     #endregion
 }

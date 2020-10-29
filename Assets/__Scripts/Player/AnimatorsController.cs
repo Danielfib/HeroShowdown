@@ -7,7 +7,6 @@ public class AnimatorsController : MonoBehaviour
 {
     private Animator[] animators;
     private CharacterController cc;
-    private SwitchColorToTeamColor[] materialColorSwitchers;
 
     [System.NonSerialized]
     public TeamIDEnum teamIDEnum;
@@ -16,12 +15,9 @@ public class AnimatorsController : MonoBehaviour
     {
         var animators = GetComponentsInChildren<Animator>().Where(x => x.runtimeAnimatorController).ToArray();
         cc = GetComponentInParent<CharacterController>();
-        materialColorSwitchers = GetComponentsInChildren<SwitchColorToTeamColor>();
         this.animators = animators;
-        foreach(var m in materialColorSwitchers)
-        {
-            m.SetupSpriteMaterials(cc.Team);
-        }
+
+        foreach(var s in GetComponentsInChildren<SwitchColorToTeamColor>()) { s.ChangeMaterialColor(teamIDEnum); }
     }
 
     private void Update()

@@ -2,6 +2,8 @@
 
 public static class ColorUtils
 {
+    public static Color ReplaceColor = new Color(0.2941177f, 0.1607843f, 0.003921569f);
+
     public static Color Green = Color.green;
     public static Color Red = Color.red;
     public static Color Brown = new Color(192f / 255f, 136f / 255f, 63f / 255f);
