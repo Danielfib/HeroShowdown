@@ -7,7 +7,7 @@ public class SwitchColorToTeamColor : MonoBehaviour
 {
     public void SetupSpriteMaterials(TeamIDEnum team)
     {
-        SpriteRenderer[] spriteRenderers = this.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer[] spriteRenderers = this.gameObject.GetComponentsInChildren<SpriteRenderer>();
         Color color = ColorUtils.TeamIdEnumToColor(team);
        
         if (spriteRenderers != null)

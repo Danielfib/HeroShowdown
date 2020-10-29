@@ -68,7 +68,7 @@ public class PlayerMenu : MonoBehaviour
 
     private void InitializeColorSwitcher()
     {
-        this.materialColorSwitcher = GetComponentInChildren<SwitchColorToTeamColor>();
+        this.materialColorSwitcher = this.transform.GetComponentInChildren<SwitchColorToTeamColor>();
     }
 
     private void UpdateCharUIInfo()
@@ -201,34 +201,10 @@ public class PlayerMenu : MonoBehaviour
 
     private void ChangedTeam()
     {
-        SpriteRenderer renderer = this.GetComponentInChildren<SpriteRenderer>();
-
-        switch (this._Team)
-        {
-            case TeamIDEnum.RED:
-                renderer.color = ColorUtils.Red;
-                break;
-            //case TeamIDEnum.PURPLE:
-            //    renderer.color = ColorUtils.Purple;
-            //    break;
-            //case TeamIDEnum.GREEN:
-            //    renderer.color = ColorUtils.Green;
-            //    break;
-            //case TeamIDEnum.BROWN:
-            //    renderer.color = ColorUtils.Brown;
-            //    break;
-            case TeamIDEnum.BLUE:
-                renderer.color = ColorUtils.Blue;
-                break;
-        }
-
-        if(materialColorSwitcher)
-            materialColorSwitcher.SetupSpriteMaterials(this._Team);
-        else
-        {
+        if(!materialColorSwitcher)
             InitializeColorSwitcher();
-            materialColorSwitcher.SetupSpriteMaterials(this._Team);
-        }
+
+        materialColorSwitcher.SetupSpriteMaterials(this._Team);
     }
     #endregion
 }
