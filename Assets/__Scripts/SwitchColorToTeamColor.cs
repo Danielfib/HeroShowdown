@@ -25,7 +25,7 @@ public class SwitchColorToTeamColor : MonoBehaviour
     public void ChangeMaterialColor(TeamIDEnum team)
     {
         Color color = ColorUtils.TeamIdEnumToColor(team);
-        this.mat.SetColor("_NewColor", color);
+        this.mat?.SetColor("_NewColor", color);
     }
 
     public void SetupImageMaterials(TeamIDEnum team)
