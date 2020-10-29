@@ -8,6 +8,7 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     public ProjectileBrain ProjectileBrain;
+    [HideInInspector]
     public Rigidbody2D rb;
 
     [SerializeField]
@@ -20,6 +21,7 @@ public class ProjectileController : MonoBehaviour
 
     private CharacterController ignoreCharacter;
     private Action playerKilledCallback;
+    private Collider2D col;
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class ProjectileController : MonoBehaviour
     {
         ProjectileBrain.Initialize(this);
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
 
         if (ShouldDestroyByTime)
             StartCoroutine(DestroyCoroutine());
@@ -137,6 +140,7 @@ public class ProjectileController : MonoBehaviour
             else
             {
                 //is colliding with player that tossed on the initial period of ignoring him
+                Physics2D.IgnoreCollision(ignoreCharacter.GetComponentInChildren<Collider2D>(), col);
                 return;
             }
         }
