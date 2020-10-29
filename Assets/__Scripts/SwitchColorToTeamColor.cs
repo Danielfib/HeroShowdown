@@ -14,7 +14,9 @@ public class SwitchColorToTeamColor : MonoBehaviour
         {
             foreach (var spriteRenderer in spriteRenderers)
             {
-                spriteRenderer.material.SetColor("_NewColor", color);
+                Material newMat = new Material(spriteRenderer.material);
+                newMat.SetColor("_NewColor", color);
+                spriteRenderer.material = newMat;
             }
         }
     }

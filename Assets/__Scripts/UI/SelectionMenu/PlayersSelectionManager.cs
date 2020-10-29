@@ -44,6 +44,7 @@ public class PlayersSelectionManager : MonoBehaviour
         //CAUTION: Following code was causing bug were OnPlayerLeft would trigger before loading scene
         //PlayerSettings toRemove = PlayersSettings.PlayerSettings.Where(x => x.playerIndex == playerInput.playerIndex).FirstOrDefault();
         //PlayersSettings.PlayerSettings.Remove(toRemove);
+        Debug.Log("Player Left: " + playerInput.playerIndex);
     }
 
     private void PlaceOnLeftMostSeat(GameObject go)

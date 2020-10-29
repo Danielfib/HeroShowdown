@@ -307,7 +307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIndex: 0
   ReadySprite: {fileID: 3803820394363820812}
-  charactersManager: {fileID: 0}
 --- !u!114 &7309711787640952639
 MonoBehaviour:
   m_ObjectHideFlags: 0
