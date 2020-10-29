@@ -160,7 +160,7 @@ public class CharacterController : MonoBehaviour
     {
         if (!IsInvulnerable && !IsReflectiveToProjectiles)
         {
-            tossingPlayerCallback();
+            tossingPlayerCallback?.Invoke();
             DieCount();
             DropFlag();
             CharacterBrain.Die(this);
