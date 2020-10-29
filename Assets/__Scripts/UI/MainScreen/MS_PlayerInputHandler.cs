@@ -17,14 +17,14 @@ public class MS_PlayerInputHandler : MonoBehaviour
     {
         if (optionsManager == null || !context.performed) return;
 
-        optionsManager.Navigate(Vector2.up);
+        optionsManager.MSNavigate(Vector2.up);
     }
 
     public void NavDown(CallbackContext context)
     {
         if (optionsManager == null || !context.performed) return;
 
-        optionsManager.Navigate(Vector2.down);
+        optionsManager.MSNavigate(Vector2.down);
     }
 
     public void Submit(CallbackContext context)

@@ -81,6 +81,8 @@ public class MatchManager : Singleton<MatchManager>
                                                                     pairWithDevice: player.inputDevice);
             LoadPlayerHero(addedPlayer);
         }
+
+        PlayersSettings.PlayerDataList.Clear();
     }
 
     private void LoadPlayerHero(PlayerInput player)

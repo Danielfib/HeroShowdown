@@ -19,7 +19,7 @@ public class MS_OptionsManager : MonoBehaviour
         selector.SetActive(false);
     }
 
-    public void Navigate(Vector2 dir)
+    public void MSNavigate(Vector2 dir)
     {
         transform.GetChild(selectedIndex).GetComponentInChildren<TextMeshProUGUI>().color = ColorUtils.UnselectedButtonColor;
 
