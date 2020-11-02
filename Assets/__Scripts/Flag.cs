@@ -46,6 +46,7 @@ public class Flag : MonoBehaviour
             }
             else if (FlagState == FlagStates.DROPPED)
             {
+                collision.gameObject.GetComponent<CharacterController>().RetrievedFlag();
                 Retrieved();
             }
         }

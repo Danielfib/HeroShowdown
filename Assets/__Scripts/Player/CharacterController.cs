@@ -65,7 +65,7 @@ public class CharacterController : MonoBehaviour
     private GameObject tossFXPrefab;
 
     [HideInInspector]
-    public int pointStats, deathsStats, killsStats;
+    public int flagsScored, deathsStats, killsStats, flagsRetrieved;
 
     void Start()
     {
@@ -97,12 +97,17 @@ public class CharacterController : MonoBehaviour
 
     public void Scored()
     {
-        pointStats++;
+        flagsScored++;
     }
 
     private void DieCount()
     {
         this.deathsStats++;
+    }
+
+    public void RetrievedFlag()
+    {
+        flagsRetrieved++;
     }
     #endregion
 
