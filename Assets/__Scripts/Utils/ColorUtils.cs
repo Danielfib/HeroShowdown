@@ -13,6 +13,8 @@ public static class ColorUtils
     //UI
     public static Color UnselectedButtonColor = Color.white;
     public static Color SelectedButtonColor = Color.yellow;
+    public static Color Background_DarkBlue = new Color(0, 0.02f, 0.4f);
+    public static Color Background_DarkRed = new Color(0.4f, 0, 0.02f);
 
     public static Color TeamIdEnumToColor(TeamIDEnum color)
     {

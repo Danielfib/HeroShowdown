@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+  m_Color: {r: 0.31132078, g: 0.24122497, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.43137255}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -315,6 +315,8 @@ MonoBehaviour:
   seatPrefab: {fileID: 4405694543415426229, guid: 2dc5bfb722f526b45a826972f2d77a61,
     type: 3}
   winningTeamText: {fileID: 4567830619629382459}
+  endingScreenBackground: {fileID: 4567830618736168439}
+  quitLabel: {fileID: 3909393421799835198}
 --- !u!1 &4567830619629382461
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +409,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 28
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
