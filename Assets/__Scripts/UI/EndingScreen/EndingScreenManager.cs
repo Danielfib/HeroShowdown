@@ -38,32 +38,24 @@ public class EndingScreenManager : MonoBehaviour
 
     public void SetupEndingScreen(TeamIDEnum winningTeam)
     {
-        //deactivate character controllers
-        foreach (var cc in GameObject.FindObjectsOfType<CharacterController>())
-        {
-            cc.enabled = false;
-            cc.gameObject.GetComponent<Rigidbody2D>().simulated = false;
-        }
+        SetupBackgroundColor(winningTeam);
 
-        switch (winningTeam)
+        //slowmotion on ending
+        DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0f, 3f).SetEase(Ease.OutQuad).SetUpdate(true).OnComplete(() =>
         {
-            case TeamIDEnum.BLUE:
-                endingScreenBackground.GetComponent<Image>().color = ColorUtils.Background_DarkBlue;
-                break;
-            case TeamIDEnum.RED:
-                endingScreenBackground.GetComponent<Image>().color = ColorUtils.Background_DarkRed;
-                break;
-        }
+            DeactivatePlayersRBs();
 
-        this.gameObject.SetActive(true);
-        endingScreenBackground.transform.localScale = new Vector3(0, 1, 1);
-        endingScreenBackground.transform.DOScaleX(1, 0.5f).OnComplete(() =>
-        {
-            winningTeamText.text = winningTeam + " Team Wins!";
-            winningTeamText.gameObject.SetActive(true);
-            quitLabel.SetActive(true);
+            Time.timeScale = 1;
+            this.gameObject.SetActive(true);
+            endingScreenBackground.transform.localScale = new Vector3(0, 1, 1);
+            endingScreenBackground.transform.DOScaleX(1, 0.5f).OnComplete(() =>
+            {
+                winningTeamText.text = winningTeam + " Team Wins!";
+                winningTeamText.gameObject.SetActive(true);
+                quitLabel.SetActive(true);
 
-            InstantiateEndingSeats();
+                InstantiateEndingSeats();
+            });
         });
     }
 
@@ -79,6 +71,28 @@ public class EndingScreenManager : MonoBehaviour
             seat.UpdateTitle(player.PlayerIndex);
             seat.UpdateHeroImage(player.UIAnimator);
             seat.UpdateTeamColor(player.Team);
+        }
+    }
+
+    private void SetupBackgroundColor(TeamIDEnum team)
+    {
+        switch (team)
+        {
+            case TeamIDEnum.BLUE:
+                endingScreenBackground.GetComponent<Image>().color = ColorUtils.Background_DarkBlue;
+                break;
+            case TeamIDEnum.RED:
+                endingScreenBackground.GetComponent<Image>().color = ColorUtils.Background_DarkRed;
+                break;
+        }
+    }
+
+    private void DeactivatePlayersRBs()
+    {
+        foreach (var cc in GameObject.FindObjectsOfType<CharacterController>())
+        {
+            cc.enabled = false;
+            cc.gameObject.GetComponent<Rigidbody2D>().simulated = false;
         }
     }
 }
