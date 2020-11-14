@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterSO : ScriptableObject
 {
     public string name;
+    public string description;
     public Sprite sprite;
     public Sprite HUDIcon;
 

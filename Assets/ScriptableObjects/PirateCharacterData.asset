@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PirateCharacterData
   m_EditorClassIdentifier: 
   name: pirate
-  sprite: {fileID: 21300000, guid: 12bf7aea4adce0c478edee3709e66087, type: 3}
+  description: Dashes at high speed
+  sprite: {fileID: -3385837264446351549, guid: 6d76f043bbb72464684f0edbcd3a17f1, type: 3}
   HUDIcon: {fileID: 21300000, guid: 869007e509a67e74994d9d841aad6bba, type: 3}
   upperBodyAnimator: {fileID: 9100000, guid: 160e58c90a69ca44fb9aaeed62416c79, type: 2}
   lowerBodyAnimator: {fileID: 9100000, guid: e1440e88239bf284d978253a91557d29, type: 2}

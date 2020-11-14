@@ -25,7 +25,7 @@ public class PlayerMenu : MonoBehaviour
 
     public GameObject ReadySprite;
     [SerializeField]
-    private TextMeshProUGUI charName;
+    private TextMeshProUGUI charName, charDescription;
 
     private CharacterSO SelectedCharacter;
     private Sprite CharacterSprite;
@@ -78,6 +78,7 @@ public class PlayerMenu : MonoBehaviour
     {
         CharacterSprite = SelectedCharacter.sprite;
         charName.text = SelectedCharacter.name;
+        charDescription.text = SelectedCharacter.description;
 
         charImage.sprite = CharacterSprite;
     }
