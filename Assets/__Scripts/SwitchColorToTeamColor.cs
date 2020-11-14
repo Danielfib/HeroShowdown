@@ -39,7 +39,8 @@ public class SwitchColorToTeamColor : MonoBehaviour
         {
             foreach (var image in images)
             {
-                Material newMat = new Material(image.material);
+                Material newMat = new Material(Shader.Find("Shader Graphs/ChangeColorToColor"));
+                newMat.SetColor("_OldColor", ColorUtils.ReplaceColor);
                 newMat.SetColor("_NewColor", color);
                 image.material = newMat;
             }
