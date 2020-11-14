@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: MageCharacterData
   m_EditorClassIdentifier: 
   name: Mage
+  charAttributes:
+    Mobility: 0
+    Killer: 0
+    abilityIcon: {fileID: 21300000, guid: 1e1031b619ee8d94cbdac4e236c7c73a, type: 3}
+    abilityTitle: Reflect
   description: Deflects projectiles
   sprite: {fileID: -2161728569512832201, guid: 1cc03f8caf48b1340a7098d7d0a35646, type: 3}
   HUDIcon: {fileID: 21300000, guid: f76e3bd98944d49498aac518ffac3c39, type: 3}

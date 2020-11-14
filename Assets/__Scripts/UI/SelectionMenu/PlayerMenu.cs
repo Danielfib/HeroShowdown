@@ -25,11 +25,12 @@ public class PlayerMenu : MonoBehaviour
 
     public GameObject ReadySprite;
     [SerializeField]
-    private TextMeshProUGUI charName, charDescription;
+    private TextMeshProUGUI charName, charDescription, abilityTitle;
+    [SerializeField]
+    private Image abilityIcon;
 
     private CharacterSO SelectedCharacter;
     private Sprite CharacterSprite;
-    private Sprite CharacterNameSprite;
     private int currentCharacterIndex;
     private SwitchColorToTeamColor materialColorSwitcher;
 
@@ -79,6 +80,8 @@ public class PlayerMenu : MonoBehaviour
         CharacterSprite = SelectedCharacter.sprite;
         charName.text = SelectedCharacter.name;
         charDescription.text = SelectedCharacter.description;
+        abilityIcon.sprite = SelectedCharacter.charAttributes.abilityIcon;
+        abilityTitle.text = SelectedCharacter.charAttributes.abilityTitle;
 
         charImage.sprite = CharacterSprite;
     }

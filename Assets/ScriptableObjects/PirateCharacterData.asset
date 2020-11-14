@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: PirateCharacterData
   m_EditorClassIdentifier: 
   name: pirate
+  charAttributes:
+    Mobility: 0
+    Killer: 0
+    abilityIcon: {fileID: 21300000, guid: 3fe12bc3072ab2c41a904c15b205377d, type: 3}
+    abilityTitle: Dash
   description: Dashes at high speed
   sprite: {fileID: -3385837264446351549, guid: 6d76f043bbb72464684f0edbcd3a17f1, type: 3}
   HUDIcon: {fileID: 21300000, guid: 869007e509a67e74994d9d841aad6bba, type: 3}
