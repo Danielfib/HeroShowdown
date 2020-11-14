@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMenu : MonoBehaviour
@@ -22,6 +24,8 @@ public class PlayerMenu : MonoBehaviour
     }
 
     public GameObject ReadySprite;
+    [SerializeField]
+    private TextMeshProUGUI charName;
 
     private CharacterSO SelectedCharacter;
     private Sprite CharacterSprite;
@@ -31,7 +35,8 @@ public class PlayerMenu : MonoBehaviour
 
     private CharactersManager characterManager;
 
-    private SpriteRenderer[] spriteRenderers;
+    [SerializeField]
+    private Image charImage;
 
     private TeamIDEnum _Team;
     public TeamIDEnum Team
@@ -61,7 +66,6 @@ public class PlayerMenu : MonoBehaviour
         UpdateCharUIInfo();
         ChooseDefaultTeam();
         this.IsReady = false;
-        this.spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         InitializeColorSwitcher();
     }
 
@@ -73,8 +77,9 @@ public class PlayerMenu : MonoBehaviour
     private void UpdateCharUIInfo()
     {
         CharacterSprite = SelectedCharacter.sprite;
+        charName.text = SelectedCharacter.name;
 
-        this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = CharacterSprite;
+        charImage.sprite = CharacterSprite;
     }
 
     public void Progress(CallbackContext context)
@@ -203,7 +208,7 @@ public class PlayerMenu : MonoBehaviour
         if(!materialColorSwitcher)
             InitializeColorSwitcher();
 
-        materialColorSwitcher.ChangeMaterialColor(this._Team);
+        materialColorSwitcher.SetupImageMaterials(this._Team);
     }
     #endregion
 }
