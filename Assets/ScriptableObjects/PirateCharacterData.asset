@@ -16,7 +16,7 @@ MonoBehaviour:
   charAttributes:
     Mobility: 0
     Killer: 0
-    abilityIcon: {fileID: 21300000, guid: 3fe12bc3072ab2c41a904c15b205377d, type: 3}
+    abilityIcon: {fileID: 21300000, guid: c8ec528fc92c51247a094220e76ea268, type: 3}
     abilityTitle: Dash
   description: Dashes at high speed
   sprite: {fileID: -3385837264446351549, guid: 6d76f043bbb72464684f0edbcd3a17f1, type: 3}

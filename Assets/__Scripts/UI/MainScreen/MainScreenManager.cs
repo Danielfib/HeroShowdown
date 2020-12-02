@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainScreenManager : MonoBehaviour
 {
+    
     void Start()
     {
         Cursor.visible = false;
