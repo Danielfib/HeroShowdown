@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +9,7 @@ public class NetworkManagerLobby : NetworkManager
     private string menuScene = string.Empty;
 
     //player lobby prefab
-    //public GameObject playerMenuPrefab;
+    public GameObject playerMenuPrefab;
 
     public static event Action OnClientConnected, OnClientDisconnected;
 
@@ -44,14 +41,13 @@ public class NetworkManagerLobby : NetworkManager
         }
     }
 
-    // public override void OnServerAddPlayer(NetworkConnection conn)
-    // {
-    //     Debug.Log("added: " + conn.connectionId);
-    //     string menuSceneName = menuScene.Substring(menuScene.LastIndexOf('/') + 1).Split('.')[0];
-    //     if (SceneManager.GetActiveScene().name == menuSceneName)
-    //     {
-    //         GameObject playerMenuInstance = Instantiate(playerMenuPrefab);
-    //         NetworkServer.AddPlayerForConnection(conn, playerMenuInstance);
-    //     }
-    // }
+    public override void OnServerAddPlayer(NetworkConnection conn)
+    {
+        string menuSceneName = menuScene.Substring(menuScene.LastIndexOf('/') + 1).Split('.')[0];
+        if (SceneManager.GetActiveScene().name == menuSceneName)
+        {
+            GameObject playerMenuInstance = Instantiate(playerMenuPrefab);
+            NetworkServer.AddPlayerForConnection(conn, playerMenuInstance);
+        }
+    }
 }

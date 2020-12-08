@@ -36,8 +36,8 @@ public class PlayersSelectionManager : MonoBehaviour
         PlaceOnLeftMostSeat(playerJoinHandler.gameObject);
 
         playerJoinHandler.gameObject.GetComponent<PlayerMenu>().PlayerIndex = playerJoinHandler.playerIndex;
-        PlayersSettings.PlayerDataList.Add(
-            new PlayerData(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
+        // PlayersSettings.PlayerDataList.Add(
+        //     new PlayerData(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
     }
 
     public void OnPlayerLeft(PlayerInput playerInput)

@@ -8,22 +8,22 @@ using UnityEngine.UI;
 public class NetworkOptinsMenu : MonoBehaviour
 {
     [SerializeField]
-    private NetworkManagerLobby networkManager = null;
+    private NetworkManagerLobby networkManager;
 
     [Header("UI")]
-    [SerializeField] private Button joinLobbyBtn, HostBtn = null;
-    [SerializeField] private TMP_InputField inputField = null;
+    [SerializeField] private Button joinLobbyBtn, HostBtn;
+    [SerializeField] private TMP_InputField inputField;
     [SerializeField] private GameObject networkMenu, selectionMenu;
 
     private void OnEnable()
     {
-        NetworkManagerLobby.OnClientDisconnected += HandleClientConnected;
+        NetworkManagerLobby.OnClientConnected += HandleClientConnected;
         NetworkManagerLobby.OnClientDisconnected += HandleClientDisconnected;
     }
 
     private void OnDisable()
     {
-        NetworkManagerLobby.OnClientDisconnected -= HandleClientConnected;
+        NetworkManagerLobby.OnClientConnected -= HandleClientConnected;
         NetworkManagerLobby.OnClientDisconnected -= HandleClientDisconnected;
     }
 
@@ -37,12 +37,10 @@ public class NetworkOptinsMenu : MonoBehaviour
 
     public void JoinLoby()
     {
-        string ipAddress = "localhost";//inputField.text;
+        string ipAddress = (string.IsNullOrEmpty(inputField.text)) ? "localhost" : inputField.text;
 
         networkManager.networkAddress = ipAddress;
         networkManager.StartClient();
-
-        joinLobbyBtn.interactable = false;
     }
 
     private void HandleClientDisconnected()
@@ -52,6 +50,8 @@ public class NetworkOptinsMenu : MonoBehaviour
 
     private void HandleClientConnected()
     {
+        joinLobbyBtn.interactable = false;
+
         selectionMenu.SetActive(true);
         gameObject.SetActive(false);
     }

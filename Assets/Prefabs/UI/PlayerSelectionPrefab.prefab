@@ -61,6 +61,8 @@ MonoBehaviour:
   abilityTitle: {fileID: 588831796263970610}
   abilityIcon: {fileID: 3964608022570747793}
   charImage: {fileID: 8968091377926746278}
+  menuInputActionAsset: {fileID: -944628639613478452, guid: dd936fcc95d5b5a449fcd2d656107b1c,
+    type: 3}
 --- !u!114 &7446778003235821452
 MonoBehaviour:
   m_ObjectHideFlags: 0

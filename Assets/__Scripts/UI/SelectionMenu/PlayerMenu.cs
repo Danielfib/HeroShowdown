@@ -40,6 +40,9 @@ public class PlayerMenu : NetworkBehaviour
     [SerializeField]
     private Image charImage;
 
+    [SerializeField]
+    private InputActionAsset menuInputActionAsset;
+
     private TeamIDEnum _Team;
     public TeamIDEnum Team
     {
@@ -69,6 +72,8 @@ public class PlayerMenu : NetworkBehaviour
         ChooseDefaultTeam();
         this.IsReady = false;
         InitializeColorSwitcher();
+
+        if(isLocalPlayer) GetComponent<PlayerInput>().actions = menuInputActionAsset;
     }
 
     private void InitializeColorSwitcher()
