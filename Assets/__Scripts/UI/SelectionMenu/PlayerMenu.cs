@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
-public class PlayerMenu : MonoBehaviour
+public class PlayerMenu : NetworkBehaviour
 {
     public int PlayerIndex;
 
@@ -98,7 +99,8 @@ public class PlayerMenu : MonoBehaviour
             playerData.character = SelectedCharacter;
             playerData.team = this._Team;
             this.IsReady = true;
-        } else
+        }
+        else
         {
             if (PlayersSelectionManager.IsEveryoneReady)
             {
@@ -126,13 +128,62 @@ public class PlayerMenu : MonoBehaviour
             //Leave player?
         }
     }
-    
+
     #region [HeroSelection]
     public void ChangedHeroBackwards(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || characterManager == null)
+        if (!context.performed || this.IsReady || characterManager == null || !isLocalPlayer)
             return;
 
+        CmdChangedHeroBackward();
+    }
+
+    public void ChangedHeroForward(CallbackContext context)
+    {
+        if (!context.performed || this.IsReady || characterManager == null || !isLocalPlayer)
+            return;
+
+        CmdChangedHeroForward();
+    }
+
+    private void SelectHeroOnIndex(int charIndex)
+    {
+        SelectedCharacter = this.characterManager.availableCharacters[charIndex];
+    }
+
+    [Command]
+    private void CmdChangedHeroForward()
+    {
+        //TODO: Validate logic here
+        RpcChangeHeroForward();
+    }
+
+    [ClientRpc]
+    private void RpcChangeHeroForward()
+    {
+        if (currentCharacterIndex >= this.characterManager.availableCharacters.Length - 1)
+        {
+            currentCharacterIndex = 0;
+        }
+        else
+        {
+            currentCharacterIndex++;
+        }
+
+        SelectHeroOnIndex(currentCharacterIndex);
+        UpdateCharUIInfo();
+    }
+
+    [Command]
+    private void CmdChangedHeroBackward()
+    {
+        //TODO: Validate logic here
+        RpcChangeHeroBackward();
+    }
+
+    [ClientRpc]
+    private void RpcChangeHeroBackward()
+    {
         if (currentCharacterIndex <= 0)
         {
             currentCharacterIndex = this.characterManager.availableCharacters.Length - 1;
@@ -145,28 +196,6 @@ public class PlayerMenu : MonoBehaviour
         SelectHeroOnIndex(currentCharacterIndex);
         UpdateCharUIInfo();
     }
-
-    public void ChangedHeroForward(CallbackContext context)
-    {
-        if (!context.performed || this.IsReady || characterManager == null)
-            return;
-
-        if (currentCharacterIndex >= this.characterManager.availableCharacters.Length - 1)
-        {
-            currentCharacterIndex = 0;
-        } else
-        {
-            currentCharacterIndex++;
-        }
-
-        SelectHeroOnIndex(currentCharacterIndex);
-        UpdateCharUIInfo();
-    }
-
-    private void SelectHeroOnIndex(int charIndex)
-    {
-        SelectedCharacter = this.characterManager.availableCharacters[charIndex];
-    }
     #endregion
 
     #region [Team]
@@ -177,27 +206,39 @@ public class PlayerMenu : MonoBehaviour
 
     public void ChangeTeamLeft(CallbackContext context)
     {
-        if (!context.performed || this.IsReady)
+        if (!context.performed || this.IsReady || !isLocalPlayer)
             return;
 
-        int currentTeam = (int)this._Team;
-
-        int newTeam;
-        if(currentTeam == 0)
-            newTeam = Enum.GetNames(typeof(TeamIDEnum)).Length - 1;
-        else
-            newTeam = currentTeam - 1;
-
-        this.Team = (TeamIDEnum)newTeam;
+        CmdChangedTeamLeft();
     }
 
     public void ChangeTeamRight(CallbackContext context)
     {
-        if (!context.performed || this.IsReady)
+        if (!context.performed || this.IsReady || !isLocalPlayer)
             return;
 
+        CmdChangedTeamRight();
+    }
+
+    private void ChangedTeam()
+    {
+        if (!materialColorSwitcher)
+            InitializeColorSwitcher();
+
+        materialColorSwitcher.SetupImageMaterials(this._Team);
+    }
+
+    [Command]
+    private void CmdChangedTeamRight()
+    {
+        RpcChangedTeamRight();
+    }
+
+    [ClientRpc]
+    private void RpcChangedTeamRight()
+    {
         int currentTeam = (int)this._Team;
-        
+
         int newTeam;
         if (currentTeam == Enum.GetNames(typeof(TeamIDEnum)).Length - 1)
             newTeam = 0;
@@ -207,12 +248,24 @@ public class PlayerMenu : MonoBehaviour
         this.Team = (TeamIDEnum)newTeam;
     }
 
-    private void ChangedTeam()
+    [Command]
+    private void CmdChangedTeamLeft()
     {
-        if(!materialColorSwitcher)
-            InitializeColorSwitcher();
+        RpcChangedTeamLeft();
+    }
 
-        materialColorSwitcher.SetupImageMaterials(this._Team);
+    [ClientRpc]
+    private void RpcChangedTeamLeft()
+    {
+        int currentTeam = (int)this._Team;
+
+        int newTeam;
+        if (currentTeam == 0)
+            newTeam = Enum.GetNames(typeof(TeamIDEnum)).Length - 1;
+        else
+            newTeam = currentTeam - 1;
+
+        this.Team = (TeamIDEnum)newTeam;
     }
     #endregion
 }
