@@ -8,14 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayersSelectionManager : MonoBehaviour
 {
-    public static bool IsEveryoneReady
-    {
-        get {
-            PlayerMenu[] players = GameObject.FindObjectsOfType<PlayerMenu>();
-            return players.Where(x => x.IsReady).Count() == players.Length;
-        }
-    }
-
     private MenuInputActions menuInputActions;
     private bool[] SeatsOcupied = { false, false, false, false };
     private string LevelToLoad = "PirateCave(S)";

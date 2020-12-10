@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,8 +10,9 @@ public class NetworkManagerLobby : NetworkManager
     [Scene, SerializeField]
     private string menuScene = string.Empty;
 
-    //player lobby prefab
     public GameObject playerMenuPrefab;
+
+    public List<PlayerMenu> LobbyPlayers {get; } = new List<PlayerMenu>();
 
     public static event Action OnClientConnected, OnClientDisconnected;
 
@@ -39,6 +42,23 @@ public class NetworkManagerLobby : NetworkManager
             //BUG: disconectava logo que conectava por causa desse if
             return;
         }
+    }
+
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        if (conn.identity != null)
+        {
+            var player = conn.identity.GetComponent<PlayerMenu>();
+            LobbyPlayers.Remove(player);
+        }
+        base.OnServerDisconnect(conn);
+    }
+
+    public bool IsEveryoneReadyToStart()
+    {
+        if( numPlayers < 2 ) return false;
+
+        return LobbyPlayers.TrueForAll(x => x.IsReady);
     }
 
     public override void OnServerAddPlayer(NetworkConnection conn)
