@@ -23,16 +23,21 @@ public class PlayerMenu : NetworkBehaviour
 
     [SyncVar(hook = nameof(HandleReadyStatusChanged))]
     public bool IsReady = false;
+    
+    [SyncVar(hook = nameof(HandleSelectedCharacterChanged))]
+    private int currentCharacterIndex;
+
+    [SyncVar(hook = nameof(HandleTeamChanged))]
+    private TeamIDEnum Team;
 
     public GameObject ReadySprite;
     [SerializeField]
     private TextMeshProUGUI charName, charDescription, abilityTitle;
     [SerializeField]
     private Image abilityIcon;
-
     private CharacterSO SelectedCharacter;
     private Sprite CharacterSprite;
-    private int currentCharacterIndex;
+
     private SwitchColorToTeamColor materialColorSwitcher;
 
     private CharactersManager characterManager;
@@ -43,36 +48,27 @@ public class PlayerMenu : NetworkBehaviour
     [SerializeField]
     private InputActionAsset menuInputActionAsset;
 
-    private TeamIDEnum _Team;
-    public TeamIDEnum Team
-    {
-        get { return _Team; }
-        set
-        {
-            this._Team = value;
-            ChangedTeam();
-        }
-    }
-
-    private void Start()
-    {
-        SetupOnStart();
-    }
-
     private void Awake()
     {
         characterManager = GameObject.Find("CharactersManager").GetComponent<CharactersManager>();
     }
 
-    private void SetupOnStart()
+    [Command]
+    private void CmdSetupOnStart()
+    {
+        RpcSetupOnStart();
+    }
+
+    [ClientRpc]
+    private void RpcSetupOnStart()
     {
         currentCharacterIndex = 0;
-        SelectedCharacter = this.characterManager.GetDefaultInitialCharacter();
-        UpdateCharUIInfo();
+        SelectedCharacter = this.characterManager.availableCharacters[0];
         ChooseDefaultTeam();
-        InitializeColorSwitcher();
+        ChangedTeam();
+        UpdateCharUIInfo();
 
-        if(isLocalPlayer) GetComponent<PlayerInput>().actions = menuInputActionAsset;
+        if(hasAuthority) GetComponent<PlayerInput>().actions = menuInputActionAsset;
     }
 
     private void InitializeColorSwitcher()
@@ -95,6 +91,11 @@ public class PlayerMenu : NetworkBehaviour
     public override void OnStartClient()
     {
         Lobby.LobbyPlayers.Add(this);
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        CmdSetupOnStart();
     }
 
     public override void OnStopClient()
@@ -181,20 +182,8 @@ public class PlayerMenu : NetworkBehaviour
         CmdChangedHeroForward();
     }
 
-    private void SelectHeroOnIndex(int charIndex)
-    {
-        SelectedCharacter = this.characterManager.availableCharacters[charIndex];
-    }
-
     [Command]
     private void CmdChangedHeroForward()
-    {
-        //TODO: Validate logic here
-        RpcChangeHeroForward();
-    }
-
-    [ClientRpc]
-    private void RpcChangeHeroForward()
     {
         if (currentCharacterIndex >= this.characterManager.availableCharacters.Length - 1)
         {
@@ -204,20 +193,10 @@ public class PlayerMenu : NetworkBehaviour
         {
             currentCharacterIndex++;
         }
-
-        SelectHeroOnIndex(currentCharacterIndex);
-        UpdateCharUIInfo();
     }
 
     [Command]
     private void CmdChangedHeroBackward()
-    {
-        //TODO: Validate logic here
-        RpcChangeHeroBackward();
-    }
-
-    [ClientRpc]
-    private void RpcChangeHeroBackward()
     {
         if (currentCharacterIndex <= 0)
         {
@@ -227,8 +206,11 @@ public class PlayerMenu : NetworkBehaviour
         {
             currentCharacterIndex--;
         }
+    }
 
-        SelectHeroOnIndex(currentCharacterIndex);
+    private void HandleSelectedCharacterChanged(int oldValue, int newValue)
+    {
+        SelectedCharacter = this.characterManager.availableCharacters[newValue];
         UpdateCharUIInfo();
     }
     #endregion
@@ -260,19 +242,13 @@ public class PlayerMenu : NetworkBehaviour
         if (!materialColorSwitcher)
             InitializeColorSwitcher();
 
-        materialColorSwitcher.SetupImageMaterials(this._Team);
+        materialColorSwitcher.SetupImageMaterials(this.Team);
     }
 
     [Command]
     private void CmdChangedTeamRight()
     {
-        RpcChangedTeamRight();
-    }
-
-    [ClientRpc]
-    private void RpcChangedTeamRight()
-    {
-        int currentTeam = (int)this._Team;
+        int currentTeam = (int)this.Team;
 
         int newTeam;
         if (currentTeam == Enum.GetNames(typeof(TeamIDEnum)).Length - 1)
@@ -286,13 +262,7 @@ public class PlayerMenu : NetworkBehaviour
     [Command]
     private void CmdChangedTeamLeft()
     {
-        RpcChangedTeamLeft();
-    }
-
-    [ClientRpc]
-    private void RpcChangedTeamLeft()
-    {
-        int currentTeam = (int)this._Team;
+        int currentTeam = (int)this.Team;
 
         int newTeam;
         if (currentTeam == 0)
@@ -301,6 +271,11 @@ public class PlayerMenu : NetworkBehaviour
             newTeam = currentTeam - 1;
 
         this.Team = (TeamIDEnum)newTeam;
+    }
+
+    private void HandleTeamChanged(TeamIDEnum oldValue, TeamIDEnum newValue)
+    {
+        ChangedTeam();
     }
     #endregion
 }
