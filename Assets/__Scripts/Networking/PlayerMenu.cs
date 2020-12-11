@@ -70,7 +70,6 @@ public class PlayerMenu : NetworkBehaviour
         SelectedCharacter = this.characterManager.GetDefaultInitialCharacter();
         UpdateCharUIInfo();
         ChooseDefaultTeam();
-        this.IsReady = false;
         InitializeColorSwitcher();
 
         if(isLocalPlayer) GetComponent<PlayerInput>().actions = menuInputActionAsset;
