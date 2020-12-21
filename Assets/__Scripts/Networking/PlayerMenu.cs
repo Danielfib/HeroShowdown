@@ -31,7 +31,10 @@ public class PlayerMenu : NetworkBehaviour
     [SyncVar(hook = nameof(HandleTeamChanged))]
     private TeamIDEnum Team;
 
-    public GameObject ReadySprite;
+    [SyncVar(hook = nameof(HandleIsServerPlayerChanged))]
+    public bool IsServerPlayer = false;
+
+    public GameObject ReadySprite, IsLeaderSprite;
     [SerializeField]
     private TextMeshProUGUI charName, charDescription, abilityTitle;
     [SerializeField]
@@ -65,6 +68,7 @@ public class PlayerMenu : NetworkBehaviour
     {
         currentCharacterIndex = 0;
         SelectedCharacter = this.characterManager.availableCharacters[0];
+        IsLeaderSprite.SetActive(IsServerPlayer);
         ChooseDefaultTeam();
         ChangedTeam();
         UpdateCharUIInfo();
@@ -92,11 +96,23 @@ public class PlayerMenu : NetworkBehaviour
     public override void OnStartClient()
     {
         Lobby.LobbyPlayers.Add(this);
+
+        CmdSetupOnStart();
     }
 
     public override void OnStartLocalPlayer()
     {
-        CmdSetupOnStart();
+        //CmdSetupOnStart();
+
+        if(!IsServerPlayer)
+        {
+            IsServerPlayer = (isServer && isLocalPlayer);
+        }
+    }
+
+    public void HandleIsServerPlayerChanged(bool oldValue, bool newValue)
+    {
+        IsLeaderSprite.SetActive(newValue);
     }
 
     public override void OnStopClient()
@@ -112,14 +128,12 @@ public class PlayerMenu : NetworkBehaviour
         if (!context.performed || !hasAuthority)
             return;
 
-        Debug.Log("Progress(), is ready?" + this.IsReady);
         CmdProgress();
     }
 
     [Command]
     public void CmdProgress()
     {
-        Debug.Log("PlayerMenu.CmdProgress()");
         if (!this.IsReady)
         {
             // PlayerData playerData = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex);
@@ -129,10 +143,8 @@ public class PlayerMenu : NetworkBehaviour
         }
         else
         {
-            Debug.Log("PlayerMenu.CmdProgress() else");
             if (Lobby.IsEveryoneReadyToStart())
             {
-                Debug.Log("PlayerMenu.CmdProgress() rdytostart");
                 //GameObject.FindObjectOfType<PlayersSelectionManager>().LoadMatchLevel();
                 //SceneManager.LoadScene("PirateCave(S)");
                 CmdStartGame();
@@ -149,7 +161,6 @@ public class PlayerMenu : NetworkBehaviour
     {
         //if(Lobby.LobbyPlayers[0].connectionToClient != connectionToClient) return;
         
-        Debug.Log("PlayerMenu.CmdStartGame()");
         Lobby.StartGame();
     }
 
