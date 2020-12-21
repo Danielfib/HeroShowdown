@@ -4,6 +4,7 @@ using Mirror;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -111,12 +112,14 @@ public class PlayerMenu : NetworkBehaviour
         if (!context.performed || !hasAuthority)
             return;
 
+        Debug.Log("Progress(), is ready?" + this.IsReady);
         CmdProgress();
     }
 
     [Command]
     public void CmdProgress()
     {
+        Debug.Log("PlayerMenu.CmdProgress()");
         if (!this.IsReady)
         {
             // PlayerData playerData = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex);
@@ -126,15 +129,28 @@ public class PlayerMenu : NetworkBehaviour
         }
         else
         {
+            Debug.Log("PlayerMenu.CmdProgress() else");
             if (Lobby.IsEveryoneReadyToStart())
             {
-                GameObject.FindObjectOfType<PlayersSelectionManager>().LoadMatchLevel();
+                Debug.Log("PlayerMenu.CmdProgress() rdytostart");
+                //GameObject.FindObjectOfType<PlayersSelectionManager>().LoadMatchLevel();
+                //SceneManager.LoadScene("PirateCave(S)");
+                CmdStartGame();
             }
             else
             {
                 //TODO: somebody not ready feedback
             }
         }
+    }
+
+    [Command]
+    public void CmdStartGame()
+    {
+        //if(Lobby.LobbyPlayers[0].connectionToClient != connectionToClient) return;
+        
+        Debug.Log("PlayerMenu.CmdStartGame()");
+        Lobby.StartGame();
     }
 
     public void Back(CallbackContext context)

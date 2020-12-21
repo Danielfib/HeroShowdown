@@ -10,12 +10,6 @@ public class PlayersSelectionManager : MonoBehaviour
 {
     private MenuInputActions menuInputActions;
     private bool[] SeatsOcupied = { false, false, false, false };
-    private string LevelToLoad = "PirateCave(S)";
-
-    public void LoadMatchLevel()
-    {
-        SceneManager.LoadScene(this.LevelToLoad);
-    }
 
     void Start()
     {
@@ -25,11 +19,15 @@ public class PlayersSelectionManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerJoinHandler)
     {
-        PlaceOnLeftMostSeat(playerJoinHandler.gameObject);
-
-        playerJoinHandler.gameObject.GetComponent<PlayerMenu>().PlayerIndex = playerJoinHandler.playerIndex;
-        // PlayersSettings.PlayerDataList.Add(
-        //     new PlayerData(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
+        var playerMenu = playerJoinHandler.gameObject.GetComponent<PlayerMenu>();
+        if(playerMenu != null)
+        {
+            PlaceOnLeftMostSeat(playerJoinHandler.gameObject);
+            
+            playerMenu.PlayerIndex = playerJoinHandler.playerIndex;
+            // PlayersSettings.PlayerDataList.Add(
+            //     new PlayerData(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
+        }
     }
 
     public void OnPlayerLeft(PlayerInput playerInput)

@@ -11,8 +11,10 @@ public class NetworkManagerLobby : NetworkManager
     private string menuScene = string.Empty;
 
     public GameObject playerMenuPrefab;
+    public GameObject playerGamePrefab;
 
     public List<PlayerMenu> LobbyPlayers {get; } = new List<PlayerMenu>();
+    public List<CharacterController> GamePlayers {get; } = new List<CharacterController>();
 
     public static event Action OnClientConnected, OnClientDisconnected;
 
@@ -24,7 +26,7 @@ public class NetworkManagerLobby : NetworkManager
 
     public override void OnClientDisconnect(NetworkConnection conn)
     {
-        base.OnClientConnect(conn);
+        base.OnClientDisconnect(conn);
         OnClientDisconnected?.Invoke();
     }
 
@@ -56,7 +58,7 @@ public class NetworkManagerLobby : NetworkManager
 
     public bool IsEveryoneReadyToStart()
     {
-        if( numPlayers < 2 ) return false;
+        if( numPlayers < 1 ) return false;
 
         return LobbyPlayers.TrueForAll(x => x.IsReady);
     }
@@ -69,5 +71,25 @@ public class NetworkManagerLobby : NetworkManager
             GameObject playerMenuInstance = Instantiate(playerMenuPrefab);
             NetworkServer.AddPlayerForConnection(conn, playerMenuInstance);
         }
+    }
+
+    public void StartGame()
+    {
+        ServerChangeScene("PirateCave(S)");
+    }
+
+    public override void ServerChangeScene(string newSceneName)
+    {
+        for(int i = LobbyPlayers.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("Spawning new player!");
+            var conn = LobbyPlayers[i].connectionToClient;
+            var gamePlayerInstance = Instantiate(playerGamePrefab);
+
+            NetworkManager.Destroy(conn.identity.gameObject);
+            NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);
+        }
+
+        base.ServerChangeScene(newSceneName);
     }
 }

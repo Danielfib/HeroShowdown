@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: -10280573032050441}
   - component: {fileID: 7969681694807076440}
   - component: {fileID: 4676651843621671538}
+  - component: {fileID: 777747890286131326}
   m_Layer: 10
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -214,6 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f931593852aba48498b08c1bf85674b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   PlayerIndex: 0
   Grabber: {fileID: 8618652328124411858}
   CharacterBrain: {fileID: 11400000, guid: 25f35c3b0f71e0a40afbc36183db5420, type: 2}
@@ -236,9 +239,10 @@ MonoBehaviour:
     type: 3}
   tossFXPrefab: {fileID: 9043163370897410451, guid: 5d780b997151e8a4a92752a2715ca779,
     type: 3}
-  pointStats: 0
+  flagsScored: 0
   deathsStats: 0
   killsStats: 0
+  flagsRetrieved: 0
 --- !u!114 &-10280573032050441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +407,22 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &777747890286131326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670669546270193135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &3670669546456621192
 GameObject:
   m_ObjectHideFlags: 0

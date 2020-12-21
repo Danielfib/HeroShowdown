@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Mirror;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharacterController : MonoBehaviour
+public class CharacterController : NetworkBehaviour
 { 
     public int PlayerIndex;
     public Grabber Grabber;
@@ -67,6 +68,16 @@ public class CharacterController : MonoBehaviour
     [HideInInspector]
     public int flagsScored, deathsStats, killsStats, flagsRetrieved;
 
+    private NetworkManagerLobby lobby;
+    private NetworkManagerLobby Lobby
+    {
+        get
+        {
+            if (lobby != null) { return lobby; }
+            return lobby = NetworkManager.singleton as NetworkManagerLobby;
+        }
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -87,6 +98,20 @@ public class CharacterController : MonoBehaviour
 
         AnimateMovement();
     }
+
+    #region [Networking]
+    public override void OnStartClient()
+    {
+        DontDestroyOnLoad(gameObject);
+        
+        Lobby.GamePlayers.Add(this);
+    }
+
+    public override void OnStopClient()
+    {
+        Lobby.GamePlayers.Remove(this);
+    }
+    #endregion
 
     #region [Stats_Count]
     public Action KilledAction;
