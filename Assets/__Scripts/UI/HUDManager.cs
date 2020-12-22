@@ -13,12 +13,12 @@ public class HUDManager : Singleton<HUDManager>
     [SerializeField]
     private TeamHUD BlueTeamContainer;
 
-    public PlayerHUDIconController LoadPlayerIconToTeam(PlayerData pd)
+    public PlayerHUDIconController LoadPlayerIconToTeam(CharacterSO characterSO, TeamIDEnum team)
     {
-        GameObject playerIcon = Instantiate(this.PlayerHUDIconPrefab, GetTeamHUD(pd.team).membersContainer);
+        GameObject playerIcon = Instantiate(this.PlayerHUDIconPrefab, GetTeamHUD(team).membersContainer);
 
         Image playerImage = playerIcon.GetComponent<Image>();
-        playerImage.sprite = pd.character.HUDIcon;
+        playerImage.sprite = characterSO.HUDIcon;
 
         return playerIcon.GetComponent<PlayerHUDIconController>();
     }

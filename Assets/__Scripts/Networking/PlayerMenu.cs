@@ -29,7 +29,7 @@ public class PlayerMenu : NetworkBehaviour
     private int currentCharacterIndex;
 
     [SyncVar(hook = nameof(HandleTeamChanged))]
-    private TeamIDEnum Team;
+    public TeamIDEnum Team;
 
     [SyncVar(hook = nameof(HandleIsServerPlayerChanged))]
     public bool IsServerPlayer = false;
@@ -39,7 +39,7 @@ public class PlayerMenu : NetworkBehaviour
     private TextMeshProUGUI charName, charDescription, abilityTitle;
     [SerializeField]
     private Image abilityIcon;
-    private CharacterSO SelectedCharacter;
+    public CharacterSO SelectedCharacter;
     private Sprite CharacterSprite;
 
     private SwitchColorToTeamColor materialColorSwitcher;

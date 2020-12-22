@@ -17,6 +17,7 @@ public class NetworkManagerLobby : NetworkManager
     public List<CharacterController> GamePlayers {get; } = new List<CharacterController>();
 
     public static event Action OnClientConnected, OnClientDisconnected;
+    public static event Action<NetworkConnection> OnServerReadied;
 
     public override void OnClientConnect(NetworkConnection conn)
     {
@@ -82,14 +83,32 @@ public class NetworkManagerLobby : NetworkManager
     {
         for(int i = LobbyPlayers.Count - 1; i >= 0; i--)
         {
-            Debug.Log("Spawning new player!");
+            TeamIDEnum team = LobbyPlayers[i].Team;
+            CharacterSO selectedHero = LobbyPlayers[i].SelectedCharacter;
+
             var conn = LobbyPlayers[i].connectionToClient;
             var gamePlayerInstance = Instantiate(playerGamePrefab);
+            
+            var player = playerGamePrefab.GetComponent<CharacterController>();
+            player.Team = team;
+            player.SelectedHero = selectedHero;
 
             NetworkManager.Destroy(conn.identity.gameObject);
             NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);
         }
 
         base.ServerChangeScene(newSceneName);
+    }
+
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        //base.OnServerSceneChanged(sceneName);
+    }
+
+    public override void OnServerReady(NetworkConnection conn)
+    {
+        base.OnServerReady(conn);
+
+        OnServerReadied?.Invoke(conn);
     }
 }

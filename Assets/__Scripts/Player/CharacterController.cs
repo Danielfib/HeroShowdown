@@ -68,6 +68,8 @@ public class CharacterController : NetworkBehaviour
     [HideInInspector]
     public int flagsScored, deathsStats, killsStats, flagsRetrieved;
 
+    public CharacterSO SelectedHero;
+
     private NetworkManagerLobby lobby;
     private NetworkManagerLobby Lobby
     {
@@ -83,6 +85,9 @@ public class CharacterController : NetworkBehaviour
         rb = GetComponent<Rigidbody2D>();
         animController = GetComponentInChildren<AnimatorsController>();
         sbCooldown = GetComponentInChildren<SpriteBarCooldown>();
+
+        if(!hasAuthority) GetComponent<PlayerInput>().actions = null;
+
         animController.teamIDEnum = this.Team;
         KilledAction += Killed;
         this.CharacterBrain.Initialize(this);

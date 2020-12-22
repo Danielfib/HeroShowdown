@@ -21,3 +21,9 @@ public class PlayerData
         this.inputDevice = inputDevice;
     }
 }
+
+public enum HeroesEnum
+{
+    PIRATE,
+    MAGE
+}

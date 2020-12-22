@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class MatchManager : Singleton<MatchManager>
 {
-    public PlayerInputManager PlayerInputManager;
     public EndingScreenManager EndingScreenManager;
 
     [SerializeField]
@@ -75,40 +74,34 @@ public class MatchManager : Singleton<MatchManager>
     #region [Player_Load]
     private void LoadPlayers()
     {
-        foreach (var player in PlayersSettings.PlayerDataList)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(var player in players)
         {
-            PlayerInput addedPlayer = PlayerInputManager.JoinPlayer(playerIndex: player.playerIndex, 
-                                                                    pairWithDevice: player.inputDevice);
-            LoadPlayerHero(addedPlayer);
+            LoadPlayerHero(player);
         }
-
-        PlayersSettings.PlayerDataList.Clear();
     }
 
-    private void LoadPlayerHero(PlayerInput player)
+    private void LoadPlayerHero(GameObject player)
     {
-        CharacterController playerController = player.gameObject.GetComponent<CharacterController>();
-        PlayerData pd = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == player.playerIndex);
+        CharacterController pc = player.gameObject.GetComponent<CharacterController>();
 
-        switch (pd.character.name)
+        switch (pc.SelectedHero.name)
         {
             case "mage":
-                playerController.CharacterBrain = Resources.Load<MageBrain>("CharacterBrains/MageBrain");
+                pc.CharacterBrain = Resources.Load<MageBrain>("CharacterBrains/MageBrain");
                 break;
             case "pirate":
-                playerController.CharacterBrain = Resources.Load<PirateBrain>("CharacterBrains/PirateBrain");
+                pc.CharacterBrain = Resources.Load<PirateBrain>("CharacterBrains/PirateBrain");
                 break;
         }
-        playerController.PlayerIndex = player.playerIndex;
-        playerController.Team = pd.team;
-        PositionPlayer(player.gameObject.transform, pd.team);
+        PositionPlayer(player.transform, pc.Team);
 
         //Loading HUD player icon
-        PlayerHUDIconController iconController = HUDManager.Instance.LoadPlayerIconToTeam(pd);
-        playerController.PlayerHUDIconController = iconController;
+        PlayerHUDIconController iconController = HUDManager.Instance.LoadPlayerIconToTeam(pc.SelectedHero, pc.Team);
+        pc.PlayerHUDIconController = iconController;
 
-        playerController.InitializeAnimators(pd.character.upperBodyAnimator, pd.character.lowerBodyAnimator);
-        playerController.UIAnimator = pd.character.UIAnimator;
+        pc.InitializeAnimators(pc.SelectedHero.upperBodyAnimator, pc.SelectedHero.lowerBodyAnimator);
+        pc.UIAnimator = pc.SelectedHero.UIAnimator;
     }
 
     private void PositionPlayer(Transform playerTransform, TeamIDEnum team)

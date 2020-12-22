@@ -243,6 +243,7 @@ MonoBehaviour:
   deathsStats: 0
   killsStats: 0
   flagsRetrieved: 0
+  playerInputActionAsset: {fileID: 0}
 --- !u!114 &-10280573032050441
 MonoBehaviour:
   m_ObjectHideFlags: 0
