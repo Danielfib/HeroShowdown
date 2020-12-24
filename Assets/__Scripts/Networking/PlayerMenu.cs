@@ -1,10 +1,8 @@
 using System;
-using System.Linq;
 using Mirror;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -136,9 +134,6 @@ public class PlayerMenu : NetworkBehaviour
     {
         if (!this.IsReady)
         {
-            // PlayerData playerData = PlayersSettings.PlayerDataList.Find(x => x.playerIndex == this.PlayerIndex);
-            // playerData.character = SelectedCharacter;
-            // playerData.team = this._Team;
             this.IsReady = true;
         }
         else
@@ -238,11 +233,13 @@ public class PlayerMenu : NetworkBehaviour
     private void HandleSelectedCharacterChanged(int oldValue, int newValue)
     {
         SelectedCharacter = this.characterManager.availableCharacters[newValue];
+        Debug.Log("Changed character to: " + SelectedCharacter.name);
         UpdateCharUIInfo();
     }
     #endregion
 
     #region [Team]
+    [Command]
     private void ChooseDefaultTeam()
     {
         this.Team = TeamIDEnum.RED;
@@ -250,7 +247,7 @@ public class PlayerMenu : NetworkBehaviour
 
     public void ChangeTeamLeft(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || !hasAuthority)
+        if (!context.performed || this.IsReady || characterManager == null || !hasAuthority)
             return;
 
         CmdChangedTeamLeft();
@@ -258,7 +255,7 @@ public class PlayerMenu : NetworkBehaviour
 
     public void ChangeTeamRight(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || !hasAuthority)
+        if (!context.performed || this.IsReady || characterManager == null || !hasAuthority)
             return;
 
         CmdChangedTeamRight();

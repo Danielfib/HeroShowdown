@@ -14,7 +14,7 @@ public class NetworkManagerLobby : NetworkManager
     public GameObject playerGamePrefab;
 
     public List<PlayerMenu> LobbyPlayers {get; } = new List<PlayerMenu>();
-    public List<CharacterController> GamePlayers {get; } = new List<CharacterController>();
+    //public List<CharacterController> GamePlayers {get; } = new List<CharacterController>();
 
     public static event Action OnClientConnected, OnClientDisconnected;
     public static event Action<NetworkConnection> OnServerReadied;
@@ -88,10 +88,11 @@ public class NetworkManagerLobby : NetworkManager
 
             var conn = LobbyPlayers[i].connectionToClient;
             var gamePlayerInstance = Instantiate(playerGamePrefab);
+            var gpd = gamePlayerInstance.AddComponent<GamePlayerData>();
+            gpd.team = team;
+            gpd.characterSO = selectedHero;
             
             var player = playerGamePrefab.GetComponent<CharacterController>();
-            player.Team = team;
-            player.SelectedHero = selectedHero;
 
             NetworkManager.Destroy(conn.identity.gameObject);
             NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);

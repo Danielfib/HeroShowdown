@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Mirror;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayersSelectionManager : MonoBehaviour
 {
@@ -25,8 +20,6 @@ public class PlayersSelectionManager : MonoBehaviour
             PlaceOnLeftMostSeat(playerJoinHandler.gameObject);
             
             playerMenu.PlayerIndex = playerJoinHandler.playerIndex;
-            // PlayersSettings.PlayerDataList.Add(
-            //     new PlayerData(playerJoinHandler.playerIndex, playerJoinHandler.devices[0]));
         }
     }
 

@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public static class PlayersSettings
 {
-    public static List<PlayerData> PlayerDataList = new List<PlayerData>();
 }
 
 public class PlayerData

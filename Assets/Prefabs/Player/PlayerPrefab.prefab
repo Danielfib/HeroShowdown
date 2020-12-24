@@ -220,7 +220,7 @@ MonoBehaviour:
   PlayerIndex: 0
   Grabber: {fileID: 8618652328124411858}
   CharacterBrain: {fileID: 11400000, guid: 25f35c3b0f71e0a40afbc36183db5420, type: 2}
-  Team: 0
+  Team: 1
   moveSpeed: 10
   jumpForce: 10
   Animator: {fileID: 0}
@@ -243,7 +243,7 @@ MonoBehaviour:
   deathsStats: 0
   killsStats: 0
   flagsRetrieved: 0
-  playerInputActionAsset: {fileID: 0}
+  SelectedHero: {fileID: 11400000, guid: 4089eea6280764044a3c1e1a0e556c02, type: 2}
 --- !u!114 &-10280573032050441
 MonoBehaviour:
   m_ObjectHideFlags: 0

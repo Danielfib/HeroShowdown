@@ -108,13 +108,18 @@ public class CharacterController : NetworkBehaviour
     public override void OnStartClient()
     {
         DontDestroyOnLoad(gameObject);
-        
-        Lobby.GamePlayers.Add(this);
+
+        var gpd = GetComponent<GamePlayerData>();
+        this.Team = gpd.team;
+        this.SelectedHero = gpd.characterSO;
+        //MatchManager.Instance.LoadPlayerHero(this.gameObject);
+        //this.gameObject.name = "epa";
+        //Lobby.GamePlayers.Add(this);
     }
 
     public override void OnStopClient()
     {
-        Lobby.GamePlayers.Remove(this);
+        //Lobby.GamePlayers.Remove(this);
     }
     #endregion
 
