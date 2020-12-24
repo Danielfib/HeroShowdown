@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3164cf8ff6e3f304fb6fa5eeb3b44028, type: 3}
   m_Name: MageCharacterData
   m_EditorClassIdentifier: 
-  name: Mage
+  name: mage
   charAttributes:
     Mobility: 0
     Killer: 0
