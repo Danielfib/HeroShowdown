@@ -110,8 +110,9 @@ public class CharacterController : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
 
         var gpd = GetComponent<GamePlayerData>();
-        this.Team = gpd.team;
-        this.SelectedHero = gpd.characterSO;
+        Team = gpd.team;
+        SelectedHero = gpd.characterSO;
+        animController.UpdateSwitchColorsToTeamColor(Team);
         //MatchManager.Instance.LoadPlayerHero(this.gameObject);
         //this.gameObject.name = "epa";
         //Lobby.GamePlayers.Add(this);

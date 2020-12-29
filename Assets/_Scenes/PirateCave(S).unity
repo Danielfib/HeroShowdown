@@ -544,6 +544,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectileStandard
       objectReference: {fileID: 0}
+    - target: {fileID: 806587682486671827, guid: cb8f1eb2635b696429320c7837fd73da,
+        type: 3}
+      propertyPath: sceneId
+      value: 4089250370
+      objectReference: {fileID: 0}
     - target: {fileID: 4413974299125698262, guid: cb8f1eb2635b696429320c7837fd73da,
         type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size

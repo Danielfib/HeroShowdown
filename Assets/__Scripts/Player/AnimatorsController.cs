@@ -16,8 +16,15 @@ public class AnimatorsController : MonoBehaviour
         var animators = GetComponentsInChildren<Animator>().Where(x => x.runtimeAnimatorController).ToArray();
         cc = GetComponentInParent<CharacterController>();
         this.animators = animators;
+        
+        UpdateSwitchColorsToTeamColor(teamIDEnum);
+    }
 
-        foreach(var s in GetComponentsInChildren<SwitchColorToTeamColor>()) { s.ChangeMaterialColor(teamIDEnum); }
+    public void UpdateSwitchColorsToTeamColor(TeamIDEnum team)
+    {
+        if(team != teamIDEnum) teamIDEnum = team;
+
+        foreach(var s in GetComponentsInChildren<SwitchColorToTeamColor>()) { s.ChangeMaterialColor(team); }
     }
 
     private void Update()

@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/SelectionScreen.unity
     guid: 84422b74ef9b3404fbcfedb296da47a8
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/PirateCave(S).unity
     guid: 412b59aa01ab5284e8a1ef3a87260243
   - enabled: 0
