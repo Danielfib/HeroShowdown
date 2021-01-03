@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "CharacterSO", menuName = "Character Data")]
 public class CharacterSO : ScriptableObject
 {
-    public string name;
+    public HeroesEnum hero;    
     public CharacterAttributes charAttributes;
     public string description;
     public Sprite sprite;

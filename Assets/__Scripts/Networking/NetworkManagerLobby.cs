@@ -14,7 +14,6 @@ public class NetworkManagerLobby : NetworkManager
     public GameObject playerGamePrefab;
 
     public List<PlayerMenu> LobbyPlayers {get; } = new List<PlayerMenu>();
-    //public List<CharacterController> GamePlayers {get; } = new List<CharacterController>();
 
     public static event Action OnClientConnected, OnClientDisconnected;
     public static event Action<NetworkConnection> OnServerReadied;
@@ -83,22 +82,30 @@ public class NetworkManagerLobby : NetworkManager
     {
         for(int i = LobbyPlayers.Count - 1; i >= 0; i--)
         {
-            TeamIDEnum team = LobbyPlayers[i].Team;
-            CharacterSO selectedHero = LobbyPlayers[i].SelectedCharacter;
+            var playerI = LobbyPlayers[i];
 
             var conn = LobbyPlayers[i].connectionToClient;
             var gamePlayerInstance = Instantiate(playerGamePrefab);
-            var gpd = gamePlayerInstance.AddComponent<GamePlayerData>();
-            gpd.team = team;
-            gpd.characterSO = selectedHero;
-            
-            var player = playerGamePrefab.GetComponent<CharacterController>();
 
+            CharacterController cc = gamePlayerInstance.GetComponent<CharacterController>();
+            cc.Team = playerI.Team;
+            cc.SelectedHeroEnum = playerI.SelectedCharacter.hero;
+            
             NetworkManager.Destroy(conn.identity.gameObject);
             NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);
         }
 
         base.ServerChangeScene(newSceneName);
+
+        //TODO: position players after scene has changed
+        //GamePlayers.ForEach(x => PositionPlayer(x.transform, x.Team));
+    }
+
+    private void PositionPlayer(Transform playerTransform, TeamIDEnum team)
+    {
+        Debug.Log("Positioning player " + playerTransform.GetComponent<CharacterController>().PlayerIndex + " in base of team: " + team);
+        TeamBase teamBase = GameObject.FindObjectsOfType<TeamBase>().Where(x => x.teamIdEnum == team).FirstOrDefault();
+        playerTransform.position = teamBase.transform.position;
     }
 
     public override void OnServerSceneChanged(string sceneName)

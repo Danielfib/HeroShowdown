@@ -15,8 +15,6 @@ public class CharacterController : NetworkBehaviour
 
     public CharacterBrain CharacterBrain;
 
-    public TeamIDEnum Team;
-
     [SerializeField]
     private float moveSpeed = 5f;
     [SerializeField]
@@ -70,6 +68,12 @@ public class CharacterController : NetworkBehaviour
 
     public CharacterSO SelectedHero;
 
+    [SyncVar]
+    public HeroesEnum SelectedHeroEnum;
+
+    [SyncVar]
+    public TeamIDEnum Team;
+
     private NetworkManagerLobby lobby;
     private NetworkManagerLobby Lobby
     {
@@ -80,12 +84,15 @@ public class CharacterController : NetworkBehaviour
         }
     }
 
-    void Start()
+    private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
         animController = GetComponentInChildren<AnimatorsController>();
         sbCooldown = GetComponentInChildren<SpriteBarCooldown>();
+    }
 
+    void Start()
+    {
         if(!hasAuthority) GetComponent<PlayerInput>().actions = null;
 
         animController.teamIDEnum = this.Team;
@@ -109,13 +116,25 @@ public class CharacterController : NetworkBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        var gpd = GetComponent<GamePlayerData>();
-        Team = gpd.team;
-        SelectedHero = gpd.characterSO;
+        LoadCharacterSO();
+        InitializeAnimators(SelectedHero.upperBodyAnimator, SelectedHero.lowerBodyAnimator);
+        UIAnimator = SelectedHero.UIAnimator;
         animController.UpdateSwitchColorsToTeamColor(Team);
-        //MatchManager.Instance.LoadPlayerHero(this.gameObject);
-        //this.gameObject.name = "epa";
-        //Lobby.GamePlayers.Add(this);
+    }
+
+    private void LoadCharacterSO()
+    {
+        switch (SelectedHeroEnum)
+        {
+            case HeroesEnum.MAGE:
+                CharacterBrain = Resources.Load<MageBrain>("CharacterBrains/MageBrain");
+                SelectedHero = Resources.Load<CharacterSO>("ScriptableObjects/MageCharacterData");
+                break;
+            case HeroesEnum.PIRATE:
+                CharacterBrain = Resources.Load<PirateBrain>("CharacterBrains/PirateBrain");
+                SelectedHero = Resources.Load<CharacterSO>("ScriptableObjects/PirateCharacterData");
+                break;
+        }
     }
 
     public override void OnStopClient()

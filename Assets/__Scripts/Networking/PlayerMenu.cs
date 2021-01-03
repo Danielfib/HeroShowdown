@@ -82,7 +82,7 @@ public class PlayerMenu : NetworkBehaviour
     private void UpdateCharUIInfo()
     {
         CharacterSprite = SelectedCharacter.sprite;
-        charName.text = SelectedCharacter.name;
+        charName.text = SelectedCharacter.hero.ToString();
         charDescription.text = SelectedCharacter.description;
         abilityIcon.sprite = SelectedCharacter.charAttributes.abilityIcon;
         abilityTitle.text = SelectedCharacter.charAttributes.abilityTitle;
@@ -233,7 +233,7 @@ public class PlayerMenu : NetworkBehaviour
     private void HandleSelectedCharacterChanged(int oldValue, int newValue)
     {
         SelectedCharacter = this.characterManager.availableCharacters[newValue];
-        Debug.Log("Changed character to: " + SelectedCharacter.name);
+        Debug.Log("Changed character to: " + SelectedCharacter.hero.ToString());
         UpdateCharUIInfo();
     }
     #endregion

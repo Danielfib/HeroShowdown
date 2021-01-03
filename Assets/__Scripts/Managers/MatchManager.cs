@@ -85,29 +85,11 @@ public class MatchManager : Singleton<MatchManager>
     {
         CharacterController pc = player.gameObject.GetComponent<CharacterController>();
 
-        switch (pc.SelectedHero.name)
-        {
-            case "mage":
-                pc.CharacterBrain = Resources.Load<MageBrain>("CharacterBrains/MageBrain");
-                break;
-            case "pirate":
-                pc.CharacterBrain = Resources.Load<PirateBrain>("CharacterBrains/PirateBrain");
-                break;
-        }
-        PositionPlayer(player.transform, pc.Team);
-
         //Loading HUD player icon
         PlayerHUDIconController iconController = HUDManager.Instance.LoadPlayerIconToTeam(pc.SelectedHero, pc.Team);
         pc.PlayerHUDIconController = iconController;
-
-        pc.InitializeAnimators(pc.SelectedHero.upperBodyAnimator, pc.SelectedHero.lowerBodyAnimator);
-        pc.UIAnimator = pc.SelectedHero.UIAnimator;
     }
 
-    private void PositionPlayer(Transform playerTransform, TeamIDEnum team)
-    {
-        TeamBase teamBase = GameObject.FindObjectsOfType<TeamBase>().Where(x => x.teamIdEnum == team).FirstOrDefault();
-        playerTransform.position = teamBase.transform.position;
-    }
+
     #endregion
 }
