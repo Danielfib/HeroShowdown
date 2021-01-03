@@ -141,6 +141,19 @@ public class CharacterController : NetworkBehaviour
     {
         //Lobby.GamePlayers.Remove(this);
     }
+
+    public void SpawnOnBase()
+    {
+        TeamBase teamBase = GameObject.FindObjectsOfType<TeamBase>().Where(x => x.teamIdEnum == this.Team).FirstOrDefault();
+
+        CmdPositionPlayer(teamBase.transform.position);
+    }
+
+    [Command]
+    public void CmdPositionPlayer(Vector3 pos)
+    {
+        transform.position = pos;
+    }
     #endregion
 
     #region [Stats_Count]
@@ -208,12 +221,6 @@ public class CharacterController : NetworkBehaviour
         fx.GetComponent<Renderer>().material.color = ColorUtils.TeamIdEnumToColor(Team);
 
         GetComponent<PlayerRespawnManager>().StartRespawnCounter(this.PlayerHUDIconController);
-    }
-    
-    public void SpawnOnBase()
-    {
-        TeamBase teamBase = GameObject.FindObjectsOfType<TeamBase>().Where(x => x.teamIdEnum == this.Team).FirstOrDefault();
-        this.gameObject.transform.position = teamBase.transform.position;
     }
 
     public void GotHit(Action tossingPlayerCallback)
