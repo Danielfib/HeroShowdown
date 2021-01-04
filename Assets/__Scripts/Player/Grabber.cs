@@ -1,35 +1,56 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class Grabber : MonoBehaviour
 {
-    private GameObject CurrentlyGrabbableObject;
     private GameObject CurrentlyGrabingObject;
+    private Collider2D collider;
+
+    [SerializeField]
+    private LayerMask grabbableLayerMask;
 
     private bool _canGrabObject
     {
-        get { return this.transform.childCount == 0; }
+        get { return this.CurrentlyGrabingObject == null; }
+    }
+
+    private void Start() 
+    {
+        collider = GetComponent<Collider2D>();    
     }
 
     public GrabTossActionResults TryToGrab()
     {
-        if (CurrentlyGrabbableObject == null || !_canGrabObject)
+        if (!_canGrabObject)
         {
-            return GrabTossActionResults.COULD_NOT_GRAB;
+            return GrabTossActionResults.COULD_NOT_GRAB; //already grabbing something
         }
 
-        Grab(CurrentlyGrabbableObject);
-        return GrabTossActionResults.GRABBED;
+        List<Collider2D> colidingObjects = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(grabbableLayerMask);
+        collider.OverlapCollider(filter, colidingObjects);
+
+        if(colidingObjects.Count > 0)
+        {
+            Grab(colidingObjects.FirstOrDefault().gameObject);
+            return GrabTossActionResults.GRABBED;
+        } else {
+            return GrabTossActionResults.COULD_NOT_GRAB;  //grabbed nothing
+        }
+        
     }
 
     private void Grab(GameObject go)
     {
+        Grabbable grabbable = go.GetComponentInChildren<Grabbable>();
         go.GetComponent<Rigidbody2D>().simulated = false;
         go.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        go.transform.parent = this.gameObject.transform;
-        go.transform.localPosition = new Vector3(0, 0, 0);
+        grabbable.TriedToBeGrabbed(this);
         
         CurrentlyGrabingObject = go;
         UpdateColliderIsTriggerUponGrab(false);
@@ -40,19 +61,10 @@ public class Grabber : MonoBehaviour
         if (CurrentlyGrabingObject == null)
             return;
 
-        CurrentlyGrabingObject.transform.parent = null;
+        //CurrentlyGrabingObject.GetComponent<Grabbable>().
         CurrentlyGrabingObject.GetComponent<ProjectileController>().ReceiveTossAction(dir, this.GetComponentInParent<CharacterController>());
+        CurrentlyGrabingObject = null;
         UpdateColliderIsTriggerUponGrab(true);
-    }
-
-    public void BecameGrababble(GameObject gameObject)
-    {
-        CurrentlyGrabbableObject = gameObject;
-    }
-
-    public void NoLongerGrabbable()
-    {
-        CurrentlyGrabbableObject = null;
     }
 
     public GrabTossActionResults GrabTossAction(Vector2 dir)

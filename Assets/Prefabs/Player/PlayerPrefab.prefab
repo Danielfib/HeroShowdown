@@ -700,6 +700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8077a86345fbb04459ed0657a3693cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabbableLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!70 &22080143414577097
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

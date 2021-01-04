@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Mirror;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ProjectileController : MonoBehaviour
+public class ProjectileController : NetworkBehaviour
 {
     public ProjectileBrain ProjectileBrain;
     [HideInInspector]
@@ -53,6 +54,8 @@ public class ProjectileController : MonoBehaviour
 
     public void ReceiveTossAction(Vector2 dir, CharacterController cc = null)
     {
+        GetComponentInChildren<Grabbable>().Released();
+        
         if(cc != null)
         {
             StartCoroutine(IgnoreCharacterCoroutine(cc));

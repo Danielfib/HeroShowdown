@@ -1,23 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//This class is solely responsible for the grab/release interaction
 public class Grabbable : MonoBehaviour
 {
-    public GameObject PickupUIGameObject;
-    public bool _isBeingGrabbed
+    private GameObject PickupUIGameObject;
+    private Grabber Grabber;
+
+    public void TriedToBeGrabbed(Grabber grabber)
     {
-        get { return this.transform.parent.parent == null; }
+        if(Grabber == null)
+        {
+            //do not allow to steal grabbed things from other players
+            this.Grabber = grabber;
+        }
+    }
+
+    public void Released()
+    {
+        Grabber = null;
+    }
+
+    private void Update() 
+    {
+        if(Grabber != null) 
+            gameObject.transform.parent.position = Grabber.transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Grabber")
         {
-            if(!_isBeingGrabbed)
-                EnablePickUpUI();
-
-            collision.gameObject.GetComponent<Grabber>().BecameGrababble(this.transform.parent.gameObject);
+            //if(Grabber == null) EnablePickUpUI();
         }
     }
 
@@ -25,8 +38,7 @@ public class Grabbable : MonoBehaviour
     {
         if (collision.gameObject.tag == "Grabber")
         {
-            DisablePickUpUI();
-            collision.gameObject.GetComponent<Grabber>().NoLongerGrabbable();
+            //DisablePickUpUI();
         }
     }
 

@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aead33ea6b2600d4fa2d3ed1c897c596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   ProjectileBrain: {fileID: 11400000, guid: c4448e4427e7b194ab74325fa3ad53d3, type: 2}
   rb: {fileID: 0}
   TossMagnetude: 1200
@@ -212,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 0
   clientAuthority: 0
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
@@ -292,7 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b837c2d8ae887e84e91a4ad717d22c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupUIGameObject: {fileID: 378136065743768890}
 --- !u!58 &378136066319877250
 CircleCollider2D:
   m_ObjectHideFlags: 0
