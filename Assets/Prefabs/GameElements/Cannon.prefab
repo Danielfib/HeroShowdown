@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 7004703286186470490}
   - component: {fileID: 7004703286186470502}
   - component: {fileID: 6947346730726683629}
+  - component: {fileID: 3298692827996575367}
+  - component: {fileID: 817704876046062932}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Interactable
@@ -78,6 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa1976f13de3d34297772bd334498a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   ButtonIconGO: {fileID: 5889660514017743208, guid: 5aa6b3747f66ace45822b7547b642746,
     type: 3}
   cooldownTime: 2
@@ -93,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa0023a2579f1b4e8f6dab4b01398a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   CannonBall: {fileID: 7556644062929636253, guid: 9ca37a9a462d66a449ea3d96fda55449,
     type: 3}
   spawnPoint: {fileID: 4955918356878292462}
@@ -181,3 +187,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3298692827996575367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004703286186470503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &817704876046062932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004703286186470503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01

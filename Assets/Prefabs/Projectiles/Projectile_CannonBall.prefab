@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 8425414688706832748}
   - component: {fileID: 5566535227293203037}
   - component: {fileID: 593553319917124621}
+  - component: {fileID: 7565013233243558074}
+  - component: {fileID: 4518676962383701875}
   m_Layer: 0
   m_Name: Projectile_CannonBall
   m_TagString: Untagged
@@ -136,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aead33ea6b2600d4fa2d3ed1c897c596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   ProjectileBrain: {fileID: 11400000, guid: 42d6c357907e878488dfcc4c6ae77921, type: 2}
   rb: {fileID: 7144306028836708466}
   TossMagnetude: 1000
@@ -4904,3 +4908,37 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7565013233243558074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7556644062929636253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &4518676962383701875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7556644062929636253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01

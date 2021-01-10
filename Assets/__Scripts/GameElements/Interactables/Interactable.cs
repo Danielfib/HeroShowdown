@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using Mirror;
 
 [RequireComponent(typeof(Collider2D))]
-public class Interactable : MonoBehaviour
+public class Interactable : NetworkBehaviour
 {
+    public Action InteractedAction;
+
     [SerializeField]
     private GameObject ButtonIconGO;
 
@@ -26,25 +29,23 @@ public class Interactable : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            PlayerInput playerInput = collision.gameObject.GetComponent<PlayerInput>();
-
-            string deviceName = playerInput.devices.Count == 0 ? null : playerInput.devices[0].name;
-            buttonIcon.SetupAndAppear(deviceName);
+            var cc = collision.gameObject.GetComponent<CharacterController>();
+            if (cc.isLocalPlayer)
+            {
+                PlayerInput playerInput = collision.gameObject.GetComponent<PlayerInput>();
+                string deviceName = playerInput.devices.Count == 0 ? null : playerInput.devices[0].name;
+                buttonIcon.SetupAndAppear(deviceName);
+            }
         }
     }
 
-    public void InteractedAction()
+    public void TryInteract()
     {
         if (!isOnCooldown)
         {
-            DoInteract();
+            InteractedAction.Invoke();
+            StartCoroutine(CooldownCoroutine());
         }
-    }
-
-    private void DoInteract()
-    {
-        BroadcastMessage("PlayerInteracted");
-        StartCoroutine(CooldownCoroutine());
     }
 
     private IEnumerator CooldownCoroutine()

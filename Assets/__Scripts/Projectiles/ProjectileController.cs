@@ -165,4 +165,9 @@ public class ProjectileController : NetworkBehaviour
         yield return new WaitForSeconds(1f);
         this.ignoreCharacter = null;
     }
+
+    private void OnDestroy()
+    {
+        NetworkServer.Destroy(gameObject);
+    }
 }

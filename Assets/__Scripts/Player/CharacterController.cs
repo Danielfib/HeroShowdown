@@ -240,18 +240,25 @@ public class CharacterController : NetworkBehaviour
     {
         if (context.performed)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
-            foreach (var col in colliders)
+            CmdTryInteract();
+        }
+    }
+
+    [Command]
+    private void CmdTryInteract()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
+        foreach (var col in colliders)
+        {
+            if (col.tag == "Interactable"
+                && GetComponent<Collider2D>().IsTouching(col))
             {
-                if (col.tag == "Interactable"
-                    && GetComponent<Collider2D>().IsTouching(col))
-                {
-                    col.GetComponent<Interactable>().InteractedAction();
-                    return;
-                }
+                col.GetComponent<Interactable>().TryInteract();
+                return;
             }
         }
     }
+
 
     private void DropFlag()
     {

@@ -21809,6 +21809,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3298692827996575367, guid: 6b827892de0cfc8428951de1f7820dd5,
+        type: 3}
+      propertyPath: sceneId
+      value: 4049369212
+      objectReference: {fileID: 0}
     - target: {fileID: 7004703286186470491, guid: 6b827892de0cfc8428951de1f7820dd5,
         type: 3}
       propertyPath: CannonBall

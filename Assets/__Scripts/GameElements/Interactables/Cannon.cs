@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Mirror;
+using System;
 
 [RequireComponent(typeof(Interactable))]
-public class Cannon : MonoBehaviour
+public class Cannon : NetworkBehaviour
 {
     [SerializeField]
     private GameObject CannonBall;
@@ -16,19 +16,29 @@ public class Cannon : MonoBehaviour
     private float cooldown = 2f;
     private bool isOnCooldown;
 
-    private void Start()
+    public override void OnStartClient()
     {
+        base.OnStartClient();
+
         this.cooldown = this.GetComponent<Interactable>().cooldownTime;
         this.animator = this.GetComponent<Animator>();
+
+        GetComponent<Interactable>().InteractedAction += Shoot;
     }
 
-    public void PlayerInteracted()
+    public override void OnStopClient()
     {
-        if (!this.isOnCooldown)
-        {
-            ProjectileController projectile = Instantiate(CannonBall, spawnPoint).GetComponent<ProjectileController>();
-            projectile.ReceiveTossAction(this.transform.right * this.transform.localScale.x);
-        }
+        base.OnStopClient();
+        GetComponent<Interactable>().InteractedAction -= Shoot;
+    }
+
+    [Server]
+    private void Shoot()
+    {
+        var go = Instantiate(CannonBall, spawnPoint.position, Quaternion.identity);
+        ProjectileController projectile = go.GetComponent<ProjectileController>();
+        NetworkServer.Spawn(go);
+        projectile.ReceiveTossAction(this.transform.right * this.transform.localScale.x);
     }
 
     #region [Messages_Methods]
