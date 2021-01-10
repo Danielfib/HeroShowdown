@@ -20,10 +20,16 @@ public class InteractableButtonIcon : MonoBehaviour
 
     public void SetupAndAppear(string inputDevice)
     {
-        if(inputDevice.Contains("Controller"))
-            sr.sprite = controllerButtonSprite;
-        else if(inputDevice.Equals("Keyboard"))
+        if(inputDevice == null)
+        {
             sr.sprite = KeyboardButtonSprite;
+        } else
+        {
+            if(inputDevice.Contains("Controller"))
+                sr.sprite = controllerButtonSprite;
+            else if(inputDevice.Equals("Keyboard"))
+                sr.sprite = KeyboardButtonSprite;
+        }
 
         sr.enabled = true;
     }

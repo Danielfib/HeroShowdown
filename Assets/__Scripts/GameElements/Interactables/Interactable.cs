@@ -28,8 +28,8 @@ public class Interactable : MonoBehaviour
         {
             PlayerInput playerInput = collision.gameObject.GetComponent<PlayerInput>();
 
-            //if(playerInput.devices[0].)
-            buttonIcon.SetupAndAppear(playerInput.devices[0].name);
+            string deviceName = playerInput.devices.Count == 0 ? null : playerInput.devices[0].name;
+            buttonIcon.SetupAndAppear(deviceName);
         }
     }
 

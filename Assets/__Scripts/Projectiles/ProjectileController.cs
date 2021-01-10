@@ -54,7 +54,7 @@ public class ProjectileController : NetworkBehaviour
 
     public void ReceiveTossAction(Vector2 dir, CharacterController cc = null)
     {
-        GetComponentInChildren<Grabbable>().Released();
+        GetComponentInChildren<Grabbable>()?.Released();
         
         if(cc != null)
         {
