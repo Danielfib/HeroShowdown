@@ -144,7 +144,7 @@ MonoBehaviour:
   rb: {fileID: 7144306028836708466}
   TossMagnetude: 1000
   ShouldDestroyByTime: 1
-  DestroyAfterSeconds: 4
+  DestroyAfterSeconds: 40
 --- !u!114 &8425414688706832748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,9 +203,9 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
