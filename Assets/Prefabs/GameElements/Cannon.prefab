@@ -84,7 +84,7 @@ MonoBehaviour:
   syncInterval: 0.1
   ButtonIconGO: {fileID: 5889660514017743208, guid: 5aa6b3747f66ace45822b7547b642746,
     type: 3}
-  cooldownTime: 2
+  cooldownTime: 6
 --- !u!114 &7004703286186470491
 MonoBehaviour:
   m_ObjectHideFlags: 0

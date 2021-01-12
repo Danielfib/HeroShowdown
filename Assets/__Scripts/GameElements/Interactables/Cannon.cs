@@ -20,7 +20,6 @@ public class Cannon : NetworkBehaviour
     {
         base.OnStartClient();
 
-        this.cooldown = this.GetComponent<Interactable>().cooldownTime;
         this.animator = this.GetComponent<Animator>();
 
         GetComponent<Interactable>().InteractedAction += Shoot;

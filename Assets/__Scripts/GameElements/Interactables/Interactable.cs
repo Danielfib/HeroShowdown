@@ -17,7 +17,17 @@ public class Interactable : NetworkBehaviour
     private InteractableButtonIcon buttonIcon;
 
     public float cooldownTime = 2f;
-    private bool isOnCooldown;
+
+    [SyncVar(hook = nameof(HandleCooldownStatusChange))]
+    private bool isOnCooldown = false;
+
+    public void HandleCooldownStatusChange(bool oldValue, bool newValue)
+    {
+        if(newValue)
+            BroadcastMessage("InteractableCooldownStart");
+        else
+            BroadcastMessage("InteractableCooldownEnd");
+    }
 
     private void Start()
     {
@@ -39,6 +49,7 @@ public class Interactable : NetworkBehaviour
         }
     }
 
+    [Server]
     public void TryInteract()
     {
         if (!isOnCooldown)
@@ -48,13 +59,12 @@ public class Interactable : NetworkBehaviour
         }
     }
 
+    [Server]
     private IEnumerator CooldownCoroutine()
     {
-        this.isOnCooldown = true;
-        BroadcastMessage("InteractableCooldownStart");
+        isOnCooldown = true;
         yield return new WaitForSeconds(this.cooldownTime);
-        this.isOnCooldown = false;
-        BroadcastMessage("InteractableCooldownEnd");
+        isOnCooldown = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
