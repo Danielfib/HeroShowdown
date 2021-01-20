@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 378136065420080504}
   - component: {fileID: 378136065420080511}
   - component: {fileID: 378136065420080510}
-  - component: {fileID: 378136065420080507}
   - component: {fileID: 378136065420080500}
+  - component: {fileID: 5224689160755644253}
+  - component: {fileID: 378136065420080507}
   - component: {fileID: 4413974299125698262}
   - component: {fileID: 806587682486671827}
   - component: {fileID: 859422873498015902}
@@ -109,6 +110,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &378136065420080500
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378136065420080509}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.005028248, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4500208
+--- !u!114 &5224689160755644253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378136065420080509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b837c2d8ae887e84e91a4ad717d22c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!114 &378136065420080507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,22 +159,6 @@ MonoBehaviour:
   TossMagnetude: 1200
   ShouldDestroyByTime: 0
   DestroyAfterSeconds: 5
---- !u!58 &378136065420080500
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378136065420080509}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005028248, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.4500208
 --- !u!114 &4413974299125698262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +273,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 378136066319877249}
-  - component: {fileID: 378136066319877251}
   - component: {fileID: 378136066319877250}
   m_Layer: 11
   m_Name: Grabbable
@@ -282,18 +296,6 @@ Transform:
   m_Father: {fileID: 378136065420080504}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &378136066319877251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378136066319877248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b837c2d8ae887e84e91a4ad717d22c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &378136066319877250
 CircleCollider2D:
   m_ObjectHideFlags: 0

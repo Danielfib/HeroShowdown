@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using Mirror;
 
 //This class is solely responsible for the grab/release interaction
-public class Grabbable : MonoBehaviour
+public class Grabbable : NetworkBehaviour
 {
     private GameObject PickupUIGameObject;
     private Grabber Grabber;
@@ -22,8 +23,8 @@ public class Grabbable : MonoBehaviour
 
     private void Update() 
     {
-        if(Grabber != null) 
-            gameObject.transform.parent.position = Grabber.transform.position;
+        if(Grabber != null && isServer) 
+            transform.position = Grabber.transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
