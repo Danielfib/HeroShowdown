@@ -186,10 +186,11 @@ public class CharacterController : NetworkBehaviour
         FlipSpriteOnWalkDirection();
 
         if (context.performed)
-            DoGrabToss(this.moveDirection);
+            CmdDoGrabToss(this.moveDirection);
     }
 
-    public void DoGrabToss(Vector2 dir)
+    [Command]
+    public void CmdDoGrabToss(Vector2 dir)
     {
         var didGrab = Grabber.GrabTossAction(dir);
 

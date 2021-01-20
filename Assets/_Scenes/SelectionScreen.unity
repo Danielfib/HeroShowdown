@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1901,6 +1901,7 @@ MonoBehaviour:
   - {fileID: 3670669546270193135, guid: cf86c5ceb1fb5b34f8fba1e43b152e1e, type: 3}
   - {fileID: 1203074945431729908, guid: 1057fce2e87fb3d4da256cf86d63705f, type: 3}
   - {fileID: 7556644062929636253, guid: 9ca37a9a462d66a449ea3d96fda55449, type: 3}
+  - {fileID: 378136065420080509, guid: cb8f1eb2635b696429320c7837fd73da, type: 3}
   menuScene: Assets/_Scenes/SelectionScreen.unity
   playerMenuPrefab: {fileID: 1949094529415855667, guid: 430b50c34d3e6ce439fcdbeb044a5e5a,
     type: 3}

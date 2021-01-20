@@ -52,6 +52,7 @@ public class ProjectileController : NetworkBehaviour
         ProjectileBrain.Think(this);
     }
 
+    [Server]
     public void ReceiveTossAction(Vector2 dir, CharacterController cc = null)
     {
         GetComponentInChildren<Grabbable>()?.Released();
