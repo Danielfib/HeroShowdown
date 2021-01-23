@@ -88,3 +88,10 @@ public class Character
         this.spritePath = sprite;
     }
 }
+
+public enum DeviceType
+{
+    UNDEFINED,
+    CONTROLLER,
+    KEYBOARD
+}

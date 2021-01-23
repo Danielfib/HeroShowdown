@@ -74,6 +74,9 @@ public class CharacterController : NetworkBehaviour
     [SyncVar]
     public TeamIDEnum Team;
 
+    [SyncVar]
+    public DeviceType Device;
+
     private NetworkManagerLobby lobby;
     private NetworkManagerLobby Lobby
     {
@@ -459,3 +462,4 @@ public enum SAState
     USING,
     COOLDOWN
 }
+

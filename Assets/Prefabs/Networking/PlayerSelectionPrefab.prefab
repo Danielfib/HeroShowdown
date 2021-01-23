@@ -56,6 +56,7 @@ MonoBehaviour:
   syncInterval: 0.1
   PlayerIndex: 0
   IsReady: 0
+  Team: 0
   IsServerPlayer: 0
   ReadySprite: {fileID: 6519338277096786056}
   IsLeaderSprite: {fileID: 2966773712619785078}
@@ -63,6 +64,7 @@ MonoBehaviour:
   charDescription: {fileID: 1533635972369703247}
   abilityTitle: {fileID: 588831796263970610}
   abilityIcon: {fileID: 3964608022570747793}
+  SelectedCharacter: {fileID: 0}
   charImage: {fileID: 8968091377926746278}
   menuInputActionAsset: {fileID: -944628639613478452, guid: dd936fcc95d5b5a449fcd2d656107b1c,
     type: 3}
@@ -90,7 +92,18 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1481453533209892391}
+        m_MethodName: Teste
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
