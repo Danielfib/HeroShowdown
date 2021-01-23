@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Mirror;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class NetworkManagerLobby : NetworkManager
@@ -88,6 +89,8 @@ public class NetworkManagerLobby : NetworkManager
             var gamePlayerInstance = Instantiate(playerGamePrefab);
 
             CharacterController cc = gamePlayerInstance.GetComponent<CharacterController>();
+            Debug.Log("How many devices???? " + playerI.gameObject.GetComponent<PlayerInput>().devices);
+            cc.Device = playerI.gameObject.GetComponent<PlayerInput>().devices[0].ToDeviceTypeEnum();
             cc.Team = playerI.Team;
             cc.SelectedHeroEnum = playerI.SelectedCharacter.hero;
             
