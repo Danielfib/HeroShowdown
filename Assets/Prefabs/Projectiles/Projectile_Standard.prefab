@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4413974299125698262}
   - component: {fileID: 806587682486671827}
   - component: {fileID: 859422873498015902}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Projectile_Standard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378136065420080509}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 378136065743768891}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: GrabbableUIElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378136066319877249}
   - component: {fileID: 378136066319877250}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Grabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}

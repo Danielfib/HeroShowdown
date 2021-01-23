@@ -31,10 +31,13 @@ public class ProjectileController : NetworkBehaviour
 #endif
     }
 
-    void Start()
+    public override void OnStartServer()
     {
+        base.OnStartServer();
+
         ProjectileBrain.Initialize(this);
         rb = GetComponent<Rigidbody2D>();
+        rb.simulated = true;
         col = GetComponent<Collider2D>();
 
         if (ShouldDestroyByTime)
@@ -47,7 +50,7 @@ public class ProjectileController : NetworkBehaviour
         Destroy(this.gameObject);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         ProjectileBrain.Think(this);
     }
@@ -114,14 +117,17 @@ public class ProjectileController : NetworkBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    [ServerCallback]
+    void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(1);
         bool gotDeflected = false;
 
         if (collision.gameObject.tag == "Player"
             && (this.gameObject.layer == LayerMask.NameToLayer("Projectiles")
             || this.gameObject.layer == LayerMask.NameToLayer("OnlyHitsPlayers")))
         {
+            Debug.Log(2);
             CharacterController charController = collision.gameObject.GetComponent<CharacterController>();
             if (charController != this.ignoreCharacter)
             {

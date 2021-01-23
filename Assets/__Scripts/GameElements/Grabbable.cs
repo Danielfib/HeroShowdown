@@ -21,7 +21,7 @@ public class Grabbable : NetworkBehaviour
         Grabber = null;
     }
 
-    private void Update() 
+    private void FixedUpdate() 
     {
         if(Grabber != null && isServer) 
             transform.position = Grabber.transform.position;

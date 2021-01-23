@@ -15,6 +15,8 @@ public class StandardProjectileBrain : ProjectileBrain
 
     public override void Think(ProjectileController projectileController)
     {
+        if (!projectileController.isServer) return;
+
         if (projectileController.rb.velocity.y == 0 //has no vertical movement
             && projectileController.rb.velocity.magnitude < MinVelocityToStop
             && projectileController.transform.parent == null) //is not being held
