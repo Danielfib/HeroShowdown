@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +32,6 @@ public class Interactable : NetworkBehaviour
     private void Start()
     {
         this.buttonIcon = Instantiate(ButtonIconGO, this.transform).GetComponent<InteractableButtonIcon>();
-        BroadcastMessage("SetupCooldown", cooldownTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

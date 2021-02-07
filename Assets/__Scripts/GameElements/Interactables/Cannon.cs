@@ -13,9 +13,6 @@ public class Cannon : NetworkBehaviour
 
     private Animator animator;
 
-    private float cooldown = 2f;
-    private bool isOnCooldown;
-
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -43,19 +40,12 @@ public class Cannon : NetworkBehaviour
     #region [Messages_Methods]
     private void InteractableCooldownStart()
     {
-        this.isOnCooldown = true;
         animator.SetTrigger("StartCooldown");
     }
 
     private void InteractableCooldownEnd()
     {
-        this.isOnCooldown = false;
         animator.SetTrigger("EndCooldown");
-    }
-
-    private void SetupCooldown(float cooldownTime)
-    {
-        this.cooldown = cooldownTime;
     }
     #endregion
 }

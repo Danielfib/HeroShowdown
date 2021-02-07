@@ -18,7 +18,7 @@ public class InteractableButtonIcon : MonoBehaviour
         sr.enabled = false;
     }
 
-    public void SetupAndAppear(DeviceType inputDevice)
+    public void SetupAndAppear(string inputDevice)
     {
         if(inputDevice == null)
         {
