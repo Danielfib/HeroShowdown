@@ -20,7 +20,7 @@ public class ProjectileController : NetworkBehaviour
     [SerializeField]
     private float DestroyAfterSeconds = 5f;
 
-    private CharacterController ignoreCharacter;
+    private PlayerController ignoreCharacter;
     private Action playerKilledCallback;
     private Collider2D col;
 
@@ -56,7 +56,7 @@ public class ProjectileController : NetworkBehaviour
     }
 
     [Server]
-    public void ReceiveTossAction(Vector2 dir, CharacterController cc = null)
+    public void ReceiveTossAction(Vector2 dir, PlayerController cc = null)
     {
         GetComponentInChildren<Grabbable>()?.Released();
         
@@ -128,7 +128,7 @@ public class ProjectileController : NetworkBehaviour
             || this.gameObject.layer == LayerMask.NameToLayer("OnlyHitsPlayers")))
         {
             Debug.Log(2);
-            CharacterController charController = collision.gameObject.GetComponent<CharacterController>();
+            PlayerController charController = collision.gameObject.GetComponent<PlayerController>();
             if (charController != this.ignoreCharacter)
             {
                 charController.GotHit(playerKilledCallback);
@@ -165,7 +165,7 @@ public class ProjectileController : NetworkBehaviour
     /// </summary>
     /// <param name="cc"></param>
     /// <returns></returns>
-    private IEnumerator IgnoreCharacterCoroutine(CharacterController cc)
+    private IEnumerator IgnoreCharacterCoroutine(PlayerController cc)
     {
         this.ignoreCharacter = cc;
         playerKilledCallback = cc.KilledAction;

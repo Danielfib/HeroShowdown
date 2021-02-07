@@ -6,11 +6,11 @@ public abstract class CharacterBrain : ScriptableObject
 {
     public RuntimeAnimatorController UIAnimator;
 
-    public abstract void Initialize(CharacterController characterController);
+    public abstract void Initialize(PlayerController characterController);
 
-    public abstract void Think(CharacterController characterController);
+    public abstract void Think(PlayerController characterController);
 
-    public abstract void Die(CharacterController characterController);
+    public abstract void Die(PlayerController characterController);
 
-    public abstract void SpecialAction(CharacterController characterController);
+    public abstract void SpecialAction(PlayerController characterController);
 }

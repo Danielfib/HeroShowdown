@@ -62,7 +62,7 @@ public class Grabber : MonoBehaviour
             return;
 
         //CurrentlyGrabingObject.GetComponent<Grabbable>().
-        CurrentlyGrabingObject.GetComponent<ProjectileController>().ReceiveTossAction(dir, this.GetComponentInParent<CharacterController>());
+        CurrentlyGrabingObject.GetComponent<ProjectileController>().ReceiveTossAction(dir, this.GetComponentInParent<PlayerController>());
         CurrentlyGrabingObject = null;
         UpdateColliderIsTriggerUponGrab(true);
     }

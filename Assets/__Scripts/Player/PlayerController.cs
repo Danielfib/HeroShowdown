@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharacterController : NetworkBehaviour
+public class PlayerController : NetworkBehaviour
 { 
     public int PlayerIndex;
     public Grabber Grabber;
@@ -20,12 +20,11 @@ public class CharacterController : NetworkBehaviour
     [SerializeField]
     private float jumpForce = 500f;
 
-    [SerializeField]
-    private Animator Animator;
     [HideInInspector]
     public RuntimeAnimatorController UIAnimator;
 
     private Rigidbody2D rb;
+    [SyncVar]
     private Vector2 moveDirection;
 
     [HideInInspector]
@@ -123,6 +122,11 @@ public class CharacterController : NetworkBehaviour
         InitializeAnimators(SelectedHero.upperBodyAnimator, SelectedHero.lowerBodyAnimator);
         UIAnimator = SelectedHero.UIAnimator;
         animController.UpdateSwitchColorsToTeamColor(Team);
+
+        if (!isServer)
+        {
+            rb.simulated = false;
+        }
     }
 
     private void LoadCharacterSO()
@@ -219,7 +223,6 @@ public class CharacterController : NetworkBehaviour
 
     public void DieDefault()
     {
-        //this.Animator.SetTrigger("Die");
         var fx = Instantiate(dieFXPrefab);
         fx.transform.position = transform.position;
         fx.GetComponent<Renderer>().material.color = ColorUtils.TeamIdEnumToColor(Team);
@@ -263,7 +266,6 @@ public class CharacterController : NetworkBehaviour
         }
     }
 
-
     private void DropFlag()
     {
         Flag flag = this.GetComponentInChildren<Flag>();
@@ -274,6 +276,12 @@ public class CharacterController : NetworkBehaviour
 
     #region [Walk]
     public void SetDirection(Vector2 dir)
+    {
+        CmdSetDirection(dir);
+    }
+
+    [Command]
+    public void CmdSetDirection(Vector2 dir)
     {
         this.moveDirection = dir;
         this.moveDirection.Normalize();
@@ -295,17 +303,30 @@ public class CharacterController : NetworkBehaviour
 
     public void MoveRigidBody()
     {
+        if(isServer)
+            DoMoveRigidBody();
+    }
+
+    [Server]
+    private void DoMoveRigidBody()
+    {
         this.rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
     }
     #endregion
 
     #region [Jump]
+    [Command]
+    private void CmdSetRbVelocity(Vector2 vel)
+    {
+        this.rb.velocity = vel;
+    }
+
     public void ExecuteJump()
     {
         if (isGrounded)
         {
             canContinueJumping = true;
-            rb.velocity = Vector2.up * jumpForce;
+            CmdSetRbVelocity(Vector2.up * jumpForce);
             jumpTimeCounter = jumpTime;
         }
     }
@@ -321,7 +342,7 @@ public class CharacterController : NetworkBehaviour
         {
             if (jumpTimeCounter > 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                CmdSetRbVelocity(new Vector2(rb.velocity.x, jumpForce));
                 jumpTimeCounter -= Time.deltaTime;
             }
             else
@@ -359,7 +380,7 @@ public class CharacterController : NetworkBehaviour
     
     public void DoDodge(Vector2 dir, float dodgeSpeed)
     {
-        this.rb.velocity = dir * dodgeSpeed;
+        CmdSetRbVelocity(dir * dodgeSpeed);
     }
 
     public void SetSAState(SAState state)
@@ -432,7 +453,6 @@ public class CharacterController : NetworkBehaviour
 
     private void Animate(string triggerID)
     {
-        //Debug.Log(triggerID);
         this.animController?.TrySetTrigger(triggerID);
     }
 

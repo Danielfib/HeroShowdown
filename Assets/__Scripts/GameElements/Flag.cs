@@ -36,7 +36,7 @@ public class Flag : MonoBehaviour
 
         if(collision.gameObject.tag == "Player")
         {
-            if(collision.gameObject.GetComponent<CharacterController>().Team != this.teamIDEnum)
+            if(collision.gameObject.GetComponent<PlayerController>().Team != this.teamIDEnum)
             {
                 this.FlagState = FlagStates.BEING_CARRIED;
                 Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
@@ -46,7 +46,7 @@ public class Flag : MonoBehaviour
             }
             else if (FlagState == FlagStates.DROPPED)
             {
-                collision.gameObject.GetComponent<CharacterController>().RetrievedFlag();
+                collision.gameObject.GetComponent<PlayerController>().RetrievedFlag();
                 Retrieved();
             }
         }
@@ -65,7 +65,7 @@ public class Flag : MonoBehaviour
     {
         FlagState = FlagStates.NORMAL;
         MatchManager.Instance.StartFlagRespawn(this.teamIDEnum, wasRetrieved: false);
-        GetComponentInParent<CharacterController>().Scored();
+        GetComponentInParent<PlayerController>().Scored();
         Destroy(this.gameObject);
     }
 

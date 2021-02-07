@@ -88,9 +88,11 @@ public class NetworkManagerLobby : NetworkManager
             var conn = LobbyPlayers[i].connectionToClient;
             var gamePlayerInstance = Instantiate(playerGamePrefab);
 
-            CharacterController cc = gamePlayerInstance.GetComponent<CharacterController>();
+            PlayerController cc = gamePlayerInstance.GetComponent<PlayerController>();
             Debug.Log("How many devices???? " + playerI.gameObject.GetComponent<PlayerInput>().devices);
-            cc.Device = playerI.gameObject.GetComponent<PlayerInput>().devices[0].ToDeviceTypeEnum();
+
+            var playerDevices = playerI.gameObject.GetComponent<PlayerInput>().devices;
+            cc.Device = playerDevices.Count == 0 ? DeviceType.KEYBOARD : playerDevices[0].ToDeviceTypeEnum();
             cc.Team = playerI.Team;
             cc.SelectedHeroEnum = playerI.SelectedCharacter.hero;
             
@@ -106,7 +108,7 @@ public class NetworkManagerLobby : NetworkManager
 
     private void PositionPlayer(Transform playerTransform, TeamIDEnum team)
     {
-        Debug.Log("Positioning player " + playerTransform.GetComponent<CharacterController>().PlayerIndex + " in base of team: " + team);
+        Debug.Log("Positioning player " + playerTransform.GetComponent<PlayerController>().PlayerIndex + " in base of team: " + team);
         TeamBase teamBase = GameObject.FindObjectsOfType<TeamBase>().Where(x => x.teamIdEnum == team).FirstOrDefault();
         playerTransform.position = teamBase.transform.position;
     }

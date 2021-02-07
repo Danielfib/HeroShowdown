@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimatorsController : MonoBehaviour
 {
     private Animator[] animators;
-    private CharacterController cc;
+    private PlayerController cc;
 
     [System.NonSerialized]
     public TeamIDEnum teamIDEnum;
@@ -14,7 +14,7 @@ public class AnimatorsController : MonoBehaviour
     void Start()
     {
         var animators = GetComponentsInChildren<Animator>().Where(x => x.runtimeAnimatorController).ToArray();
-        cc = GetComponentInParent<CharacterController>();
+        cc = GetComponentInParent<PlayerController>();
         this.animators = animators;
         
         UpdateSwitchColorsToTeamColor(teamIDEnum);

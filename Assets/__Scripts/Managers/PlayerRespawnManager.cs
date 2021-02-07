@@ -12,7 +12,7 @@ public class PlayerRespawnManager : MonoBehaviour
     [SerializeField]
     private Collider2D Collider;
     [SerializeField]
-    private CharacterController CharacterController;
+    private PlayerController CharacterController;
     [SerializeField]
     private PlayerInput PlayerInput;
     [SerializeField]

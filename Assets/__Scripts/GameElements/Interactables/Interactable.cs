@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +38,7 @@ public class Interactable : NetworkBehaviour
     {
         if(collision.tag == "Player")
         {
-            var cc = collision.gameObject.GetComponent<CharacterController>();
+            var cc = collision.gameObject.GetComponent<PlayerController>();
             if (cc.isLocalPlayer)
             {
                 PlayerInput playerInput = collision.gameObject.GetComponent<PlayerInput>();

@@ -62,9 +62,9 @@ public class EndingScreenManager : MonoBehaviour
     private void InstantiateEndingSeats()
     {
         var playerPrefabs = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var playerPrefab in playerPrefabs.OrderBy(x => x.GetComponent<CharacterController>().PlayerIndex))
+        foreach (var playerPrefab in playerPrefabs.OrderBy(x => x.GetComponent<PlayerController>().PlayerIndex))
         {
-            CharacterController player = playerPrefab.GetComponent<CharacterController>();
+            PlayerController player = playerPrefab.GetComponent<PlayerController>();
 
             EndingScreenSeat seat = Instantiate(seatPrefab, seatsHorizontalLayout.transform).GetComponent<EndingScreenSeat>();
             seat.UpdateStats(player.deathsStats, player.killsStats, player.flagsScored, player.flagsRetrieved);
@@ -89,7 +89,7 @@ public class EndingScreenManager : MonoBehaviour
 
     private void DeactivatePlayersRBs()
     {
-        foreach (var cc in GameObject.FindObjectsOfType<CharacterController>())
+        foreach (var cc in GameObject.FindObjectsOfType<PlayerController>())
         {
             cc.enabled = false;
             cc.gameObject.GetComponent<Rigidbody2D>().simulated = false;

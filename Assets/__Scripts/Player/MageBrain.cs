@@ -12,23 +12,23 @@ public class MageBrain : CharacterBrain
     public float DeflectMagnetude;
     private float DeflectTimer;
 
-    public override void Die(CharacterController characterController)
+    public override void Die(PlayerController characterController)
     {
         characterController.DieDefault();
     }
 
-    public override void Initialize(CharacterController characterController)
+    public override void Initialize(PlayerController characterController)
     {
         this.InputActions = new InputActions();
         this.InputActions.Enable();
     }
 
-    public override void SpecialAction(CharacterController characterController)
+    public override void SpecialAction(PlayerController characterController)
     {
         characterController.ActivatedDeflective();
     }
 
-    public override void Think(CharacterController characterController)
+    public override void Think(PlayerController characterController)
     {
         switch (characterController.SAState)
         {

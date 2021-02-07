@@ -83,7 +83,7 @@ public class MatchManager : Singleton<MatchManager>
 
     private void LoadPlayerHero(GameObject player)
     {
-        CharacterController pc = player.gameObject.GetComponent<CharacterController>();
+        PlayerController pc = player.gameObject.GetComponent<PlayerController>();
         pc.SpawnOnBase();
         
         //Loading HUD player icon

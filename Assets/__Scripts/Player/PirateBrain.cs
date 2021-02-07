@@ -13,13 +13,13 @@ public class PirateBrain : CharacterBrain
     private float DodgeTimer;
     private Vector2 DodgeDirection;
 
-    public override void Initialize(CharacterController characterController)
+    public override void Initialize(PlayerController characterController)
     {
         this.InputActions = new InputActions();
         this.InputActions.Enable();
     }
 
-    public override void Think(CharacterController characterController)
+    public override void Think(PlayerController characterController)
     {
         switch (characterController.SAState)
         {
@@ -54,12 +54,12 @@ public class PirateBrain : CharacterBrain
         } 
     }
 
-    public override void Die(CharacterController characterController)
+    public override void Die(PlayerController characterController)
     {
         characterController.DieDefault();
     }
 
-    public override void SpecialAction(CharacterController characterController)
+    public override void SpecialAction(PlayerController characterController)
     {
         DodgeDirection = characterController.GetMoveDirection();
         characterController.SetSAState(SAState.USING);
