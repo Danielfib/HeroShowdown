@@ -208,17 +208,21 @@ public class PlayerController : NetworkBehaviour
                 break;
             case Grabber.GrabTossActionResults.TOSSED:
                 Animate(AnimationUtils.AnimationTriggers.IS_TOSS);
-
-                //toss particle fx
-                var angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
-                GameObject pfx = Instantiate(tossFXPrefab);
-                pfx.transform.position = transform.position;
-                pfx.transform.Rotate(new Vector3(angle - 90, 0, 0));
+                RpcSpawnTossParticles(dir);
                 break;
             case Grabber.GrabTossActionResults.COULD_NOT_GRAB:
                 //Animate(AnimationUtils.AnimationTriggers.IS_TOSS);
                 break;
         }
+    }
+
+    [ClientRpc]
+    private void RpcSpawnTossParticles(Vector2 dir)
+    {
+        var angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
+        GameObject pfx = Instantiate(tossFXPrefab);
+        pfx.transform.position = transform.position;
+        pfx.transform.Rotate(new Vector3(angle - 90, 0, 0));
     }
 
     public void DieDefault()
