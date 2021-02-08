@@ -117,7 +117,6 @@ public class ProjectileController : NetworkBehaviour
         Destroy(this.gameObject);
     }
 
-    [ServerCallback]
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(1);
