@@ -235,10 +235,16 @@ public class PlayerController : NetworkBehaviour
         if (!IsInvulnerable && !IsReflectiveToProjectiles)
         {
             tossingPlayerCallback?.Invoke();
-            DieCount();
-            DropFlag();
-            CharacterBrain.Die(this);
+            if(isServer) RpcDie();
         }
+    }
+
+    [ClientRpc]
+    private void RpcDie()
+    {
+        DieCount();
+        DropFlag();
+        CharacterBrain.Die(this);
     }
     #endregion
 
