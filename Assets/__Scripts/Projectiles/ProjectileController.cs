@@ -20,7 +20,6 @@ public class ProjectileController : NetworkBehaviour
     [SerializeField]
     private float DestroyAfterSeconds = 5f;
 
-    private PlayerController ignoreCharacter;
     private Action playerKilledCallback;
     private Collider2D col;
 
@@ -128,29 +127,21 @@ public class ProjectileController : NetworkBehaviour
         {
             Debug.Log(2);
             PlayerController charController = collision.gameObject.GetComponent<PlayerController>();
-            if (charController != this.ignoreCharacter)
+            
+            charController.GotHit(playerKilledCallback);
+            if (charController.IsReflectiveToProjectiles)
             {
-                charController.GotHit(playerKilledCallback);
-                if (charController.IsReflectiveToProjectiles)
-                {
-                    //Perhaps bring this behaviour to character side?
-                    //^if using deflect, for example, to bounce other players, and not only on projectiles
-                    Debug.Log("Deflected!!");
-                    float deflectForce = TossMagnetude * charController.GetDeflectMagnetude();
-                    gotDeflected = true;
+                //Perhaps bring this behaviour to character side?
+                //^if using deflect, for example, to bounce other players, and not only on projectiles
+                Debug.Log("Deflected!!");
+                float deflectForce = TossMagnetude * charController.GetDeflectMagnetude();
+                gotDeflected = true;
                 
-                    //Use this code if deflecting to direction following collision direction
-                    //Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;
-                    Vector2 dir = this.rb.velocity.normalized * -1;//new Vector2(reflectDir.x, reflectDir.y).normalized;
-                    this.rb.velocity = Vector2.zero;
-                    this.rb.AddForce(dir * deflectForce);
-                }
-            }
-            else
-            {
-                //is colliding with player that tossed on the initial period of ignoring him
-                Physics2D.IgnoreCollision(ignoreCharacter.GetComponentInChildren<Collider2D>(), col);
-                return;
+                //Use this code if deflecting to direction following collision direction
+                //Vector3 reflectDir = this.transform.position - collision.gameObject.transform.position;
+                Vector2 dir = this.rb.velocity.normalized * -1;//new Vector2(reflectDir.x, reflectDir.y).normalized;
+                this.rb.velocity = Vector2.zero;
+                this.rb.AddForce(dir * deflectForce);
             }
         }
 
@@ -166,10 +157,10 @@ public class ProjectileController : NetworkBehaviour
     /// <returns></returns>
     private IEnumerator IgnoreCharacterCoroutine(PlayerController cc)
     {
-        this.ignoreCharacter = cc;
+        Physics2D.IgnoreCollision(cc.GetComponentInChildren<Collider2D>(), col);
         playerKilledCallback = cc.KilledAction;
         yield return new WaitForSeconds(1f);
-        this.ignoreCharacter = null;
+        Physics2D.IgnoreCollision(cc.GetComponentInChildren<Collider2D>(), col, false);
     }
 
     private void OnDestroy()

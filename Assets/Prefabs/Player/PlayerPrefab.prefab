@@ -689,7 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2493610863646508083}
   - component: {fileID: 8618652328124411858}
-  - component: {fileID: 22080143414577097}
+  - component: {fileID: 8668642885587384172}
   m_Layer: 12
   m_Name: Grabber
   m_TagString: Grabber
@@ -726,8 +726,8 @@ MonoBehaviour:
   grabbableLayerMask:
     serializedVersion: 2
     m_Bits: 2048
---- !u!70 &22080143414577097
-CapsuleCollider2D:
+--- !u!58 &8668642885587384172
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -739,9 +739,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01689966, y: -0.11212064}
-  m_Size: {x: 1.9382108, y: 1.6172948}
-  m_Direction: 1
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.9734961
 --- !u!1 &8761442739989923569
 GameObject:
   m_ObjectHideFlags: 0
