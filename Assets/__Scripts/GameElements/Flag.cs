@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Flag : MonoBehaviour
+public class Flag : NetworkBehaviour
 {
     public Animator Animator;
 
@@ -21,12 +22,18 @@ public class Flag : MonoBehaviour
 
     public float CooldownAfterDrop = 2f;
 
-    [SerializeField]
-    private Transform FlagHolder;
+    private Transform playerHolder;
 
-    private void Start()
+    public override void OnStartClient()
     {
-        this.FlagState = FlagStates.NORMAL;    
+        base.OnStartClient();
+        this.FlagState = FlagStates.NORMAL;
+    }
+
+    private void FixedUpdate()
+    {
+        if(playerHolder && isServer)
+            transform.position = playerHolder.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,9 +46,7 @@ public class Flag : MonoBehaviour
             if(collision.gameObject.GetComponent<PlayerController>().Team != this.teamIDEnum)
             {
                 this.FlagState = FlagStates.BEING_CARRIED;
-                Transform playerFlagPos = collision.gameObject.transform.Find("FlagPos");
-                this.FlagHolder.parent = playerFlagPos;
-                this.FlagHolder.localPosition = new Vector3(0, 0, 0);
+                playerHolder = collision.gameObject.transform.Find("FlagPos");
                 this.Animator.SetBool("IsDropped", false);
             }
             else if (FlagState == FlagStates.DROPPED)
@@ -65,14 +70,14 @@ public class Flag : MonoBehaviour
     {
         FlagState = FlagStates.NORMAL;
         MatchManager.Instance.StartFlagRespawn(this.teamIDEnum, wasRetrieved: false);
-        GetComponentInParent<PlayerController>().Scored();
+        playerHolder?.GetComponentInParent<PlayerController>().Scored();
         Destroy(this.gameObject);
     }
 
     public void Drop()
     {
         StartCoroutine(TriggerCooldownAfterDrop());
-        this.FlagHolder.parent = null;
+        this.playerHolder = null;
     }
 
     private IEnumerator TriggerCooldownAfterDrop()
@@ -86,6 +91,11 @@ public class Flag : MonoBehaviour
     private void UpdateFlagState()
     {
         HUDManager.Instance.UpdateFlagStatusIcon(this.teamIDEnum, FlagState);
+    }
+
+    private void OnDestroy()
+    {
+        NetworkServer.Destroy(gameObject);
     }
 }
 

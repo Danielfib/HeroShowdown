@@ -15,7 +15,6 @@ public class TeamBase : MonoBehaviour
 
     private void Start()
     {
-        MatchManager.Instance.SpawnNewFlag(this.teamIdEnum);
         Color c = ColorUtils.TeamIdEnumToColor(teamIdEnum);
         GetComponent<SpriteRenderer>().color = c;
         GetComponent<Light2D>().color = c;
@@ -25,15 +24,12 @@ public class TeamBase : MonoBehaviour
     {
         if(collision.gameObject.tag == "Flag")
         {
-            TeamIDEnum playerTeam = collision.gameObject.transform.parent.parent.parent.GetComponent<PlayerController>().Team;
-            if(playerTeam == this.teamIdEnum)
+            Flag flag = collision.gameObject.GetComponent<Flag>();
+            TeamIDEnum playerTeam = flag.teamIDEnum;
+            if(playerTeam != this.teamIdEnum)
             {
-                Flag flag = collision.gameObject.GetComponent<Flag>();
-                if(flag.teamIDEnum != this.teamIdEnum)
-                {
-                    flag.Scored();
-                    Score();
-                }
+                flag.Scored();
+                Score();
             }
         }
     }

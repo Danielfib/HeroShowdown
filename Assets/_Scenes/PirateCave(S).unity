@@ -121,6 +121,70 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &76441751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76441752}
+  - component: {fileID: 76441754}
+  - component: {fileID: 76441753}
+  m_Layer: 0
+  m_Name: FlagSpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76441752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76441751}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.149852, y: -7.0381775, z: 0.945343}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1480497245}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &76441753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76441751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8082bc471ee0e5b4aab45865a0fcf221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  FlagPrefab: {fileID: 1514599138416200133, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
+    type: 3}
+--- !u!114 &76441754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76441751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1434858820
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!213 &103005230
 Sprite:
   m_ObjectHideFlags: 0
@@ -16527,11 +16591,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5676435313869664826, guid: c4d1975124df86e4091e32253ff186f7,
         type: 3}
-      propertyPath: m_ColliderPaths.Array.data[4].m_Collider
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5676435313869664826, guid: c4d1975124df86e4091e32253ff186f7,
-        type: 3}
       propertyPath: m_ColliderPaths.Array.data[4].m_ColliderPaths.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -16539,6 +16598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[4].m_ColliderPaths.Array.data[0].Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676435313869664826, guid: c4d1975124df86e4091e32253ff186f7,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[4].m_Collider
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5676435313869664826, guid: c4d1975124df86e4091e32253ff186f7,
         type: 3}
@@ -16805,8 +16869,7 @@ MonoBehaviour:
   EndingScreenManager: {fileID: 4567830619917346872}
   FlagScoreRespawnCooldown: 3
   FlagRetrievedRespawnCooldown: 8
-  FlagPrefab: {fileID: 1406014346354217163, guid: a8d341218a880fd4dbc8f9fdb3cbdacf,
-    type: 3}
+  FlagSpawnManager: {fileID: 76441753}
   UIFlagCountdownPrefab: {fileID: 7095984388975189877, guid: 4d707db57d80e0d49bef09b163bc0f5f,
     type: 3}
 --- !u!4 &1051141696
@@ -17516,6 +17579,8 @@ Transform:
   m_Children:
   - {fileID: 1766054665}
   - {fileID: 1051141696}
+  - {fileID: 1873589349}
+  - {fileID: 76441752}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20648,12 +20713,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873589346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.907246, y: 0.2971998, z: -2.3735352}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.149852, y: -7.0381775, z: 0.945343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1480497245}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1957431752
 GameObject:

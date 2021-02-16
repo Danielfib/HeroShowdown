@@ -278,9 +278,10 @@ public class PlayerController : NetworkBehaviour
 
     private void DropFlag()
     {
-        Flag flag = this.GetComponentInChildren<Flag>();
-        if (flag != null)
-            flag.Drop();
+        //TODO: REWORK AFTER NOT PARETING FLAG
+        //Flag flag = this.GetComponentInChildren<Flag>();
+        //if (flag != null)
+        //    flag.Drop();
     }
     #endregion
 

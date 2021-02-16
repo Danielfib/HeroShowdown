@@ -14,7 +14,7 @@ public class MatchManager : Singleton<MatchManager>
     private float FlagRetrievedRespawnCooldown;
 
     [SerializeField]
-    private GameObject FlagPrefab;
+    private FlagSpawnManager FlagSpawnManager;
     [SerializeField]
     private GameObject UIFlagCountdownPrefab;
 
@@ -60,14 +60,7 @@ public class MatchManager : Singleton<MatchManager>
 
     public void SpawnNewFlag(TeamIDEnum flagColor)
     {
-        //chooses at random a spawnspot of given team to spawn flag into
-        FlagSpawnSpot[] spawnSpots = FindObjectsOfType<FlagSpawnSpot>().Where(x => x.TeamID == flagColor).ToArray();
-        int rInd = Mathf.RoundToInt(Random.Range(0, spawnSpots.Length - 1));
-        Vector3 posToSpawn = spawnSpots[rInd].gameObject.transform.position;
-
-        GameObject flag = Instantiate(this.FlagPrefab, posToSpawn, Quaternion.identity);
-        flag.GetComponentInChildren<Flag>().teamIDEnum = flagColor;
-        flag.GetComponentInChildren<SpriteRenderer>().color = ColorUtils.TeamIdEnumToColor(flagColor);
+        FlagSpawnManager.SpawnNewFlag(flagColor);
     }
     #endregion
 
