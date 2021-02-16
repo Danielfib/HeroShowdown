@@ -30,7 +30,6 @@ public class FlagSpawnManager : NetworkBehaviour
         int rInd = Mathf.RoundToInt(Random.Range(0, flagSpawnSpots[team].Length - 1));
         GameObject flag = Instantiate(FlagPrefab, flagSpawnSpots[team][rInd], Quaternion.identity);
         flag.GetComponent<Flag>().teamIDEnum = team;
-        flag.GetComponentInChildren<SpriteRenderer>().color = ColorUtils.TeamIdEnumToColor(team);
         NetworkServer.Spawn(flag);
     }
 }

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class Flag : NetworkBehaviour
 {
     public Animator Animator;
 
+    [SyncVar(hook = nameof(OnTeamIDEnumChanged))]
     public TeamIDEnum teamIDEnum;
 
     private FlagStates _flagState;
@@ -28,6 +30,11 @@ public class Flag : NetworkBehaviour
     {
         base.OnStartClient();
         this.FlagState = FlagStates.NORMAL;
+    }
+
+    private void OnTeamIDEnumChanged(TeamIDEnum oldValue, TeamIDEnum newValue)
+    {
+        GetComponentInChildren<SpriteRenderer>().color = ColorUtils.TeamIdEnumToColor(newValue);
     }
 
     private void FixedUpdate()
