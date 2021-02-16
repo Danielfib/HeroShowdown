@@ -76,6 +76,8 @@ public class PlayerController : NetworkBehaviour
     [SyncVar]
     public DeviceType Device;
 
+    public Flag CarryingFlag;
+
     private NetworkManagerLobby lobby;
     private NetworkManagerLobby Lobby
     {
@@ -278,10 +280,11 @@ public class PlayerController : NetworkBehaviour
 
     private void DropFlag()
     {
-        //TODO: REWORK AFTER NOT PARETING FLAG
-        //Flag flag = this.GetComponentInChildren<Flag>();
-        //if (flag != null)
-        //    flag.Drop();
+        if (CarryingFlag != null)
+        {
+            CarryingFlag.Drop();
+            CarryingFlag = null;
+        }
     }
     #endregion
 

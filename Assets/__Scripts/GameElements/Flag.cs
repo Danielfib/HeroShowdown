@@ -39,7 +39,7 @@ public class Flag : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if(playerHolder && isServer)
+        if(playerHolder != null && isServer)
             transform.position = playerHolder.position;
     }
 
@@ -53,6 +53,7 @@ public class Flag : NetworkBehaviour
             if(collision.gameObject.GetComponent<PlayerController>().Team != this.teamIDEnum)
             {
                 this.FlagState = FlagStates.BEING_CARRIED;
+                collision.gameObject.GetComponent<PlayerController>().CarryingFlag = this;
                 playerHolder = collision.gameObject.transform.Find("FlagPos");
                 this.Animator.SetBool("IsDropped", false);
             }
