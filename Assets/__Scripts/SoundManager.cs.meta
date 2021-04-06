@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ead5c47e3e6e269408d69c0e06cb35d4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - UIaffirmative: {instanceID: 0}
+  - UInegative: {instanceID: 0}
+  - jump: {fileID: 8300000, guid: 4cfb54794d57eb6499f58cb84d9eec08, type: 3}
+  - toss: {fileID: 8300000, guid: 398baa57d941519419aa99b09e72a3e3, type: 3}
+  - dash: {instanceID: 0}
+  - shield: {instanceID: 0}
+  - die: {fileID: 8300000, guid: 01a123cfe2aac574db227184fa626e39, type: 3}
+  - getFlag: {fileID: 8300000, guid: 69a0f8011acd1d64eaae8c3f46b3ba66, type: 3}
+  - score: {fileID: 8300000, guid: 0a846f5f8ec15694fa39e174a171efa9, type: 3}
+  - spawnFlag: {fileID: 8300000, guid: 045cac8a79a8a824abc837e9f2631106, type: 3}
+  - cannonShoot: {fileID: 8300000, guid: 54262a92d5318d444b80e965d8fc325f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

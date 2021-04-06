@@ -78,6 +78,9 @@ public class PlayerController : NetworkBehaviour
 
     public Flag CarryingFlag;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource audioSource;
+
     private NetworkManagerLobby lobby;
     private NetworkManagerLobby Lobby
     {
@@ -341,6 +344,7 @@ public class PlayerController : NetworkBehaviour
         {
             canContinueJumping = true;
             CmdSetRbVelocity(Vector2.up * jumpForce);
+            PlaySoundOnAllClients(AudioClipEnum.JUMP, 0.5f);
             jumpTimeCounter = jumpTime;
         }
     }
@@ -486,6 +490,27 @@ public class PlayerController : NetworkBehaviour
         {
             //Animate(AnimationUtils.AnimationTriggers.IS_JUMPING);
         }
+    }
+    #endregion
+
+    #region [Sounds]
+    private void PlaySound(AudioClipEnum clip, float volumeScale = 1f)
+    {
+        SoundManager sm = GameObject.FindObjectOfType<SoundManager>();
+        audioSource.PlayOneShot(sm.audioDic[clip], volumeScale);
+    }
+
+    [Command]
+    public void PlaySoundOnAllClients(AudioClipEnum clip, float volumeScale = 1f)
+    {
+        PlayOnClient(clip, volumeScale);
+    }
+
+    [ClientRpc]
+    private void PlayOnClient(AudioClipEnum clip, float volumeScale)
+    {
+        SoundManager sm = GameObject.FindObjectOfType<SoundManager>();
+        audioSource.PlayOneShot(sm.audioDic[clip], volumeScale);
     }
     #endregion
 }
