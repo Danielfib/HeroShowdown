@@ -9,34 +9,29 @@ using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : NetworkBehaviour
-{ 
-    public int PlayerIndex;
+{
     public Grabber Grabber;
 
-    public CharacterBrain CharacterBrain;
+    [HideInInspector] public int PlayerIndex;
+    [HideInInspector] public CharacterBrain CharacterBrain;
+    [HideInInspector] public CharacterSO SelectedHero;
 
-    [SerializeField]
-    private float moveSpeed = 5f;
-    [SerializeField]
-    private float jumpForce = 500f;
-
-    [HideInInspector]
-    public RuntimeAnimatorController UIAnimator;
-
-    private Rigidbody2D rb;
-    [SyncVar]
-    private Vector2 moveDirection;
-
-    [HideInInspector]
-    public bool isGrounded;
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 500f;
+    [SerializeField] private float fallGravityMultiplier = 2f;
     public Transform feetPos;
     public float checkRadius;
     public LayerMask whatIsGround;
-
-    private float jumpTimeCounter;
     public float jumpTime;
+    [HideInInspector] public bool isGrounded;
+    private float jumpTimeCounter;
     private bool canContinueJumping;
+    private Rigidbody2D rb;
+    [SyncVar] private Vector2 moveDirection;
+    private float initialGravity;
 
+    //Abilities
     private SAState _SAState = SAState.READY;
     [HideInInspector]
     public SAState SAState
@@ -46,37 +41,31 @@ public class PlayerController : NetworkBehaviour
             _SAState = value;
         }
     }
-    [HideInInspector]
-    public SpriteBarCooldown sbCooldown;
-
     private bool IsInvulnerable = false;
-    [HideInInspector]
-    public bool IsReflectiveToProjectiles = false;
-    [HideInInspector]
-    public PlayerHUDIconController PlayerHUDIconController;
-
+    [HideInInspector] public bool IsReflectiveToProjectiles = false;
+    [HideInInspector] public SpriteBarCooldown sbCooldown;
+    
+    [HideInInspector] public PlayerHUDIconController PlayerHUDIconController;
+    [HideInInspector] public RuntimeAnimatorController UIAnimator;
     private AnimatorsController animController;
 
-    [SerializeField]
-    private GameObject dieFXPrefab;
-    [SerializeField]
-    private GameObject tossFXPrefab;
+    [Header("FXs")]
+    [SerializeField] private GameObject dieFXPrefab;
+    [SerializeField] private GameObject tossFXPrefab;
 
     [HideInInspector]
     public int flagsScored, deathsStats, killsStats, flagsRetrieved;
 
-    public CharacterSO SelectedHero;
-
-    [SyncVar]
+    [SyncVar, HideInInspector]
     public HeroesEnum SelectedHeroEnum;
 
-    [SyncVar]
+    [SyncVar, HideInInspector]
     public TeamIDEnum Team;
 
-    [SyncVar]
+    [SyncVar, HideInInspector]
     public DeviceType Device;
 
-    public Flag CarryingFlag;
+    [HideInInspector] public Flag CarryingFlag;
 
     [Header("Sound")]
     [SerializeField] private AudioSource audioSource;
@@ -100,6 +89,7 @@ public class PlayerController : NetworkBehaviour
 
     void Start()
     {
+        initialGravity = rb.gravityScale;
         if(!hasAuthority) GetComponent<PlayerInput>().actions = null;
 
         animController.teamIDEnum = this.Team;
@@ -110,6 +100,7 @@ public class PlayerController : NetworkBehaviour
     private void FixedUpdate()
     {
         FlipSpriteOnWalkDirection();
+        InscreaseGravityIfFalling();
 
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
@@ -291,10 +282,18 @@ public class PlayerController : NetworkBehaviour
     }
     #endregion
 
-    #region [Walk]
+    #region [Movement]
     public void SetDirection(Vector2 dir)
     {
         CmdSetDirection(dir);
+    }
+
+    private void InscreaseGravityIfFalling()
+    {
+        if (isGrounded)
+            this.rb.gravityScale = initialGravity;
+        else if (this.rb.velocity.y < 0)
+            this.rb.gravityScale = initialGravity * fallGravityMultiplier;
     }
 
     [Command]
@@ -329,9 +328,7 @@ public class PlayerController : NetworkBehaviour
     {
         this.rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
     }
-    #endregion
 
-    #region [Jump]
     [Command]
     private void CmdSetRbVelocity(Vector2 vel)
     {
@@ -501,7 +498,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
-    public void PlaySoundOnAllClients(AudioClipEnum clip, float volumeScale = 1f)
+    public void PlaySoundOnAllClients(AudioClipEnum clip, float volumeScale)
     {
         PlayOnClient(clip, volumeScale);
     }
