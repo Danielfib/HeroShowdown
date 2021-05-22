@@ -118,7 +118,6 @@ public class ProjectileController : NetworkBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(1);
         bool gotDeflected = false;
 
         if (collision.gameObject.tag == "Player"

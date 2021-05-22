@@ -22,7 +22,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public Dictionary<AudioClipEnum, AudioClip> audioDic;
 
-    private void Awake()
+    private void Start()
     {
         DontDestroyOnLoad(gameObject);
 

@@ -8,7 +8,7 @@ using UnityEngine;
 public class Grabber : MonoBehaviour
 {
     private GameObject CurrentlyGrabingObject;
-    private Collider2D collider;
+    private Collider2D grabberCollider;
 
     [SerializeField]
     private LayerMask grabbableLayerMask;
@@ -20,7 +20,7 @@ public class Grabber : MonoBehaviour
 
     private void Start() 
     {
-        collider = GetComponent<Collider2D>();    
+        grabberCollider = GetComponent<Collider2D>();    
     }
 
     public GrabTossActionResults TryToGrab()
@@ -33,7 +33,7 @@ public class Grabber : MonoBehaviour
         List<Collider2D> colidingObjects = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
         filter.SetLayerMask(grabbableLayerMask);
-        collider.OverlapCollider(filter, colidingObjects);
+        grabberCollider.OverlapCollider(filter, colidingObjects);
 
         if(colidingObjects.Count > 0)
         {

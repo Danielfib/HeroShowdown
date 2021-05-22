@@ -86,6 +86,7 @@ public class NetworkManagerLobby : NetworkManager
             var playerI = LobbyPlayers[i];
 
             var conn = LobbyPlayers[i].connectionToClient;
+            NetworkServer.SetClientReady(conn);
             var gamePlayerInstance = Instantiate(playerGamePrefab);
 
             PlayerController cc = gamePlayerInstance.GetComponent<PlayerController>();
@@ -97,13 +98,10 @@ public class NetworkManagerLobby : NetworkManager
             cc.SelectedHeroEnum = playerI.SelectedCharacter.hero;
             
             NetworkManager.Destroy(conn.identity.gameObject);
-            NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject);
+            NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance);
         }
 
         base.ServerChangeScene(newSceneName);
-
-        //TODO: position players after scene has changed
-        //GamePlayers.ForEach(x => PositionPlayer(x.transform, x.Team));
     }
 
     private void PositionPlayer(Transform playerTransform, TeamIDEnum team)
