@@ -20,8 +20,8 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 500f;
     [SerializeField] private float fallGravityMultiplier = 2f;
+    [SerializeField] private float checkRadius;
     public Transform feetPos;
-    public float checkRadius;
     public LayerMask whatIsGround;
     public float jumpTime;
     [HideInInspector] public bool isGrounded;
@@ -337,7 +337,8 @@ public class PlayerController : NetworkBehaviour
 
     public void ExecuteJump()
     {
-        if (isGrounded)
+        bool canJump = Physics2D.OverlapCircle(feetPos.position, checkRadius * 2.5f, whatIsGround);
+        if (canJump)
         {
             canContinueJumping = true;
             CmdSetRbVelocity(Vector2.up * jumpForce);
