@@ -7,56 +7,56 @@ using UnityEngine.UI;
 
 public class NetworkOptionsMenu : MonoBehaviour
 {
-    private NetworkManagerLobby networkManager;
+    //private NetworkManagerLobby networkManager;
 
-    [Header("UI")]
-    [SerializeField] private Button joinLobbyBtn, HostBtn;
-    [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private GameObject networkMenu, selectionMenu;
+    //[Header("UI")]
+    //[SerializeField] private Button joinLobbyBtn, HostBtn;
+    //[SerializeField] private TMP_InputField inputField;
+    //[SerializeField] private GameObject networkMenu, selectionMenu;
 
-    private void Start()
-    {
-        networkManager = GameObject.FindObjectOfType<NetworkManagerLobby>();
-    }
+    //private void Start()
+    //{
+    //    networkManager = GameObject.FindObjectOfType<NetworkManagerLobby>();
+    //}
 
-    private void OnEnable()
-    {
-        NetworkManagerLobby.OnClientConnected += HandleClientConnected;
-        NetworkManagerLobby.OnClientDisconnected += HandleClientDisconnected;
-    }
+    //private void OnEnable()
+    //{
+    //    NetworkManagerLobby.OnClientConnected += HandleClientConnected;
+    //    NetworkManagerLobby.OnClientDisconnected += HandleClientDisconnected;
+    //}
 
-    private void OnDisable()
-    {
-        NetworkManagerLobby.OnClientConnected -= HandleClientConnected;
-        NetworkManagerLobby.OnClientDisconnected -= HandleClientDisconnected;
-    }
+    //private void OnDisable()
+    //{
+    //    NetworkManagerLobby.OnClientConnected -= HandleClientConnected;
+    //    NetworkManagerLobby.OnClientDisconnected -= HandleClientDisconnected;
+    //}
 
-    public void StartHost()
-    {
-        networkManager.StartHost();
+    //public void StartHost()
+    //{
+    //    networkManager.StartHost();
 
-        selectionMenu.SetActive(true);
-        gameObject.SetActive(false);
-    }
+    //    selectionMenu.SetActive(true);
+    //    gameObject.SetActive(false);
+    //}
 
-    public void JoinLoby()
-    {
-        string ipAddress = (string.IsNullOrEmpty(inputField.text)) ? "localhost" : inputField.text;
+    //public void JoinLoby()
+    //{
+    //    string ipAddress = (string.IsNullOrEmpty(inputField.text)) ? "localhost" : inputField.text;
 
-        networkManager.networkAddress = ipAddress;
-        networkManager.StartClient();
-    }
+    //    networkManager.networkAddress = ipAddress;
+    //    networkManager.StartClient();
+    //}
 
-    private void HandleClientDisconnected()
-    {
-        gameObject.SetActive(true);
-    }
+    //private void HandleClientDisconnected()
+    //{
+    //    gameObject.SetActive(true);
+    //}
 
-    private void HandleClientConnected()
-    {
-        joinLobbyBtn.interactable = false;
+    //private void HandleClientConnected()
+    //{
+    //    joinLobbyBtn.interactable = false;
 
-        selectionMenu.SetActive(true);
-        gameObject.SetActive(false);
-    }
+    //    selectionMenu.SetActive(true);
+    //    gameObject.SetActive(false);
+    //}
 }

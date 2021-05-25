@@ -70,16 +70,6 @@ public class PlayerController : NetworkBehaviour
     [Header("Sound")]
     [SerializeField] private AudioSource audioSource;
 
-    private NetworkManagerLobby lobby;
-    private NetworkManagerLobby Lobby
-    {
-        get
-        {
-            if (lobby != null) { return lobby; }
-            return lobby = NetworkManager.singleton as NetworkManagerLobby;
-        }
-    }
-
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
