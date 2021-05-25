@@ -2135,7 +2135,8 @@ MonoBehaviour:
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 3670669546270193135, guid: cf86c5ceb1fb5b34f8fba1e43b152e1e, type: 3}
   showRoomGUI: 1
   minPlayers: 1
   roomPlayerPrefab: {fileID: 1481453533209892391, guid: 430b50c34d3e6ce439fcdbeb044a5e5a,
@@ -4439,11 +4440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7142a9b18d21ff641a82ecfee4c81495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joinLobbyBtn: {fileID: 111120948}
-  HostBtn: {fileID: 1494836460}
-  inputField: {fileID: 1469079116}
-  networkMenu: {fileID: 1985150304}
-  selectionMenu: {fileID: 1973273697}
 --- !u!1 &1987535333
 GameObject:
   m_ObjectHideFlags: 0

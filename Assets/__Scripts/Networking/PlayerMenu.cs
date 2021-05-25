@@ -102,21 +102,39 @@ public class PlayerMenu : NetworkRoomPlayer
         if (!context.performed || !hasAuthority)
             return;
 
-        CmdProgress();
-    }
-
-    [Command]
-    public void CmdProgress()
-    {
         if (!readyToBegin)
         {
-            ReadySprite.SetActive(true);
+            CmdReady();
             CmdChangeReadyState(true);
         }
         else
         {
             CmdTryStartGame();
         }
+    }
+
+    [Command]
+    public void CmdReady()
+    {
+        RpcReady();
+    }
+
+    [ClientRpc]
+    public void RpcReady()
+    {
+        ReadySprite.SetActive(true);
+    }
+
+    [Command]
+    public void CmdUnready()
+    {
+        RpcUnready();
+    }
+
+    [ClientRpc]
+    public void RpcUnready()
+    {
+        ReadySprite.SetActive(false);
     }
 
     [Command]
@@ -131,16 +149,10 @@ public class PlayerMenu : NetworkRoomPlayer
         if (!context.performed || !hasAuthority)
             return;
 
-        CmdBack();
-    }
-
-    [Command]
-    public void CmdBack() 
-    {
         if (readyToBegin)
         {
-            ReadySprite.SetActive(false);
-            CmdChangeReadyState(true);
+            CmdUnready();
+            CmdChangeReadyState(false);
         }
         else
         {
