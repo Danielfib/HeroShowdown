@@ -6,23 +6,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
-public class PlayerMenu : NetworkBehaviour
+public class PlayerMenu : NetworkRoomPlayer
 {
     public int PlayerIndex;
 
-    private NetworkManagerLobby lobby;
-    private NetworkManagerLobby Lobby
-    {
-        get
-        {
-            if (lobby != null) { return lobby; }
-            return lobby = NetworkManager.singleton as NetworkManagerLobby;
-        }
-    }
-
-    [SyncVar(hook = nameof(HandleReadyStatusChanged))]
-    public bool IsReady = false;
-    
     [SyncVar(hook = nameof(HandleSelectedCharacterChanged))]
     private int currentCharacterIndex;
 
@@ -93,8 +80,6 @@ public class PlayerMenu : NetworkBehaviour
     #region [NetworkLifecyle]
     public override void OnStartClient()
     {
-        Lobby.LobbyPlayers.Add(this);
-
         CmdSetupOnStart();
     }
 
@@ -115,7 +100,7 @@ public class PlayerMenu : NetworkBehaviour
 
     public override void OnStopClient()
     {
-        Lobby.LobbyPlayers.Remove(this);
+        //Lobby.LobbyPlayers.Remove(this);
     }
     #endregion
 
@@ -132,31 +117,21 @@ public class PlayerMenu : NetworkBehaviour
     [Command]
     public void CmdProgress()
     {
-        if (!this.IsReady)
+        if (!readyToBegin)
         {
-            this.IsReady = true;
+            ReadySprite.SetActive(true);
+            CmdChangeReadyState(true);
         }
         else
         {
-            if (Lobby.IsEveryoneReadyToStart())
-            {
-                //GameObject.FindObjectOfType<PlayersSelectionManager>().LoadMatchLevel();
-                //SceneManager.LoadScene("PirateCave(S)");
-                CmdStartGame();
-            }
-            else
-            {
-                //TODO: somebody not ready feedback
-            }
+            CmdTryStartGame();
         }
     }
 
     [Command]
-    public void CmdStartGame()
+    private void CmdTryStartGame()
     {
-        //if(Lobby.LobbyPlayers[0].connectionToClient != connectionToClient) return;
-        
-        Lobby.StartGame();
+        GameObject.FindObjectOfType<NetworkManagerRoom>().StartGame();
     }
 
     public void Back(CallbackContext context)
@@ -171,26 +146,22 @@ public class PlayerMenu : NetworkBehaviour
     [Command]
     public void CmdBack() 
     {
-        if (this.IsReady)
+        if (readyToBegin)
         {
-            this.IsReady = false;
+            ReadySprite.SetActive(false);
+            CmdChangeReadyState(true);
         }
         else
         {
             //Leave player?
         }
     }
-
-    private void HandleReadyStatusChanged(bool oldValue, bool newValue) 
-    {
-        this.ReadySprite.SetActive(newValue);
-    }
     #endregion
 
     #region [HeroSelection]
     public void ChangedHeroBackwards(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || characterManager == null || !hasAuthority)
+        if (!context.performed || readyToBegin || characterManager == null || !hasAuthority)
             return;
 
         CmdChangedHeroBackward();
@@ -198,7 +169,7 @@ public class PlayerMenu : NetworkBehaviour
 
     public void ChangedHeroForward(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || characterManager == null || !hasAuthority)
+        if (!context.performed || readyToBegin || characterManager == null || !hasAuthority)
             return;
 
         CmdChangedHeroForward();
@@ -247,7 +218,7 @@ public class PlayerMenu : NetworkBehaviour
 
     public void ChangeTeamLeft(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || characterManager == null || !hasAuthority)
+        if (!context.performed || readyToBegin || characterManager == null || !hasAuthority)
             return;
 
         CmdChangedTeamLeft();
@@ -255,7 +226,7 @@ public class PlayerMenu : NetworkBehaviour
 
     public void ChangeTeamRight(CallbackContext context)
     {
-        if (!context.performed || this.IsReady || characterManager == null || !hasAuthority)
+        if (!context.performed || readyToBegin || characterManager == null || !hasAuthority)
             return;
 
         CmdChangedTeamRight();

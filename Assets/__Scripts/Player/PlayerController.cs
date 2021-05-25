@@ -508,7 +508,7 @@ public class PlayerController : NetworkBehaviour
     private void PlayOnClient(AudioClipEnum clip, float volumeScale)
     {
         SoundManager sm = GameObject.FindObjectOfType<SoundManager>();
-        audioSource.PlayOneShot(sm.audioDic[clip], volumeScale);
+        if(sm) audioSource.PlayOneShot(sm.audioDic[clip], volumeScale);
     }
     #endregion
 }

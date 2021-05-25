@@ -65,10 +65,6 @@ public class PlayersSelectionManager : MonoBehaviour
         }
         PlayerSeat playerSeat = GameObject.Find(seatGameObjectName).GetComponent<PlayerSeat>();
         playerSeat.JoinPlayer(go);
-
-        //GameObject seatGameObject = GameObject.Find(seatGameObjectName);
-        //go.transform.parent = seatGameObject.transform;
-        //go.transform.localPosition = Vector3.zero;
     }
 
     private void DesocupySeat(GameObject go)
