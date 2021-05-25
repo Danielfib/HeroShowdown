@@ -42,25 +42,6 @@ public class PlayerMenu : NetworkRoomPlayer
         characterManager = GameObject.Find("CharactersManager").GetComponent<CharactersManager>();
     }
 
-    [Command]
-    private void CmdSetupOnStart()
-    {
-        RpcSetupOnStart();
-    }
-
-    [ClientRpc]
-    private void RpcSetupOnStart()
-    {
-        currentCharacterIndex = 0;
-        SelectedCharacter = this.characterManager.availableCharacters[0];
-        IsLeaderSprite.SetActive(IsServerPlayer);
-        ChooseDefaultTeam();
-        ChangedTeam();
-        UpdateCharUIInfo();
-
-        if(hasAuthority) GetComponent<PlayerInput>().actions = menuInputActionAsset;
-    }
-
     private void InitializeColorSwitcher()
     {
         this.materialColorSwitcher = this.transform.GetComponentInChildren<SwitchColorToTeamColor>();
@@ -80,7 +61,17 @@ public class PlayerMenu : NetworkRoomPlayer
     #region [NetworkLifecyle]
     public override void OnStartClient()
     {
-        CmdSetupOnStart();
+        currentCharacterIndex = 0;
+        SelectedCharacter = this.characterManager.availableCharacters[0];
+        IsLeaderSprite.SetActive(IsServerPlayer);
+        ChooseDefaultTeam();
+        ChangedTeam();
+        UpdateCharUIInfo();
+
+        if (hasAuthority) GetComponent<PlayerInput>().actions = menuInputActionAsset;
+
+        Debug.Log(index);
+        GameObject.FindObjectOfType<NetworkManagerRoom>().PlaceOnLeftMostSeat(gameObject);
     }
 
     public override void OnStartLocalPlayer()

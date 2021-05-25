@@ -18,8 +18,6 @@ public class NetworkManagerRoom : NetworkRoomManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
-        Debug.Log(conn.identity.gameObject.name);
-        PlaceOnLeftMostSeat(conn.identity.gameObject);
     }
 
     public override void OnClientDisconnect(NetworkConnection conn)
@@ -55,7 +53,7 @@ public class NetworkManagerRoom : NetworkRoomManager
 #endif
     }
 
-    private void PlaceOnLeftMostSeat(GameObject go)
+    public void PlaceOnLeftMostSeat(GameObject go)
     {
         for (var i = 0; i < this.SeatsOcupied.Length; i++)
         {
